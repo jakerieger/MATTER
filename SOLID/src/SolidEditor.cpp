@@ -1,12 +1,19 @@
 #include "SolidEditor.hpp"
 
+#define WINDOW_WIDTH 1600
+#define WINDOW_HEIGHT 900
+#define WINDOW_TITLE "SOLID <OpenGL 4.6> | "
+#define CLEAR_COLOR_R 36
+#define CLEAR_COLOR_G 40
+#define CLEAR_COLOR_B 58
+
 int SolidEditor::InitGLFW() {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    mWindow = glfwCreateWindow(800, 600, "Solid", NULL, NULL);
+    mWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, NULL, NULL);
 
     if (mWindow == nullptr) {
         printf("Failed to create GLFW window\n");
@@ -16,8 +23,13 @@ int SolidEditor::InitGLFW() {
 
     glfwMakeContextCurrent(mWindow);
 
+    // Setup GLFW callbacls
+    glfwSetFramebufferSizeCallback(mWindow, [](GLFWwindow* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    });
+
     // VSYNC
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
 
     return INIT_RESULT_SUCCESS;
 }
@@ -32,10 +44,14 @@ int SolidEditor::InitGlad() {
 }
 
 int SolidEditor::InitOpenGL() {
-    glViewport(0, 0, 800, 600);
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glEnable(GL_DEPTH_TEST);
 
     return INIT_RESULT_SUCCESS;
+}
+
+void SolidEditor::ProcessInput() {
+
 }
 
 void SolidEditor::Init() {
@@ -53,8 +69,16 @@ void SolidEditor::Init() {
 
 void SolidEditor::Render() {
     while (!glfwWindowShouldClose(mWindow)) {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        ProcessInput();
+
+        glClearColor(
+            CLEAR_COLOR_R / 255.0f,
+            CLEAR_COLOR_G / 255.0f,
+            CLEAR_COLOR_B / 255.0f,
+            1.0f
+        );
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
         glfwSwapBuffers(mWindow);
         glfwPollEvents();
     }

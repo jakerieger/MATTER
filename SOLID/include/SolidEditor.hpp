@@ -24,6 +24,8 @@ private:
     int InitGlad();
     int InitOpenGL();
 
+    void ProcessInput();
+
     void Init();
     void Render();
     void Shutdown();
