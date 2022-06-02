@@ -12,6 +12,10 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/../EXTERNAL/src
 )
 
-add_executable(SOLID src/main.cpp ../EXTERNAL/src/glad.c)
+add_executable(SOLID src/main.cpp src/SolidEditor.cpp src/SolidProject.cpp ../EXTERNAL/src/glad.c ../EXTERNAL/src/stb_image.cpp)
 
-target_link_libraries(SOLID ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/glfw3.lib)
+target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/glfw3.lib
+                            optimized ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/glfw3.lib)
+
+target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/assimp-vc143-mtd.lib
+                            optimized ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/assimp-vc143-mt.lib)
