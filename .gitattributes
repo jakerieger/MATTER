@@ -1,3 +1,4 @@
 EXTERNAL/** linguist-vendored
 *.txt linguist-vendored
 *.h linguist-language=C++
+*.shader linguist-language=GLSL
