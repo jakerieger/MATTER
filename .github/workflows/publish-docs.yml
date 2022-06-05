@@ -1,0 +1,30 @@
+name: publish-docs
+
+on:
+  push:
+    branches:
+      - master
+      - gh-pages
+
+jobs:
+  build_and_deply_doxygen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Doxygen
+        run: sudo apt-get update; sudo apt-get install -y doxygen graphviz texlive-full
+      
+      - name: Create docs
+        run: |
+          git clone https://github.com/jakerieger/MATTER.git
+          cd ./MATTER
+          doxygen ./.doxyfile
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html

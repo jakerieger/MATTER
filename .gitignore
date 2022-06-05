@@ -6,3 +6,5 @@ build/
 *.pdb
 
 .vscode/
+
+docs/html/
