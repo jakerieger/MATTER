@@ -7,8 +7,8 @@ DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = MATTER
 PROJECT_NUMBER         = 0.1.0
 PROJECT_BRIEF          = "Open source game engine with a soft body physics engine"
-PROJECT_LOGO           = Y:/MATTER/docs/logo.png
-OUTPUT_DIRECTORY       = Y:/MATTER/docs
+PROJECT_LOGO           = docs/logo.png
+OUTPUT_DIRECTORY       = docs
 CREATE_SUBDIRS         = YES
 CREATE_SUBDIRS_LEVEL   = 8
 ALLOW_UNICODE_NAMES    = NO
@@ -121,7 +121,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = Y:/MATTER
+INPUT                  = ./
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -170,13 +170,13 @@ FILE_PATTERNS          = *.c \
                          *.qsf \
                          *.ice
 RECURSIVE              = YES
-EXCLUDE                = Y:/MATTER/EXTERNAL \
-                         Y:/MATTER/EDITOR \
-                         Y:/MATTER/build \ 
-                         Y:/MATTER/.github \
-                         Y:/MATTER/.git \
-                         Y:/MATTER/.gitignore \
-                         Y:/MATTER/.gitattributes \
+EXCLUDE                = EXTERNAL \
+                         EDITOR \
+                         build \ 
+                         .github \
+                         .git \
+                         .gitignore \
+                         .gitattributes \
 EXCLUDE_SYMLINKS       = YES
 EXCLUDE_PATTERNS       = *.txt \
                          *.md \
