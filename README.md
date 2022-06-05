@@ -31,22 +31,13 @@ This is a list of resources I've found helpful while developing MATTER.
 - [Ray Marching](https://michaelwalczyk.com/blog-ray-marching.html) - An overview of the Ray Marching alrgoithm and how it can be implemented in shaders
 - [BeamNG.drive Docs](https://documentation.beamng.com/) - Some nice documentation on the inner-workings of the BeamNG softbody physics engine
 
-## Configuring your buildchain
-
-MATTER comes with a [script](#configuring-your-buildchain) you can run to automate the process of compiling the third party libraries and MATTER runtime and copying them to the correct locations.
-Simply run:
-
-```
-$ ./configure_project.sh
-```
-
-The script will ask for the CMake generator name which you can find by running:
-
-```
-$ cmake --help
-```
-
-It'll then ask for your architecture (`x64` is the only supported one currently) and will then compile and copy all the project dependencies for you.
+## Build Status
+|Compiler|Arch|Status|
+|--------|----|------|
+|MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
+|MSVC 15 |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
+|GCC |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
+|Clang |x64 |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
 
 ## Third Party Libraries
 
