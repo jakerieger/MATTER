@@ -37,7 +37,7 @@ This is a list of resources I've found helpful while developing MATTER.
 |MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
 |MSVC 15 |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
 |GCC |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
-|Clang |x64 |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
+|Clang | - |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
 
 ## Third Party Libraries
 
