@@ -8,6 +8,7 @@
 
 #include "SolidEditorConfig.hpp"
 #include "SolidProject.hpp"
+#include "SolidLogger.hpp"
 
 class SolidEditor {
 public:
@@ -25,12 +26,15 @@ private:
     int InitOpenGL();
 
     void ProcessInput();
+    std::tuple<unsigned int, unsigned int> CreateRenderBuffers();
+    void CheckFramebufferStatus();
 
     void Init();
     void Render();
     void Shutdown();
 
+    GLFWwindow* mWindow;
     SolidEditorConfig mEditorConfig;
     SolidProject mProject;
-    GLFWwindow* mWindow;
+    SolidLogger mLogger;
 };

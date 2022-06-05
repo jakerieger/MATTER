@@ -1,8 +1,10 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
+#include <fstream>
+#include "SolidUtils.hpp"
 
-using json = nlohmann::json;
+#include <nlohmann/json.hpp>
+using JSON = nlohmann::json;
 
 struct GeneralPreferences {
     bool loadPreviousProjectOnStartup;
@@ -23,8 +25,10 @@ struct EditorPreferences {
 
 class SolidEditorConfig {
 public:
-    void Load();
+    void Load(JSON config);
     void Save();
+    void InitConfig();
+
     void SetEditorPreferences(EditorPreferences editorPreferences) { mEditorPreferences = editorPreferences; };
     EditorPreferences GetEditorPreferences() { return mEditorPreferences; };
 

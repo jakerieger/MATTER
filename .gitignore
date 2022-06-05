@@ -4,3 +4,5 @@ build/
 *.dll
 *.exp
 *.pdb
+
+.vscode/
