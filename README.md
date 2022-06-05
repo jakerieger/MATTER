@@ -18,6 +18,18 @@ Simply put, **no**. MATTER is a personal learning project being developed as a v
 
 ![](docs/screenshot.jpg)
 
+## Documentation
+
+Documentation is sparse and incomplete, but is being continuously updated. You can find it [here](https://jakerieger.github.io/MATTER).
+
+## Build Status
+|Compiler|Arch|Status|
+|--------|----|------|
+|MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
+|MSVC 15 |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
+|GCC |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
+|Clang | - |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
+
 ## Resources
 
 This is a list of resources I've found helpful while developing MATTER.
@@ -30,14 +42,6 @@ This is a list of resources I've found helpful while developing MATTER.
 - [Designing a Physics Engine in 5 minutes](https://www.youtube.com/watch?v=-_IspRG548E) - A high level overview of the implementation of a basic 3D rigidbody physics engine
 - [Ray Marching](https://michaelwalczyk.com/blog-ray-marching.html) - An overview of the Ray Marching alrgoithm and how it can be implemented in shaders
 - [BeamNG.drive Docs](https://documentation.beamng.com/) - Some nice documentation on the inner-workings of the BeamNG softbody physics engine
-
-## Build Status
-|Compiler|Arch|Status|
-|--------|----|------|
-|MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
-|MSVC 15 |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
-|GCC |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
-|Clang | - |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
 
 ## Third Party Libraries
 
