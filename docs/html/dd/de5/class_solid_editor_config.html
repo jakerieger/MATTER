@@ -92,22 +92,32 @@ $(document).ready(function(){initNavTree('dd/de5/class_solid_editor_config.html'
 </div><!--header-->
 <div class="contents">
 
+<p>The Solid Editor configuration class.  
+ <a href="../../dd/de5/class_solid_editor_config.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/d8d/_solid_editor_config_8hpp_source.html">SolidEditorConfig.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aca14ca512318e4307f8f09085e4fa04b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/class_solid_editor_config.html#aca14ca512318e4307f8f09085e4fa04b">Load</a> (<a class="el" href="../../d3/d8d/_solid_editor_config_8hpp.html#ab6104b89642419db4e355b7b2e40abbe">JSON</a> config)</td></tr>
+<tr class="memdesc:aca14ca512318e4307f8f09085e4fa04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the Solid Editor configuration from a json file.  <a href="../../dd/de5/class_solid_editor_config.html#aca14ca512318e4307f8f09085e4fa04b">More...</a><br /></td></tr>
 <tr class="separator:aca14ca512318e4307f8f09085e4fa04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8c5051e093db7e026f5de34a4be6acb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/class_solid_editor_config.html#ad8c5051e093db7e026f5de34a4be6acb">Save</a> ()</td></tr>
+<tr class="memdesc:ad8c5051e093db7e026f5de34a4be6acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the Solid Editor configuration to a json file.  <a href="../../dd/de5/class_solid_editor_config.html#ad8c5051e093db7e026f5de34a4be6acb">More...</a><br /></td></tr>
 <tr class="separator:ad8c5051e093db7e026f5de34a4be6acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1fd20e52a8b3420ce0c70c978d2b664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/class_solid_editor_config.html#ae1fd20e52a8b3420ce0c70c978d2b664">InitConfig</a> ()</td></tr>
+<tr class="memdesc:ae1fd20e52a8b3420ce0c70c978d2b664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Solid Editor configuration.  <a href="../../dd/de5/class_solid_editor_config.html#ae1fd20e52a8b3420ce0c70c978d2b664">More...</a><br /></td></tr>
 <tr class="separator:ae1fd20e52a8b3420ce0c70c978d2b664"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b04e436378e837e14956b25d3a8e482"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/class_solid_editor_config.html#a2b04e436378e837e14956b25d3a8e482">SetEditorPreferences</a> (<a class="el" href="../../d0/d33/struct_editor_preferences.html">EditorPreferences</a> editorPreferences)</td></tr>
 <tr class="separator:a2b04e436378e837e14956b25d3a8e482"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea98f37108a24df02ff8215ef1eb2a4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d33/struct_editor_preferences.html">EditorPreferences</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de5/class_solid_editor_config.html#aea98f37108a24df02ff8215ef1eb2a4a">GetEditorPreferences</a> ()</td></tr>
 <tr class="separator:aea98f37108a24df02ff8215ef1eb2a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >The Solid Editor configuration class. </p>
+<p >Handles loading, saving, and initializing the Solid Editor configuration</p>
+<dl class="section author"><dt>Author</dt><dd>Jake Rieger </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aea98f37108a24df02ff8215ef1eb2a4a" name="aea98f37108a24df02ff8215ef1eb2a4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea98f37108a24df02ff8215ef1eb2a4a">&#9670;&nbsp;</a></span>GetEditorPreferences()</h2>
 
@@ -148,6 +158,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Initialize the Solid Editor configuration. </p>
+<p >If no Solid Editor configuration file exists, this will create one. </p>
+
 </div>
 </div>
 <a id="aca14ca512318e4307f8f09085e4fa04b" name="aca14ca512318e4307f8f09085e4fa04b"></a>
@@ -166,6 +179,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Load the Solid Editor configuration from a json file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Serialized JSON object to load. This is the C++ representation of the JSON file that's been parsed elsewhere. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad8c5051e093db7e026f5de34a4be6acb" name="ad8c5051e093db7e026f5de34a4be6acb"></a>
@@ -182,6 +203,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Save the Solid Editor configuration to a json file. </p>
+<p >Serializes the Solid Editor configuration to a JSON file </p>
 
 </div>
 </div>

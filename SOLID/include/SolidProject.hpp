@@ -2,6 +2,10 @@
 
 #include <vector>
 
+/**
+ * @brief Application settings when building a project
+ * 
+ */
 struct BuildSettings {
     const char* companyName;
     const char* productName;
@@ -12,26 +16,46 @@ struct BuildSettings {
     const char* productIcon;
 };
 
+/**
+ * @brief Input action mapping struct
+ * 
+ */
 struct ActionMapping {
     const char* actionName;
     int actionId; // GLFW_KEY_XXX ID
 };
 
+/**
+ * @brief Input axis mapping struct
+ * 
+ */
 struct AxisMapping {
     const char* axisName;
     int axisId; // GLFW_KEY_XXX ID or GLFW_MOUSE_XXX ID
 };
 
+/**
+ * @brief Holds input mappings for the current project
+ * 
+ */
 struct InputManager {
     std::vector<ActionMapping> actionMappings;
     std::vector<AxisMapping> axisMappings;
 };
 
+/**
+ * @brief Project-specific settings struct
+ * 
+ */
 struct ProjectSettings {
     BuildSettings buildSettings;
     InputManager inputManager;
 };
 
+/**
+ * @brief Class for managing project loading, saving, and settings
+ * 
+ */
 class SolidProject {
 public:
     void Load(const char* path);

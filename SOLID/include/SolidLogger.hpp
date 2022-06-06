@@ -13,16 +13,25 @@ enum LogLevel {
 };
 
 struct LogEntry {
-    const char* message;
-    const char* details;
-    const char* file;
-    int* line;
-    std::string timestamp;
-    LogLevel level;
+    const char* message; ///< The message displayed in the console
+    const char* details; ///< The details displayed in the console when the user selects the entry
+    const char* file; ///< The file the log entry originated from
+    int* line; ///< The line the log entry originated from
+    std::string timestamp; ///< The timestamp of the log entry
+    LogLevel level; ///< The level of the log entry
 };
 
 class SolidLogger {
 public:
+    /**
+     * @brief Log a message to the console
+     * 
+     * @param message The message to log
+     * @param details The message details
+     * @param file The file the message originated from
+     * @param line The line the message originated from
+     * @param level The level of the message
+     */
     void Log(const char* message, const char* details, const char* file, int* line, LogLevel level);
 
     std::vector<LogEntry> GetLogs() { return mLogs; }

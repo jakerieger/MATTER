@@ -6,6 +6,11 @@
 #include <chrono>
 #include <ctime>
 
+/**
+ * @brief Utility functions use by other SOLID classes
+ * 
+ * Adding new functions is safe but changing existing functions is not recommended as many SOLID classes rely on these functions.
+ */
 namespace SolidUtils {
     inline static std::string GetResourcesPath() {
         std::filesystem::path cwd = std::filesystem::current_path();
