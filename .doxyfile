@@ -15,6 +15,7 @@ ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
+USE_MDFILE_AS_MAINPAGE = YES
 ABBREVIATE_BRIEF       = "The $name class" \
                          "The $name widget" \
                          "The $name file" \
@@ -122,7 +123,8 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = ./
+INPUT                  = ./ \
+                         README.md
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -152,8 +154,6 @@ FILE_PATTERNS          = *.c \
                          *.phtml \
                          *.inc \
                          *.m \
-                         *.markdown \
-                         *.md \
                          *.mm \
                          *.dox \
                          *.py \
@@ -180,7 +180,6 @@ EXCLUDE                = EXTERNAL \
                          .gitattributes \
 EXCLUDE_SYMLINKS       = YES
 EXCLUDE_PATTERNS       = *.txt \
-                         *.md \
                          LICENSE
 EXCLUDE_SYMBOLS        =
 EXAMPLE_PATH           =
