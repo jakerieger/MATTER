@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "SolidScene.hpp"
+
 /**
  * @brief Application settings when building a project
  * 
@@ -77,9 +79,12 @@ public:
     void SetProjectPath(const char* projectPath) { mPath = projectPath; }
     const char* GetProjectPath() { return mPath; }
 
+    void SetActiveScene(SolidScene* scene) { mActiveScene = std::move(scene); }
+    SolidScene* GetActiveScene() { return mActiveScene; }
+
 private:
     const char* mName;
     const char* mPath;
     ProjectSettings mProjectSettings;
-
+    SolidScene* mActiveScene;
 };

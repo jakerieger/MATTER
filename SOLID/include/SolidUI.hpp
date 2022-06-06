@@ -17,6 +17,8 @@
 #include "SolidUtils.hpp"
 #include "SolidLogger.hpp"
 #include "SolidProfiler.hpp"
+#include "SolidUIComponents.hpp"
+// #include <WIN32/Dialogs.hpp>
 
 /**
  * @brief All SOLID UI related code belongs to the SolidUI namespace.
@@ -210,7 +212,9 @@ namespace SolidUI {
 
                 if (ImGui::BeginMenu("Assets")) {
                     if (ImGui::MenuItem("Import")) {
-
+                        // if (Dialogs::ShowOpenDialog(L"Import Asset") != nullptr) {
+                        //     return;
+                        // }
                     }
 
                     ImGui::EndMenu();
@@ -309,7 +313,8 @@ namespace SolidUI {
                 ImGui::EndGroup();
                 
                 ImGui::BeginChild("##console_log", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
-                    for (LogEntry &log : logger.GetLogs()) {
+                    for (int i = 0; i < logger.GetLogs().size(); i++) {
+                        LogEntry &log = logger.GetLogs()[i];
                         if (log.level == LogLevel::INFO) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["info"], ICON_FA_CIRCLE_EXCLAMATION);
@@ -357,6 +362,12 @@ namespace SolidUI {
                         }
                     }
                 ImGui::EndChild();
+
+                ImGui::PushStyleColor(ImGuiCol_ChildBg, colors["menu"]);
+                ImGui::BeginChild("##console_details");
+
+                ImGui::EndChild();
+                ImGui::PopStyleColor();
             ImGui::End();
         }
 

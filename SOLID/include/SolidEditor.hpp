@@ -31,7 +31,7 @@ public:
      * 
      * @param config The editor configuration struct.
      */
-    void SetEditorConfig(SolidEditorConfig editorConfig) { mEditorConfig = editorConfig; };
+    void SetEditorConfig(SolidEditorConfig editorConfig) { mEditorConfig = std::move(editorConfig); };
 
     /**
      * @brief Gets the editor configuration.
@@ -45,7 +45,7 @@ public:
      * 
      * @return SolidProject The project class.
      */
-    void SetProject(SolidProject project) { mProject = project; };
+    void SetProject(SolidProject project) { mProject = std::move(project); };
 
     /**
      * @brief Gets the current project.
@@ -132,4 +132,6 @@ private:
     bool mFirstMouse = false;
     float mLastX = 0.0f;
     float mLastY = 0.0f;
+
+    void UpdateWindowTitle();
 };

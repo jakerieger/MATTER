@@ -130,7 +130,7 @@ void SolidEditor::ProcessInput() {
         glfwGetWindowSize(mWindow, &viewportX, &viewportY);
         glm::vec2 viewport = glm::vec2(viewportX, viewportY);
 
-        sceneCamera.ProcessMouseOrbit(xoffset, yoffset, viewport);
+        sceneCamera.ProcessMouseOrbit(-xoffset, yoffset, viewport);
     }
 }
 
@@ -202,6 +202,7 @@ void SolidEditor::Render() {
     mEditorGrid.Init();
 
     while (!glfwWindowShouldClose(mWindow)) {
+        UpdateWindowTitle();
         glfwPollEvents();
         ProcessInput();
 
@@ -225,6 +226,11 @@ void SolidEditor::Render() {
 
         glfwSwapBuffers(mWindow);
     }
+}
+
+void SolidEditor::UpdateWindowTitle() {
+    std::string title = std::string(WINDOW_TITLE) + std::string(mProject.GetProjectName()) + " - " + std::string(mProject.GetActiveScene()->GetSceneName());
+    glfwSetWindowTitle(mWindow, title.c_str());
 }
 
 void SolidEditor::Shutdown() {
