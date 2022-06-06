@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "MATTER", "index.html", [
+    [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -36,6 +37,7 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
@@ -59,7 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_solid_editor_8cpp.html"
+"_solid_editor_8cpp.html",
+"struct_vertex.html#a921a513c1e6d1e63e99d477fa837a317"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

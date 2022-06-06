@@ -22,7 +22,7 @@ struct BuildSettings {
  */
 struct ActionMapping {
     const char* actionName;
-    int actionId; // GLFW_KEY_XXX ID
+    int actionId; ///< GLFW_KEY_* or GLFW_MOUSE_BUTTON_*
 };
 
 /**
@@ -31,7 +31,7 @@ struct ActionMapping {
  */
 struct AxisMapping {
     const char* axisName;
-    int axisId; // GLFW_KEY_XXX ID or GLFW_MOUSE_XXX ID
+    int axisId; ///< GLFW_KEY_* or GLFW_MOUSE_BUTTON_*
 };
 
 /**

@@ -22,6 +22,7 @@ add_executable(
     src/SolidProfiler.cpp
     src/SolidShader.cpp
     src/SolidEditorGrid.cpp
+    src/SolidMeshRenderer.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -33,6 +34,7 @@ add_executable(
     include/SolidShader.hpp
     include/SolidEditorGrid.hpp
     include/SolidSceneCamera.hpp
+    include/SolidMeshRenderer.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp
