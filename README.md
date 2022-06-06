@@ -23,6 +23,9 @@ Simply put, **no**. MATTER is a personal learning project being developed as a v
 Documentation is sparse and incomplete, but is being continuously updated. You can find it [here](https://jakerieger.github.io/MATTER).
 
 ## Build Status
+
+MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may come in the future but is not being prioritized as OpenGL support is poor at best. Therefore, the following table is referring to the specificed compilers running on Windows 10.
+
 |Compiler|Arch|Status|
 |--------|----|------|
 |MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
