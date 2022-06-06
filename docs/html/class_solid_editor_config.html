@@ -144,8 +144,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_editor_config_8hpp_source.html#l00072">72</a> of file <a class="el" href="_solid_editor_config_8hpp_source.html">SolidEditorConfig.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{ <span class="keywordflow">return</span> mEditorPreferences; };</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ae1fd20e52a8b3420ce0c70c978d2b664" name="ae1fd20e52a8b3420ce0c70c978d2b664"></a>
@@ -167,26 +166,7 @@ Public Member Functions</h2></td></tr>
 <p >If no Solid Editor configuration file exists, this will create one. </p>
 
 <p class="definition">Definition at line <a class="el" href="_solid_editor_config_8cpp_source.html#l00029">29</a> of file <a class="el" href="_solid_editor_config_8cpp_source.html">SolidEditorConfig.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                   {</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_typedef" href="_solid_editor_config_8hpp.html#ab6104b89642419db4e355b7b2e40abbe">JSON</a> config;</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>    config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;loadPreviousProjectOnStartup&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   33</span>    config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;showWelcomeScreenOnStartup&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditor&quot;</span>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   36</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditorArgs&quot;</span>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   37</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditor&quot;</span>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   38</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditorArgs&quot;</span>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    std::ofstream configFile(SolidUtils::GetEditorConfigPath());</div>
-<div class="line"><span class="lineno">   41</span>    configFile &lt;&lt; config.dump(4);</div>
-<div class="line"><span class="lineno">   42</span>    configFile.close();</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="class_solid_editor_config.html#aca14ca512318e4307f8f09085e4fa04b">Load</a>(config);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="a_solid_editor_config_8hpp_html_ab6104b89642419db4e355b7b2e40abbe"><div class="ttname"><a href="_solid_editor_config_8hpp.html#ab6104b89642419db4e355b7b2e40abbe">JSON</a></div><div class="ttdeci">nlohmann::json JSON</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00007">SolidEditorConfig.hpp:7</a></div></div>
-<div class="ttc" id="aclass_solid_editor_config_html_aca14ca512318e4307f8f09085e4fa04b"><div class="ttname"><a href="class_solid_editor_config.html#aca14ca512318e4307f8f09085e4fa04b">SolidEditorConfig::Load</a></div><div class="ttdeci">void Load(JSON config)</div><div class="ttdoc">Load the Solid Editor configuration from a json file.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8cpp_source.html#l00003">SolidEditorConfig.cpp:3</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aca14ca512318e4307f8f09085e4fa04b" name="aca14ca512318e4307f8f09085e4fa04b"></a>
@@ -214,24 +194,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_solid_editor_config_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_editor_config_8cpp_source.html">SolidEditorConfig.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                        {</div>
-<div class="line"><span class="lineno">    4</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#a5be382a68f7a3e7dfa853cc2ecf52a77">generalPreferences</a>.<a class="code hl_variable" href="struct_general_preferences.html#af31afdf1d0f604d545abac056a0dae51">loadPreviousProjectOnStartup</a> = config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;loadPreviousProjectOnStartup&quot;</span>];</div>
-<div class="line"><span class="lineno">    5</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#a5be382a68f7a3e7dfa853cc2ecf52a77">generalPreferences</a>.<a class="code hl_variable" href="struct_general_preferences.html#a8aad6f82427d77686f92e24da23de1b2">showWelcomeScreenOnStartup</a> = config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;showWelcomeScreenOnStartup&quot;</span>];</div>
-<div class="line"><span class="lineno">    6</span> </div>
-<div class="line"><span class="lineno">    7</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a50e0bcd6782ea50e0d69fe63ad66f129">externalScriptEditor</a> = config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditor&quot;</span>].get&lt;std::string&gt;().c_str();</div>
-<div class="line"><span class="lineno">    8</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a27633a14dc01a3a719d703934930d2e6">externalScriptEditorArgs</a> = config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditorArgs&quot;</span>].get&lt;std::string&gt;().c_str();</div>
-<div class="line"><span class="lineno">    9</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a4f705614d5f1ae3fe3f01e0a494b4836">imageEditor</a> = config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditor&quot;</span>].get&lt;std::string&gt;().c_str();</div>
-<div class="line"><span class="lineno">   10</span>    mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a689e086d4c025b98cf7eb5967f5533d0">imageEditorArgs</a> = config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditorArgs&quot;</span>].get&lt;std::string&gt;().c_str();</div>
-<div class="line"><span class="lineno">   11</span>}</div>
-<div class="ttc" id="astruct_editor_preferences_html_a5be382a68f7a3e7dfa853cc2ecf52a77"><div class="ttname"><a href="struct_editor_preferences.html#a5be382a68f7a3e7dfa853cc2ecf52a77">EditorPreferences::generalPreferences</a></div><div class="ttdeci">GeneralPreferences generalPreferences</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00037">SolidEditorConfig.hpp:37</a></div></div>
-<div class="ttc" id="astruct_editor_preferences_html_ad0e02094fedd1970b08d741927cc5546"><div class="ttname"><a href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">EditorPreferences::externalTools</a></div><div class="ttdeci">ExternalToolsPreferences externalTools</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00038">SolidEditorConfig.hpp:38</a></div></div>
-<div class="ttc" id="astruct_external_tools_preferences_html_a27633a14dc01a3a719d703934930d2e6"><div class="ttname"><a href="struct_external_tools_preferences.html#a27633a14dc01a3a719d703934930d2e6">ExternalToolsPreferences::externalScriptEditorArgs</a></div><div class="ttdeci">const char * externalScriptEditorArgs</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00025">SolidEditorConfig.hpp:25</a></div></div>
-<div class="ttc" id="astruct_external_tools_preferences_html_a4f705614d5f1ae3fe3f01e0a494b4836"><div class="ttname"><a href="struct_external_tools_preferences.html#a4f705614d5f1ae3fe3f01e0a494b4836">ExternalToolsPreferences::imageEditor</a></div><div class="ttdeci">const char * imageEditor</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00026">SolidEditorConfig.hpp:26</a></div></div>
-<div class="ttc" id="astruct_external_tools_preferences_html_a50e0bcd6782ea50e0d69fe63ad66f129"><div class="ttname"><a href="struct_external_tools_preferences.html#a50e0bcd6782ea50e0d69fe63ad66f129">ExternalToolsPreferences::externalScriptEditor</a></div><div class="ttdeci">const char * externalScriptEditor</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00024">SolidEditorConfig.hpp:24</a></div></div>
-<div class="ttc" id="astruct_external_tools_preferences_html_a689e086d4c025b98cf7eb5967f5533d0"><div class="ttname"><a href="struct_external_tools_preferences.html#a689e086d4c025b98cf7eb5967f5533d0">ExternalToolsPreferences::imageEditorArgs</a></div><div class="ttdeci">const char * imageEditorArgs</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00027">SolidEditorConfig.hpp:27</a></div></div>
-<div class="ttc" id="astruct_general_preferences_html_a8aad6f82427d77686f92e24da23de1b2"><div class="ttname"><a href="struct_general_preferences.html#a8aad6f82427d77686f92e24da23de1b2">GeneralPreferences::showWelcomeScreenOnStartup</a></div><div class="ttdeci">bool showWelcomeScreenOnStartup</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00016">SolidEditorConfig.hpp:16</a></div></div>
-<div class="ttc" id="astruct_general_preferences_html_af31afdf1d0f604d545abac056a0dae51"><div class="ttname"><a href="struct_general_preferences.html#af31afdf1d0f604d545abac056a0dae51">GeneralPreferences::loadPreviousProjectOnStartup</a></div><div class="ttdeci">bool loadPreviousProjectOnStartup</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_config_8hpp_source.html#l00015">SolidEditorConfig.hpp:15</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ad8c5051e093db7e026f5de34a4be6acb" name="ad8c5051e093db7e026f5de34a4be6acb"></a>
@@ -253,22 +216,7 @@ Public Member Functions</h2></td></tr>
 <p >Serializes the Solid Editor configuration to a JSON file </p>
 
 <p class="definition">Definition at line <a class="el" href="_solid_editor_config_8cpp_source.html#l00013">13</a> of file <a class="el" href="_solid_editor_config_8cpp_source.html">SolidEditorConfig.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                             {</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_typedef" href="_solid_editor_config_8hpp.html#ab6104b89642419db4e355b7b2e40abbe">JSON</a> config;</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>    config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;loadPreviousProjectOnStartup&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#a5be382a68f7a3e7dfa853cc2ecf52a77">generalPreferences</a>.<a class="code hl_variable" href="struct_general_preferences.html#af31afdf1d0f604d545abac056a0dae51">loadPreviousProjectOnStartup</a>;</div>
-<div class="line"><span class="lineno">   17</span>    config[<span class="stringliteral">&quot;generalPreferences&quot;</span>][<span class="stringliteral">&quot;showWelcomeScreenOnStartup&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#a5be382a68f7a3e7dfa853cc2ecf52a77">generalPreferences</a>.<a class="code hl_variable" href="struct_general_preferences.html#a8aad6f82427d77686f92e24da23de1b2">showWelcomeScreenOnStartup</a>;</div>
-<div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditor&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a50e0bcd6782ea50e0d69fe63ad66f129">externalScriptEditor</a>;</div>
-<div class="line"><span class="lineno">   20</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;externalScriptEditorArgs&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a27633a14dc01a3a719d703934930d2e6">externalScriptEditorArgs</a>;</div>
-<div class="line"><span class="lineno">   21</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditor&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a4f705614d5f1ae3fe3f01e0a494b4836">imageEditor</a>;</div>
-<div class="line"><span class="lineno">   22</span>    config[<span class="stringliteral">&quot;externalTools&quot;</span>][<span class="stringliteral">&quot;imageEditorArgs&quot;</span>] = mEditorPreferences.<a class="code hl_variable" href="struct_editor_preferences.html#ad0e02094fedd1970b08d741927cc5546">externalTools</a>.<a class="code hl_variable" href="struct_external_tools_preferences.html#a689e086d4c025b98cf7eb5967f5533d0">imageEditorArgs</a>;</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    std::ofstream configFile(SolidUtils::GetEditorConfigPath());</div>
-<div class="line"><span class="lineno">   25</span>    configFile &lt;&lt; config;</div>
-<div class="line"><span class="lineno">   26</span>    configFile.close();</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a2b04e436378e837e14956b25d3a8e482" name="a2b04e436378e837e14956b25d3a8e482"></a>
@@ -296,8 +244,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_editor_config_8hpp_source.html#l00071">71</a> of file <a class="el" href="_solid_editor_config_8hpp_source.html">SolidEditorConfig.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{ mEditorPreferences = editorPreferences; };</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

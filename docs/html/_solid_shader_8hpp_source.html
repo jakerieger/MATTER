@@ -97,12 +97,7 @@ $(document).ready(function(){initNavTree('_solid_shader_8hpp_source.html',''); i
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"></span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * @brief Class used to load, compile, and link GLSL shaders</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * </span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * @author Jake Rieger</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_solid_shader.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_solid_shader.html">SolidShader</a> {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">   18</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>;</div>
@@ -110,11 +105,7 @@ $(document).ready(function(){initNavTree('_solid_shader_8hpp_source.html',''); i
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="class_solid_shader.html#af1b1c728df04a9a0e1bd54ab1160f4f3">~SolidShader</a>();</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_solid_shader.html#af97fdebab6036886d0f0d939abdfbaa5">Use</a>();</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_solid_shader.html#aae08ae83f9245d13ad0e5bbec4c4ae0f">Destroy</a>();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"></span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">     * @defgroup Uniform Setters</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">     * @{</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#ga7b4fbac9bf2e2158e6443fd467912971">setBool</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> value) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#gac1815334ac05524fd0645644996bd6d9">setInt</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">int</span> value) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#ga7611727a9766ec63f6d06313462b1c70">setFloat</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">float</span> value) <span class="keyword">const</span>;</div>
@@ -126,11 +117,7 @@ $(document).ready(function(){initNavTree('_solid_shader_8hpp_source.html',''); i
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#ga65395a54575d89e37ada20b5de88abb3">setVec4</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> w) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#ga260cfa8f8f79beb8c4b35fca63f51241">setMat2</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> glm::mat2 &amp;mat) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#gac12fefc3111bf2dc6c5dacc822bf1cd1">setMat3</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> glm::mat3 &amp;mat) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#gacc030f23a33a7ec1286556eb5f5e5067">setMat4</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> glm::mat4 &amp;mat) <span class="keyword">const</span>;<span class="comment"></span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">     * @}</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group___uniform.html#gacc030f23a33a7ec1286556eb5f5e5067">setMat4</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> glm::mat4 &amp;mat) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">enum</span> ECompileType {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        VERTEX,</div>

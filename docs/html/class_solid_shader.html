@@ -161,64 +161,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                               {</div>
-<div class="line"><span class="lineno">    4</span>    std::string shaderCode;</div>
-<div class="line"><span class="lineno">    5</span>    std::ifstream shaderFile;</div>
-<div class="line"><span class="lineno">    6</span> </div>
-<div class="line"><span class="lineno">    7</span>    shaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);</div>
-<div class="line"><span class="lineno">    8</span> </div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   10</span>        shaderFile.open(shaderPath);</div>
-<div class="line"><span class="lineno">   11</span>        std::stringstream shaderStream;</div>
-<div class="line"><span class="lineno">   12</span> </div>
-<div class="line"><span class="lineno">   13</span>        shaderStream &lt;&lt; shaderFile.rdbuf();</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>        shaderFile.close();</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>        shaderCode = shaderStream.str();</div>
-<div class="line"><span class="lineno">   18</span>    } <span class="keywordflow">catch</span> (std::ifstream::failure e) {</div>
-<div class="line"><span class="lineno">   19</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   20</span>    }</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>    std::string vertexCode;</div>
-<div class="line"><span class="lineno">   23</span>    std::string fragmentCode;</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordtype">size_t</span> vertStart = shaderCode.find(<span class="stringliteral">&quot;@VERTEX&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordtype">size_t</span> vertEnd = shaderCode.find(<span class="stringliteral">&quot;@ENDVERTEX&quot;</span>);</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordtype">size_t</span> fragStart = shaderCode.find(<span class="stringliteral">&quot;@FRAGMENT&quot;</span>);</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordtype">size_t</span> fragEnd = shaderCode.find(<span class="stringliteral">&quot;@ENDFRAGMENT&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>    vertexCode = <span class="stringliteral">&quot;#version 460 core\n&quot;</span> + shaderCode.substr(vertStart + 8, vertEnd - vertStart - 8);</div>
-<div class="line"><span class="lineno">   31</span>    fragmentCode = <span class="stringliteral">&quot;#version 460 core\n&quot;</span> + shaderCode.substr(fragStart + 9, fragEnd - fragStart - 9);</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* vShaderCode = vertexCode.c_str();</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* fShaderCode = fragmentCode.c_str();</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vertex, fragment;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">int</span> success;</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordtype">char</span> infoLog[512];</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    vertex = glCreateShader(GL_VERTEX_SHADER);</div>
-<div class="line"><span class="lineno">   41</span>    glShaderSource(vertex, 1, &amp;vShaderCode, NULL);</div>
-<div class="line"><span class="lineno">   42</span>    glCompileShader(vertex);</div>
-<div class="line"><span class="lineno">   43</span>    checkCompileErrors(vertex, ECompileType::VERTEX);</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    fragment = glCreateShader(GL_FRAGMENT_SHADER);</div>
-<div class="line"><span class="lineno">   46</span>    glShaderSource(fragment, 1, &amp;fShaderCode, NULL);</div>
-<div class="line"><span class="lineno">   47</span>    glCompileShader(fragment);</div>
-<div class="line"><span class="lineno">   48</span>    checkCompileErrors(fragment, ECompileType::FRAGMENT);</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a> = glCreateProgram();</div>
-<div class="line"><span class="lineno">   51</span>    glAttachShader(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>, vertex);</div>
-<div class="line"><span class="lineno">   52</span>    glAttachShader(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>, fragment);</div>
-<div class="line"><span class="lineno">   53</span>    glLinkProgram(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>);</div>
-<div class="line"><span class="lineno">   54</span>    checkCompileErrors(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>, ECompileType::PROGRAM);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    glDeleteShader(vertex);</div>
-<div class="line"><span class="lineno">   57</span>    glDeleteShader(fragment);   </div>
-<div class="line"><span class="lineno">   58</span>}</div>
-<div class="ttc" id="aclass_solid_shader_html_a58c519fe31a9fbbced09bda2fd01ef86"><div class="ttname"><a href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">SolidShader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdef"><b>Definition:</b> <a href="_solid_shader_8hpp_source.html#l00018">SolidShader.hpp:18</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="af1b1c728df04a9a0e1bd54ab1160f4f3" name="af1b1c728df04a9a0e1bd54ab1160f4f3"></a>
@@ -237,10 +180,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00060">60</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                          {</div>
-<div class="line"><span class="lineno">   61</span>    glDeleteProgram(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>);</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -260,10 +200,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00068">68</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                          {</div>
-<div class="line"><span class="lineno">   69</span>    glDeleteProgram(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="af97fdebab6036886d0f0d939abdfbaa5" name="af97fdebab6036886d0f0d939abdfbaa5"></a>
@@ -282,10 +219,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00064">64</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                      {</div>
-<div class="line"><span class="lineno">   65</span>    glUseProgram(<a class="code hl_variable" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a>);</div>
-<div class="line"><span class="lineno">   66</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

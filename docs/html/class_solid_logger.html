@@ -161,8 +161,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{ mLogs.clear(); }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a27c3490e8c0d7432f24362ce30c08295" name="a27c3490e8c0d7432f24362ce30c08295"></a>
@@ -189,9 +188,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00050">50</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="class_solid_logger.html#a61ce85b8fdb194eefff1425e9d155fc2">GetErrors</a>().size(); }</div>
-<div class="ttc" id="aclass_solid_logger_html_a61ce85b8fdb194eefff1425e9d155fc2"><div class="ttname"><a href="class_solid_logger.html#a61ce85b8fdb194eefff1425e9d155fc2">SolidLogger::GetErrors</a></div><div class="ttdeci">std::vector&lt; LogEntry &gt; GetErrors()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8cpp_source.html#l00041">SolidLogger.cpp:41</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a61ce85b8fdb194eefff1425e9d155fc2" name="a61ce85b8fdb194eefff1425e9d155fc2"></a>
@@ -210,19 +207,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00041">41</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                           {</div>
-<div class="line"><span class="lineno">   42</span>    std::vector&lt;LogEntry&gt; errors;</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; log : mLogs) {</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (log.level == <a class="code hl_enumvalue" href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a>) {</div>
-<div class="line"><span class="lineno">   46</span>            errors.push_back(log);</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> errors;</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-<div class="ttc" id="a_solid_logger_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00011">SolidLogger.hpp:11</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="af20b93cf2573f1f1da8dcb808cad1eaa" name="af20b93cf2573f1f1da8dcb808cad1eaa"></a>
@@ -249,9 +234,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00051">51</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="class_solid_logger.html#a03132f8c9bf0ce6a3f004e670572569c">GetFatals</a>().size(); }</div>
-<div class="ttc" id="aclass_solid_logger_html_a03132f8c9bf0ce6a3f004e670572569c"><div class="ttname"><a href="class_solid_logger.html#a03132f8c9bf0ce6a3f004e670572569c">SolidLogger::GetFatals</a></div><div class="ttdeci">std::vector&lt; LogEntry &gt; GetFatals()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8cpp_source.html#l00053">SolidLogger.cpp:53</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a03132f8c9bf0ce6a3f004e670572569c" name="a03132f8c9bf0ce6a3f004e670572569c"></a>
@@ -270,19 +253,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00053">53</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>                                           {</div>
-<div class="line"><span class="lineno">   54</span>    std::vector&lt;LogEntry&gt; fatals;</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; log : mLogs) {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (log.level == <a class="code hl_enumvalue" href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a>) {</div>
-<div class="line"><span class="lineno">   58</span>            fatals.push_back(log);</div>
-<div class="line"><span class="lineno">   59</span>        }</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> fatals;</div>
-<div class="line"><span class="lineno">   63</span>}</div>
-<div class="ttc" id="a_solid_logger_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a651d8a47a6976d6fe05c0e03fb4cd2d0"><div class="ttname"><a href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a651d8a47a6976d6fe05c0e03fb4cd2d0">FATAL</a></div><div class="ttdeci">@ FATAL</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00013">SolidLogger.hpp:12</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a03d5dbd42471d0a63422c51b9f3e7869" name="a03d5dbd42471d0a63422c51b9f3e7869"></a>
@@ -309,9 +280,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="class_solid_logger.html#aadc7fb392e1b8ca8ae2feb0aad71582f">GetInfos</a>().size(); }</div>
-<div class="ttc" id="aclass_solid_logger_html_aadc7fb392e1b8ca8ae2feb0aad71582f"><div class="ttname"><a href="class_solid_logger.html#aadc7fb392e1b8ca8ae2feb0aad71582f">SolidLogger::GetInfos</a></div><div class="ttdeci">std::vector&lt; LogEntry &gt; GetInfos()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8cpp_source.html#l00017">SolidLogger.cpp:17</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="aadc7fb392e1b8ca8ae2feb0aad71582f" name="aadc7fb392e1b8ca8ae2feb0aad71582f"></a>
@@ -330,19 +299,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00017">17</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                          {</div>
-<div class="line"><span class="lineno">   18</span>    std::vector&lt;LogEntry&gt; infos;</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; log : mLogs) {</div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span> (log.level == <a class="code hl_enumvalue" href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a>) {</div>
-<div class="line"><span class="lineno">   22</span>            infos.push_back(log);</div>
-<div class="line"><span class="lineno">   23</span>        }</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="line"><span class="lineno">   25</span> </div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> infos;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="a_solid_logger_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00009">SolidLogger.hpp:9</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a0aef211345ab3135d3301ef8bf4a441d" name="a0aef211345ab3135d3301ef8bf4a441d"></a>
@@ -369,8 +326,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00042">42</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{ <span class="keywordflow">return</span> mLogs; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a48f2db70dd0f43e7196415bf0556b249" name="a48f2db70dd0f43e7196415bf0556b249"></a>
@@ -397,9 +353,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00049">49</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="class_solid_logger.html#ab6445d1065f6c9f29a749fee522bb542">GetWarnings</a>().size(); }</div>
-<div class="ttc" id="aclass_solid_logger_html_ab6445d1065f6c9f29a749fee522bb542"><div class="ttname"><a href="class_solid_logger.html#ab6445d1065f6c9f29a749fee522bb542">SolidLogger::GetWarnings</a></div><div class="ttdeci">std::vector&lt; LogEntry &gt; GetWarnings()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8cpp_source.html#l00029">SolidLogger.cpp:29</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ab6445d1065f6c9f29a749fee522bb542" name="ab6445d1065f6c9f29a749fee522bb542"></a>
@@ -418,19 +372,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00029">29</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                             {</div>
-<div class="line"><span class="lineno">   30</span>    std::vector&lt;LogEntry&gt; warnings;</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; log : mLogs) {</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">if</span> (log.level == <a class="code hl_enumvalue" href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a>) {</div>
-<div class="line"><span class="lineno">   34</span>            warnings.push_back(log);</div>
-<div class="line"><span class="lineno">   35</span>        }</div>
-<div class="line"><span class="lineno">   36</span>    }</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> warnings;</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="a_solid_logger_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81"><div class="ttname"><a href="_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81">WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00010">SolidLogger.hpp:10</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a397b3b4217469fdcac5baf0fd800529a" name="a397b3b4217469fdcac5baf0fd800529a"></a>
@@ -457,8 +399,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00046">46</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{ <span class="keywordflow">return</span> mLoggingPaused; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a760046bc14114aa68357df1b8c210cf0" name="a760046bc14114aa68357df1b8c210cf0"></a>
@@ -518,27 +459,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                                                                                           {</div>
-<div class="line"><span class="lineno">    4</span>    <a class="code hl_struct" href="struct_log_entry.html">LogEntry</a> entry;</div>
-<div class="line"><span class="lineno">    5</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a80e0348b0dc48d7a14f9a71d8d387f56">message</a> = message;</div>
-<div class="line"><span class="lineno">    6</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a0d89e053481120902f35011e704d57e4">details</a> = details;</div>
-<div class="line"><span class="lineno">    7</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a584c1aa77642ddf394cb1d0e4b453422">timestamp</a> = SolidUtils::GetTimestamp();</div>
-<div class="line"><span class="lineno">    8</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a5a4d0f9ce560e88494cdab12fade8fd4">file</a> = file;</div>
-<div class="line"><span class="lineno">    9</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a6f79c04de46a77f7d9bbb3759b85505c">line</a> = line;</div>
-<div class="line"><span class="lineno">   10</span>    entry.<a class="code hl_variable" href="struct_log_entry.html#a3da4cc198fd911dd664a30f95760c755">level</a> = level;</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">if</span> (!mLoggingPaused) {</div>
-<div class="line"><span class="lineno">   13</span>        mLogs.push_back(entry);</div>
-<div class="line"><span class="lineno">   14</span>    }</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-<div class="ttc" id="astruct_log_entry_html"><div class="ttname"><a href="struct_log_entry.html">LogEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00015">SolidLogger.hpp:15</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a0d89e053481120902f35011e704d57e4"><div class="ttname"><a href="struct_log_entry.html#a0d89e053481120902f35011e704d57e4">LogEntry::details</a></div><div class="ttdeci">const char * details</div><div class="ttdoc">The details displayed in the console when the user selects the entry.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00017">SolidLogger.hpp:17</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a3da4cc198fd911dd664a30f95760c755"><div class="ttname"><a href="struct_log_entry.html#a3da4cc198fd911dd664a30f95760c755">LogEntry::level</a></div><div class="ttdeci">LogLevel level</div><div class="ttdoc">The level of the log entry.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00021">SolidLogger.hpp:21</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a584c1aa77642ddf394cb1d0e4b453422"><div class="ttname"><a href="struct_log_entry.html#a584c1aa77642ddf394cb1d0e4b453422">LogEntry::timestamp</a></div><div class="ttdeci">std::string timestamp</div><div class="ttdoc">The timestamp of the log entry.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00020">SolidLogger.hpp:20</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a5a4d0f9ce560e88494cdab12fade8fd4"><div class="ttname"><a href="struct_log_entry.html#a5a4d0f9ce560e88494cdab12fade8fd4">LogEntry::file</a></div><div class="ttdeci">const char * file</div><div class="ttdoc">The file the log entry originated from.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00018">SolidLogger.hpp:18</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a6f79c04de46a77f7d9bbb3759b85505c"><div class="ttname"><a href="struct_log_entry.html#a6f79c04de46a77f7d9bbb3759b85505c">LogEntry::line</a></div><div class="ttdeci">int * line</div><div class="ttdoc">The line the log entry originated from.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00019">SolidLogger.hpp:19</a></div></div>
-<div class="ttc" id="astruct_log_entry_html_a80e0348b0dc48d7a14f9a71d8d387f56"><div class="ttname"><a href="struct_log_entry.html#a80e0348b0dc48d7a14f9a71d8d387f56">LogEntry::message</a></div><div class="ttdeci">const char * message</div><div class="ttdoc">The message displayed in the console.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8hpp_source.html#l00016">SolidLogger.hpp:16</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a0251526d86b7a3b6f6489d6eeded2c1a" name="a0251526d86b7a3b6f6489d6eeded2c1a"></a>
@@ -565,8 +486,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>{ mLoggingPaused = <span class="keyword">true</span>; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a7a54468177834ad8ae3797a9da1c22a4" name="a7a54468177834ad8ae3797a9da1c22a4"></a>
@@ -593,8 +513,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00045">45</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{ mLoggingPaused = <span class="keyword">false</span>; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ae500049963d16b058b8086211e041da6" name="ae500049963d16b058b8086211e041da6"></a>
@@ -614,18 +533,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00065">65</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>                                                         {</div>
-<div class="line"><span class="lineno">   66</span>    std::vector&lt;LogEntry&gt; results;</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; log : mLogs) {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (strstr(log.message, query) != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   70</span>            results.push_back(log);</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> results;</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

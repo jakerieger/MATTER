@@ -127,18 +127,7 @@ Functions</h2></td></tr>
 <p>Returns the <a class="el" href="namespace_solid_profiler_1_1_g_p_u.html" title="Functions for getting information related to the GPU.">GPU</a> memory information in MB in the format (total, used, free) </p>
 
 <p class="definition">Definition at line <a class="el" href="_solid_profiler_8cpp_source.html#l00013">13</a> of file <a class="el" href="_solid_profiler_8cpp_source.html">SolidProfiler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                               {</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordtype">float</span> totalMemory = 0.0f;</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordtype">float</span> usedMemory = 0.0f;</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordtype">float</span> freeMemory = 0.0f;</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>    glGetFloatv(GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX, &amp;totalMemory);</div>
-<div class="line"><span class="lineno">   19</span>    glGetFloatv(GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX, &amp;usedMemory);</div>
-<div class="line"><span class="lineno">   20</span>    glGetFloatv(GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX, &amp;freeMemory);</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> std::make_tuple(totalMemory, usedMemory, freeMemory);</div>
-<div class="line"><span class="lineno">   23</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a552c7306561ef9c0046765f993f79a4f" name="a552c7306561ef9c0046765f993f79a4f"></a>
@@ -159,11 +148,7 @@ Functions</h2></td></tr>
 <p>Returns the <a class="el" href="namespace_solid_profiler_1_1_g_p_u.html" title="Functions for getting information related to the GPU.">GPU</a> renderer, such as GeForce GTX 1080, etc. </p>
 
 <p class="definition">Definition at line <a class="el" href="_solid_profiler_8cpp_source.html#l00008">8</a> of file <a class="el" href="_solid_profiler_8cpp_source.html">SolidProfiler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    8</span>                                        {</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *renderer = glGetString(GL_RENDERER);</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> std::string((<span class="keyword">const</span> <span class="keywordtype">char</span>*)renderer);</div>
-<div class="line"><span class="lineno">   11</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a7207275d1c17d7d7fc2700241dc97b40" name="a7207275d1c17d7d7fc2700241dc97b40"></a>
@@ -184,11 +169,7 @@ Functions</h2></td></tr>
 <p>Returns the <a class="el" href="namespace_solid_profiler_1_1_g_p_u.html" title="Functions for getting information related to the GPU.">GPU</a> vendor, such as NVIDIA, AMD, etc. </p>
 
 <p class="definition">Definition at line <a class="el" href="_solid_profiler_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_profiler_8cpp_source.html">SolidProfiler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                      {</div>
-<div class="line"><span class="lineno">    4</span>    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *vendor = glGetString(GL_VENDOR);</div>
-<div class="line"><span class="lineno">    5</span>    <span class="keywordflow">return</span> std::string((<span class="keyword">const</span> <span class="keywordtype">char</span>*)vendor);</div>
-<div class="line"><span class="lineno">    6</span>}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 </div><!-- contents -->

@@ -225,20 +225,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00024">24</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>        : mEye(std::move(eye))</div>
-<div class="line"><span class="lineno">   26</span>        , mLookAt(std::move(lookAt))</div>
-<div class="line"><span class="lineno">   27</span>        , mUpVector(std::move(upVector))</div>
-<div class="line"><span class="lineno">   28</span>        , mFOV(fov)</div>
-<div class="line"><span class="lineno">   29</span>        , mAspectRatio(aspectRatio)</div>
-<div class="line"><span class="lineno">   30</span>        , mNearPlane(nearPlane)</div>
-<div class="line"><span class="lineno">   31</span>        , mFarPlane(farPlane)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_function" href="class_solid_scene_camera.html#a99effb40652c01c42f7670cb0cc0f16c">UpdateViewMatrix</a>();</div>
-<div class="line"><span class="lineno">   34</span>        <a class="code hl_function" href="class_solid_scene_camera.html#a3164b29e6bebc626439a7dfd9ea9dc2b">UpdateProjectionMatrix</a>();</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a3164b29e6bebc626439a7dfd9ea9dc2b"><div class="ttname"><a href="class_solid_scene_camera.html#a3164b29e6bebc626439a7dfd9ea9dc2b">SolidSceneCamera::UpdateProjectionMatrix</a></div><div class="ttdeci">void UpdateProjectionMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00060">SolidSceneCamera.hpp:60</a></div></div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a99effb40652c01c42f7670cb0cc0f16c"><div class="ttname"><a href="class_solid_scene_camera.html#a99effb40652c01c42f7670cb0cc0f16c">SolidSceneCamera::UpdateViewMatrix</a></div><div class="ttdeci">void UpdateViewMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00056">SolidSceneCamera.hpp:56</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -266,8 +253,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00039">39</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>{ <span class="keywordflow">return</span> mEye; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="afa8f78b4d37c87f746605042e99b098c" name="afa8f78b4d37c87f746605042e99b098c"></a>
@@ -294,8 +280,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>{ <span class="keywordflow">return</span> mFarPlane; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a847e3b937bbe85b30426668fdfb682ad" name="a847e3b937bbe85b30426668fdfb682ad"></a>
@@ -322,8 +307,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00040">40</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <span class="keywordflow">return</span> mLookAt; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ab29e1ac3586762f84161cd479aae8b33" name="ab29e1ac3586762f84161cd479aae8b33"></a>
@@ -350,8 +334,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{ <span class="keywordflow">return</span> mNearPlane; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a55fecfbf94383b8729e3132f96f66524" name="a55fecfbf94383b8729e3132f96f66524"></a>
@@ -378,8 +361,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00038">38</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{ <span class="keywordflow">return</span> mProjectionMatrix; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a3091f5afc9d20f3c890faba856ceb9b8" name="a3091f5afc9d20f3c890faba856ceb9b8"></a>
@@ -406,8 +388,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00047">47</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{ <span class="keywordflow">return</span> glm::transpose(mViewMatrix)[0]; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="add16b8dc0d5ba4ad9535b66c4201307f" name="add16b8dc0d5ba4ad9535b66c4201307f"></a>
@@ -434,8 +415,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00041">41</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{ <span class="keywordflow">return</span> mUpVector; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a133b8ef431eb6e2e75a5dca5a0d582f1" name="a133b8ef431eb6e2e75a5dca5a0d582f1"></a>
@@ -462,8 +442,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00046">46</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{ <span class="keywordflow">return</span> -glm::transpose(mViewMatrix)[2]; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a02edc3943c9447c20c3674753ed8e3c6" name="a02edc3943c9447c20c3674753ed8e3c6"></a>
@@ -490,8 +469,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00037">37</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{ <span class="keywordflow">return</span> mViewMatrix; }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a422d554047a6e3da2ade4c0503984e25" name="a422d554047a6e3da2ade4c0503984e25"></a>
@@ -535,36 +513,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00064">64</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                                           {</div>
-<div class="line"><span class="lineno">   65</span>        glm::vec4 position(<a class="code hl_function" href="class_solid_scene_camera.html#a000f45441896a35428e957c68b83e133">GetEye</a>().x, <a class="code hl_function" href="class_solid_scene_camera.html#a000f45441896a35428e957c68b83e133">GetEye</a>().y, <a class="code hl_function" href="class_solid_scene_camera.html#a000f45441896a35428e957c68b83e133">GetEye</a>().z, 1.0f);</div>
-<div class="line"><span class="lineno">   66</span>        glm::vec4 pivot(<a class="code hl_function" href="class_solid_scene_camera.html#a847e3b937bbe85b30426668fdfb682ad">GetLookAt</a>().x, <a class="code hl_function" href="class_solid_scene_camera.html#a847e3b937bbe85b30426668fdfb682ad">GetLookAt</a>().y, <a class="code hl_function" href="class_solid_scene_camera.html#a847e3b937bbe85b30426668fdfb682ad">GetLookAt</a>().z, 1.0f);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordtype">float</span> deltaAngleX = (2 * M_PI / viewport.x);</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordtype">float</span> deltaAngleY = (M_PI / viewport.y);</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordtype">float</span> angleX = deltaAngleX * xoffset;</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordtype">float</span> angleY = deltaAngleY * yoffset;</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordtype">float</span> cosAngle = glm::dot(<a class="code hl_function" href="class_solid_scene_camera.html#a133b8ef431eb6e2e75a5dca5a0d582f1">GetViewDir</a>(), mUpVector);</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">if</span> (cosAngle * glm::sign(deltaAngleY) &gt; 0.99f) {</div>
-<div class="line"><span class="lineno">   75</span>            deltaAngleY = 0.0f;</div>
-<div class="line"><span class="lineno">   76</span>        }</div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>        glm::mat4x4 rotationMatrix_X(1.0f);</div>
-<div class="line"><span class="lineno">   79</span>        rotationMatrix_X = glm::rotate(rotationMatrix_X, angleX, mUpVector);</div>
-<div class="line"><span class="lineno">   80</span>        position = (rotationMatrix_X * (position - pivot)) + pivot;</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>        glm::mat4x4 rotationMatrix_Y(1.0f);</div>
-<div class="line"><span class="lineno">   83</span>        rotationMatrix_Y = glm::rotate(rotationMatrix_Y, angleY, <a class="code hl_function" href="class_solid_scene_camera.html#a3091f5afc9d20f3c890faba856ceb9b8">GetRightVector</a>());</div>
-<div class="line"><span class="lineno">   84</span>        glm::vec3 finalPosition = (rotationMatrix_Y * (position - pivot)) + pivot;</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>        <a class="code hl_function" href="class_solid_scene_camera.html#a0b09da662a51713517b74bbc0b755845">SetCameraView</a>(finalPosition, <a class="code hl_function" href="class_solid_scene_camera.html#a847e3b937bbe85b30426668fdfb682ad">GetLookAt</a>(), mUpVector);</div>
-<div class="line"><span class="lineno">   87</span>    }</div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a000f45441896a35428e957c68b83e133"><div class="ttname"><a href="class_solid_scene_camera.html#a000f45441896a35428e957c68b83e133">SolidSceneCamera::GetEye</a></div><div class="ttdeci">glm::vec3 GetEye() const</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00039">SolidSceneCamera.hpp:39</a></div></div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a0b09da662a51713517b74bbc0b755845"><div class="ttname"><a href="class_solid_scene_camera.html#a0b09da662a51713517b74bbc0b755845">SolidSceneCamera::SetCameraView</a></div><div class="ttdeci">void SetCameraView(glm::vec3 eye, glm::vec3 lookAt, glm::vec3 upVector)</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00049">SolidSceneCamera.hpp:49</a></div></div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a133b8ef431eb6e2e75a5dca5a0d582f1"><div class="ttname"><a href="class_solid_scene_camera.html#a133b8ef431eb6e2e75a5dca5a0d582f1">SolidSceneCamera::GetViewDir</a></div><div class="ttdeci">glm::vec3 GetViewDir() const</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00046">SolidSceneCamera.hpp:46</a></div></div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a3091f5afc9d20f3c890faba856ceb9b8"><div class="ttname"><a href="class_solid_scene_camera.html#a3091f5afc9d20f3c890faba856ceb9b8">SolidSceneCamera::GetRightVector</a></div><div class="ttdeci">glm::vec3 GetRightVector() const</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00047">SolidSceneCamera.hpp:47</a></div></div>
-<div class="ttc" id="aclass_solid_scene_camera_html_a847e3b937bbe85b30426668fdfb682ad"><div class="ttname"><a href="class_solid_scene_camera.html#a847e3b937bbe85b30426668fdfb682ad">SolidSceneCamera::GetLookAt</a></div><div class="ttdeci">glm::vec3 GetLookAt() const</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00040">SolidSceneCamera.hpp:40</a></div></div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a0b09da662a51713517b74bbc0b755845" name="a0b09da662a51713517b74bbc0b755845"></a>
@@ -608,13 +557,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00049">49</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                      {</div>
-<div class="line"><span class="lineno">   50</span>        mEye = std::move(eye);</div>
-<div class="line"><span class="lineno">   51</span>        mLookAt = std::move(lookAt);</div>
-<div class="line"><span class="lineno">   52</span>        mUpVector = std::move(upVector);</div>
-<div class="line"><span class="lineno">   53</span>        <a class="code hl_function" href="class_solid_scene_camera.html#a99effb40652c01c42f7670cb0cc0f16c">UpdateViewMatrix</a>();</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a3164b29e6bebc626439a7dfd9ea9dc2b" name="a3164b29e6bebc626439a7dfd9ea9dc2b"></a>
@@ -641,10 +584,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00060">60</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                                  {</div>
-<div class="line"><span class="lineno">   61</span>        mProjectionMatrix = glm::perspective(glm::radians(mFOV), mAspectRatio, mNearPlane, mFarPlane);</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="a99effb40652c01c42f7670cb0cc0f16c" name="a99effb40652c01c42f7670cb0cc0f16c"></a>
@@ -671,10 +611,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_solid_scene_camera_8hpp_source.html#l00056">56</a> of file <a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                            {</div>
-<div class="line"><span class="lineno">   57</span>        mViewMatrix = glm::lookAt(mEye, mLookAt, mUpVector);</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
