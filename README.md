@@ -26,12 +26,14 @@ Documentation is sparse and incomplete, but is being continuously updated. You c
 
 MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may come in the future but is not being prioritized as OpenGL support is poor at best. Therefore, the following table is referring to the specificed compilers running on Windows 10.
 
-|Compiler|Arch|Status|
-|--------|----|------|
-|MSVC 17 |x64 |![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
-|MSVC 15 |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
-|GCC |x64 |![](https://img.shields.io/badge/-tbd-orange?style=for-the-badge)|
-|Clang | - |![](https://img.shields.io/badge/-not%20supported-grey?style=for-the-badge)|
+|Compiler|Arch|Config|Status|
+|--------|----|------|------|
+|MSVC 17 |x64 |Debug|![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
+|MSVC 17 |x64 |Release|![](https://img.shields.io/badge/-passing-brightgreen?style=for-the-badge)|
+|MSVC 15 |x64 |Debug| - |
+|MSVC 15 |x64 |Release| - |
+|MinGW GCC 6|x64 |Debug| - |
+|MinGW GCC 6|x64 |Release| - |
 
 ## Resources
 
