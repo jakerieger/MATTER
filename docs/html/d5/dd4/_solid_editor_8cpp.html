@@ -86,12 +86,15 @@ $(document).ready(function(){initNavTree('d5/dd4/_solid_editor_8cpp.html','../..
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">SolidEditor.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d66/_solid_editor_8hpp_source.html">SolidEditor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/dc1/_solid_u_i_8hpp_source.html">SolidUI.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/ddb/_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -107,6 +110,22 @@ Macros</h2></td></tr>
 <tr class="separator:a6cfcce641e6bce1855e2c8f745eb397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a941913c43e2c41a5ec14d2944412b849"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#a941913c43e2c41a5ec14d2944412b849">CLEAR_COLOR_B</a>&#160;&#160;&#160;58</td></tr>
 <tr class="separator:a941913c43e2c41a5ec14d2944412b849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af4ca2891044ac10a664b8d83ce590f1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#af4ca2891044ac10a664b8d83ce590f1f">mouse_callback</a> (GLFWwindow *window, double xpos, double ypos)</td></tr>
+<tr class="separator:af4ca2891044ac10a664b8d83ce590f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#a06ad2502008f16fbcf01dfaa7f7bc9ea">scroll_callback</a> (GLFWwindow *window, double xoffset, double yoffset)</td></tr>
+<tr class="separator:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab368382a0223322c0af044f12af633ef"><td class="memItemLeft" align="right" valign="top">void GLAPIENTRY&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#ab368382a0223322c0af044f12af633ef">MessageCallback</a> (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const char *message, const void *userParam)</td></tr>
+<tr class="separator:ab368382a0223322c0af044f12af633ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76259e93488aa188c59d8b8a80517f74"><td class="memItemLeft" align="right" valign="top">void GLAPIENTRY&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#a76259e93488aa188c59d8b8a80517f74">MessageCallback</a> (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)</td></tr>
+<tr class="separator:a76259e93488aa188c59d8b8a80517f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ada6f7f62c1a52aa807f595f5f0edc49d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/da2/class_solid_scene_camera.html">SolidSceneCamera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dd4/_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a> (glm::vec3(0.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f))</td></tr>
+<tr class="separator:ada6f7f62c1a52aa807f595f5f0edc49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a941913c43e2c41a5ec14d2944412b849" name="a941913c43e2c41a5ec14d2944412b849"></a>
@@ -187,6 +206,226 @@ Macros</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define WINDOW_WIDTH&#160;&#160;&#160;1600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab368382a0223322c0af044f12af633ef" name="ab368382a0223322c0af044f12af633ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab368382a0223322c0af044f12af633ef">&#9670;&nbsp;</a></span>MessageCallback() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GLAPIENTRY MessageCallback </td>
+          <td>(</td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>severity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLsizei&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>userParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76259e93488aa188c59d8b8a80517f74" name="a76259e93488aa188c59d8b8a80517f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76259e93488aa188c59d8b8a80517f74">&#9670;&nbsp;</a></span>MessageCallback() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GLAPIENTRY MessageCallback </td>
+          <td>(</td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>severity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLsizei&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>userParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4ca2891044ac10a664b8d83ce590f1f" name="af4ca2891044ac10a664b8d83ce590f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ca2891044ac10a664b8d83ce590f1f">&#9670;&nbsp;</a></span>mouse_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mouse_callback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ypos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06ad2502008f16fbcf01dfaa7f7bc9ea" name="a06ad2502008f16fbcf01dfaa7f7bc9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06ad2502008f16fbcf01dfaa7f7bc9ea">&#9670;&nbsp;</a></span>scroll_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scroll_callback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>yoffset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ada6f7f62c1a52aa807f595f5f0edc49d" name="ada6f7f62c1a52aa807f595f5f0edc49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6f7f62c1a52aa807f595f5f0edc49d">&#9670;&nbsp;</a></span>sceneCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/da2/class_solid_scene_camera.html">SolidSceneCamera</a> sceneCamera(glm::vec3(0.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3(0.0f, 1.0f, 4.0f)&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3(0.0f, 0.0f, 0.0f)&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3(0.0f, 1.0f, 0.0f)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

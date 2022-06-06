@@ -1,12 +1,57 @@
+/*******************************************************************************
+ * This file is the heart of the SOLID Editor.
+ *
+ * It is responsible for the following:
+ * - Initializing OpenGL and the window it renders to
+ * - Setting up framebuffers and textures to pass to the UI
+ * - Creating the main render loop and rendering the UI and scene
+ * - Handling user input
+ * - Dispatching events to the UI
+ * - Handling the UI's events
+ * - Handling the scene's events
+ * - Cleaning up buffers and shutting down OpenGL
+ *
+ * @note Callback functions are defined globally instead of as class members
+ * because OpenGL takes a C-style pointer.
+ ******************************************************************************/
+
 #include "SolidEditor.hpp"
 #include "SolidUI.hpp"
+#include "SolidSceneCamera.hpp"
 
+// Define some default values for the editor to avoid taking up memory
 #define WINDOW_WIDTH 1600
 #define WINDOW_HEIGHT 900
 #define WINDOW_TITLE "SOLID <OpenGL 4.6> | "
 #define CLEAR_COLOR_R 36
 #define CLEAR_COLOR_G 40
 #define CLEAR_COLOR_B 58
+
+//========================================================================//
+//======================== GLOBAL CALLBACKS ==============================//
+//========================================================================//
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void GLAPIENTRY MessageCallback(
+    GLenum source,
+    GLenum type,
+    GLuint id,
+    GLenum severity,
+    GLsizei length,
+    const char* message,
+    const void* userParam
+);
+
+//========================================================================//
+//========================================================================//
+//========================================================================//
+
+SolidSceneCamera sceneCamera(
+    glm::vec3(0.0f, 1.0f, 4.0f),
+    glm::vec3(0.0f, 0.0f, 0.0f),
+    glm::vec3(0.0f, 1.0f, 0.0f)
+);
 
 int SolidEditor::InitGLFW() {
     glfwInit();
@@ -30,7 +75,7 @@ int SolidEditor::InitGLFW() {
     });
 
     // VSYNC
-    glfwSwapInterval(0);
+    glfwSwapInterval(1);
 
     mLogger.Log("GLFW initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
 
@@ -52,6 +97,9 @@ int SolidEditor::InitOpenGL() {
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glDepthFunc(GL_LESS);
     glEnable(GL_DEPTH_TEST);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glDebugMessageCallback(MessageCallback, 0);
 
     mLogger.Log("OpenGL initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
 
@@ -59,7 +107,31 @@ int SolidEditor::InitOpenGL() {
 }
 
 void SolidEditor::ProcessInput() {
+    if (glfwGetMouseButton(mWindow, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS) {
+        double dXpos, dYpos;
+        glfwGetCursorPos(mWindow, &dXpos, &dYpos);
 
+        float xpos = static_cast<float>(dXpos);
+        float ypos = static_cast<float>(dYpos);
+
+        if (mFirstMouse) {
+            mLastX = xpos;
+            mLastY = ypos;
+            mFirstMouse = false;
+        }
+
+        float xoffset = xpos - mLastX;
+        float yoffset = mLastY - ypos;
+
+        mLastX = xpos;
+        mLastY = ypos;
+
+        int viewportX, viewportY;
+        glfwGetWindowSize(mWindow, &viewportX, &viewportY);
+        glm::vec2 viewport = glm::vec2(viewportX, viewportY);
+
+        sceneCamera.ProcessMouseOrbit(xoffset, yoffset, viewport);
+    }
 }
 
 void SolidEditor::Init() {
@@ -75,9 +147,6 @@ void SolidEditor::Init() {
     if (INIT_RESULT == INIT_RESULT_FAILURE) { return; }
 
     mLogger.Log("Editor initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
-    mLogger.Log("Warning test", "", __FILE__, (int*)__LINE__, LogLevel::WARNING);
-    mLogger.Log("Error test", "", __FILE__, (int*)__LINE__, LogLevel::ERROR);
-    mLogger.Log("Fatal test", "", __FILE__, (int*)__LINE__, LogLevel::FATAL);
 
     SolidUI::InitUI(mWindow);
 }
@@ -130,6 +199,8 @@ void SolidEditor::Render() {
     unsigned int framebuffer = std::get<0>(renderBuffers);
     unsigned int sceneTexture = std::get<1>(renderBuffers);
 
+    mEditorGrid.Init();
+
     while (!glfwWindowShouldClose(mWindow)) {
         glfwPollEvents();
         ProcessInput();
@@ -139,12 +210,14 @@ void SolidEditor::Render() {
         SolidUI::DrawUI(sceneTexture, mLogger);
 
         glClearColor(
-            CLEAR_COLOR_R / 255.0f,
-            CLEAR_COLOR_G / 255.0f,
-            CLEAR_COLOR_B / 255.0f,
+            SolidUI::GetColors()["scene"].x,
+            SolidUI::GetColors()["scene"].y,
+            SolidUI::GetColors()["scene"].z,
             1.0f
         );
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        mEditorGrid.Draw(sceneCamera);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glDisable(GL_DEPTH_TEST);
@@ -155,6 +228,7 @@ void SolidEditor::Render() {
 }
 
 void SolidEditor::Shutdown() {
+    mEditorGrid.Destroy();
     SolidUI::ShutdownUI();
     glfwDestroyWindow(mWindow);
     glfwTerminate();
@@ -164,4 +238,10 @@ void SolidEditor::Run() {
     Init();
     Render();
     Shutdown();
+}
+
+void GLAPIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
+    fprintf(stderr, "[GL CALLBACK]: %s type = 0x%x, severity = 0x%x, message = %s\n",
+        (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+        type, severity, message);
 }

@@ -7,13 +7,14 @@
     <colors>
         <color name="panel" value="1F2334" opacity="1.0"/>
         <color name="scene" value="24283A" opacity="1.0"/>
+        <color name="frame" value="292E41" opacity="1.0"/>
         <color name="accent" value="47A6F2" opacity="1.0"/>
         <color name="border" value="1B1E2E" opacity="1.0"/>
         <color name="text" value="9EB1D5" opacity="1.0"/>
         <color name="text_inactive" value="7982A8" opacity="1.0"/>
         <color name="selected" value="292E41" opacity="1.0"/>
-        <color name="header" value="" opacity="1.0"/>
-        <color name="menu" value="" opacity="1.0"/>
+        <color name="header" value="1F2334" opacity="1.0"/>
+        <color name="menu" value="1A1C29" opacity="1.0"/>
         <color name="success" value="8bc351" opacity="1.0"/>
         <color name="warning" value="dfaf6c" opacity="1.0"/>
         <color name="error" value="f2423c" opacity="1.0"/>

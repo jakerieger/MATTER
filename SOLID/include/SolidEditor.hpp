@@ -9,6 +9,7 @@
 #include "SolidEditorConfig.hpp"
 #include "SolidProject.hpp"
 #include "SolidLogger.hpp"
+#include "SolidEditorGrid.hpp"
 
 /**
  * @brief The SolidEditor class is the main class of the Solid Editor.
@@ -125,4 +126,10 @@ private:
      * @brief The logging class.
      */
     SolidLogger mLogger;
+
+    SolidEditorGrid mEditorGrid;
+
+    bool mFirstMouse = false;
+    float mLastX = 0.0f;
+    float mLastY = 0.0f;
 };

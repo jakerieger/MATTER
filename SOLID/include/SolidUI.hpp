@@ -16,6 +16,7 @@
 
 #include "SolidUtils.hpp"
 #include "SolidLogger.hpp"
+#include "SolidProfiler.hpp"
 
 /**
  * @brief All SOLID UI related code belongs to the SolidUI namespace.
@@ -29,6 +30,7 @@ namespace SolidUI {
     static std::map<std::string, ImVec4> colors {
         { "panel",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "scene",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "frame",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "accent",        ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "border",        ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "text",          ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
@@ -51,6 +53,8 @@ namespace SolidUI {
     // This is confusing variable naming, but it's just a way to keep track of the current state of the console UI
     static bool console_item_selected = false;
     static unsigned int console_selected_item = 0;
+
+    inline static std::map<std::string, ImVec4> GetColors() { return colors; }
 
     namespace Helpers {
         inline static void LoadColors(std::string themeName) {
@@ -83,6 +87,8 @@ namespace SolidUI {
             style->WindowRounding = window_rounding;
             style->FrameRounding = frame_rounding;
             style->WindowBorderSize = border_size;
+            style->FrameBorderSize = border_size;
+            style->TabRounding = frame_rounding;
 
             styleColors[ImGuiCol_Text]                   = colors["text"];
             styleColors[ImGuiCol_TextDisabled]           = colors["text_inactive"];
@@ -90,14 +96,14 @@ namespace SolidUI {
             styleColors[ImGuiCol_ChildBg]                = colors["panel"];
             styleColors[ImGuiCol_PopupBg]                = colors["panel"];
             styleColors[ImGuiCol_Border]                 = colors["border"];
-            styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
-            styleColors[ImGuiCol_FrameBg]                = colors["selected"];
-            styleColors[ImGuiCol_FrameBgHovered]         = colors["selected"];
-            styleColors[ImGuiCol_FrameBgActive]          = colors["selected"];
+            styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.f, 0.f, 0.f, 0.f);
+            styleColors[ImGuiCol_FrameBg]                = colors["frame"];
+            styleColors[ImGuiCol_FrameBgHovered]         = colors["frame"];
+            styleColors[ImGuiCol_FrameBgActive]          = colors["frame"];
             styleColors[ImGuiCol_TitleBg]                = colors["panel"];
             styleColors[ImGuiCol_TitleBgActive]          = colors["panel"];
             styleColors[ImGuiCol_TitleBgCollapsed]       = colors["panel"];
-            styleColors[ImGuiCol_MenuBarBg]              = colors["panel"];
+            styleColors[ImGuiCol_MenuBarBg]              = colors["menu"];
             styleColors[ImGuiCol_ScrollbarBg]            = colors["panel"];
             styleColors[ImGuiCol_ScrollbarGrab]          = colors["selected"];
             styleColors[ImGuiCol_ScrollbarGrabHovered]   = colors["selected"];
@@ -106,14 +112,14 @@ namespace SolidUI {
             styleColors[ImGuiCol_SliderGrab]             = colors["accent"];
             styleColors[ImGuiCol_SliderGrabActive]       = colors["accent"];
             styleColors[ImGuiCol_Button]                 = colors["selected"];
-            styleColors[ImGuiCol_ButtonHovered]          = colors["selected"];
-            styleColors[ImGuiCol_ButtonActive]           = colors["selected"];
-            styleColors[ImGuiCol_Header]                 = colors["panel"];
+            styleColors[ImGuiCol_ButtonHovered]          = SolidUtils::ChangeColorAlpha(colors["selected"], 0.7f);
+            styleColors[ImGuiCol_ButtonActive]           = SolidUtils::ChangeColorAlpha(colors["selected"], 0.55f);
+            styleColors[ImGuiCol_Header]                 = colors["header"];
             styleColors[ImGuiCol_HeaderHovered]          = colors["selected"];
             styleColors[ImGuiCol_HeaderActive]           = colors["selected"];
-            styleColors[ImGuiCol_Separator]              = styleColors[ImGuiCol_Border];
-            styleColors[ImGuiCol_SeparatorHovered]       = ImVec4(0.10f, 0.40f, 0.75f, 0.78f);
-            styleColors[ImGuiCol_SeparatorActive]        = ImVec4(0.10f, 0.40f, 0.75f, 1.00f);
+            styleColors[ImGuiCol_Separator]              = SolidUtils::ChangeColorAlpha(styleColors[ImGuiCol_Border], 0.67f);
+            styleColors[ImGuiCol_SeparatorHovered]       = colors["accent"];
+            styleColors[ImGuiCol_SeparatorActive]        = colors["accent"];
             styleColors[ImGuiCol_ResizeGrip]             = ImVec4(0.26f, 0.59f, 0.98f, 0.20f);
             styleColors[ImGuiCol_ResizeGripHovered]      = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
             styleColors[ImGuiCol_ResizeGripActive]       = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
@@ -122,6 +128,8 @@ namespace SolidUI {
             styleColors[ImGuiCol_TabActive]              = styleColors[ImGuiCol_HeaderActive];
             styleColors[ImGuiCol_TabUnfocused]           = styleColors[ImGuiCol_Tab];
             styleColors[ImGuiCol_TabUnfocusedActive]     = styleColors[ImGuiCol_TabActive];
+            styleColors[ImGuiCol_TableBorderLight]       = ImVec4(0.f, 0.f, 0.f, 0.f);
+            styleColors[ImGuiCol_TableBorderStrong]      = ImVec4(0.f, 0.f, 0.f, 0.f);
             styleColors[ImGuiCol_PlotLines]              = ImVec4(0.61f, 0.61f, 0.61f, 1.00f);
             styleColors[ImGuiCol_PlotLinesHovered]       = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
             styleColors[ImGuiCol_PlotHistogram]          = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
@@ -385,6 +393,51 @@ namespace SolidUI {
 
         inline static void Analytics() {
             ImGui::Begin(ICON_FA_STOPWATCH " Analytics");
+                float framerate = ImGui::GetIO().Framerate;
+                float frametime = ImGui::GetIO().Framerate > 0 ? 1000.f / framerate : 0.f;
+                std::string gpu_renderer = SolidProfiler::GPU::GetRenderer(); // this probably doesn't need to be created every frame
+                float used_memory = std::get<1>(SolidProfiler::GPU::GetMemoryUsage());
+                float total_memory = std::get<0>(SolidProfiler::GPU::GetMemoryUsage());
+
+                ImGui::Text("Framerate:");
+                ImGui::SameLine();
+                if (framerate >= 59.f) {
+                    ImGui::TextColored(colors["success"], "%.2f", framerate);
+                } else if (framerate >= 30.f) {
+                    ImGui::TextColored(colors["warning"], "%.2f", framerate);
+                } else {
+                    ImGui::TextColored(colors["error"], "%.2f", framerate);
+                }
+
+                ImGui::Text("Frame Time:");
+                ImGui::SameLine();
+                if (frametime <= 16.94f) {
+                    ImGui::TextColored(colors["success"], "%.2f", frametime);
+                } else if (frametime <= 33.33f) {
+                    ImGui::TextColored(colors["warning"], "%.2f", frametime);
+                } else {
+                    ImGui::TextColored(colors["error"], "%.2f", frametime);
+                }
+
+                float gpu_memory_usage = used_memory / total_memory;
+
+                ImGui::Text("GPU:");
+                ImGui::SameLine();
+                ImGui::Text("%s", gpu_renderer.c_str());
+
+                ImGui::Text("Memory (used):");
+                ImGui::SameLine();
+                if (gpu_memory_usage <= 0.75f) {
+                    ImGui::TextColored(colors["success"], "%.2f MB", used_memory / 1000.f);
+                } else if (gpu_memory_usage <= 0.9f) {
+                    ImGui::TextColored(colors["warning"], "%.2f MB", used_memory / 1000.f);
+                } else {
+                    ImGui::TextColored(colors["error"], "%.2f MB", used_memory / 1000.f);
+                }
+
+                ImGui::Text("Memory (total):");
+                ImGui::SameLine();
+                ImGui::Text("%.2f MB", total_memory / 1000.f);
 
             ImGui::End();
         }

@@ -64,6 +64,11 @@ namespace SolidUtils {
         return color;
     }
 
+    inline static ImVec4 ChangeColorAlpha(ImVec4 color, float alpha) {
+        ImVec4 colorVec = { color.x, color.y, color.z, alpha };
+        return colorVec;
+    }
+
     inline static std::string GetTimestamp() {
         time_t rawtime;
         struct tm* timeinfo;

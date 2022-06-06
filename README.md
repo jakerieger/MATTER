@@ -34,7 +34,6 @@ MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may 
 |MSVC 15 |x64 |Release| - |
 |MinGW GCC 6|x64 |Debug| - |
 |MinGW GCC 6|x64 |Release| - |
-
 ## Resources
 
 This is a list of resources I've found helpful while developing MATTER.

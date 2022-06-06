@@ -19,6 +19,9 @@ add_executable(
     src/SolidProject.cpp
     src/SolidEditorConfig.cpp
     src/SolidLogger.cpp
+    src/SolidProfiler.cpp
+    src/SolidShader.cpp
+    src/SolidEditorGrid.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -26,6 +29,10 @@ add_executable(
     include/SolidUI.hpp
     include/SolidUtils.hpp
     include/SolidLogger.hpp
+    include/SolidProfiler.hpp
+    include/SolidShader.hpp
+    include/SolidEditorGrid.hpp
+    include/SolidSceneCamera.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp
