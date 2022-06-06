@@ -85,16 +85,271 @@ $(document).ready(function(){initNavTree('class_solid_scene.html',''); initResiz
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="class_solid_scene-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidScene Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a034b5fd0e3c118ad36d08fdcbd3d0127"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a034b5fd0e3c118ad36d08fdcbd3d0127">CreateEmpty</a> (const char *name)</td></tr>
+<tr class="separator:a034b5fd0e3c118ad36d08fdcbd3d0127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682e99dfe61b7976add7a6966eb8114b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a682e99dfe61b7976add7a6966eb8114b">Load</a> (const char *path)</td></tr>
+<tr class="separator:a682e99dfe61b7976add7a6966eb8114b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae552a8774603e293654c8f289e31f117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#ae552a8774603e293654c8f289e31f117">Save</a> ()</td></tr>
+<tr class="separator:ae552a8774603e293654c8f289e31f117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e19b74580ecbd6dd772e6fd4fefdd1c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a2e19b74580ecbd6dd772e6fd4fefdd1c">GetScenePath</a> () const</td></tr>
+<tr class="separator:a2e19b74580ecbd6dd772e6fd4fefdd1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c44917629c8feced21503392f24596"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a82c44917629c8feced21503392f24596">GetSceneName</a> () const</td></tr>
+<tr class="separator:a82c44917629c8feced21503392f24596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630e34379ddbd08788c89ba3bdc722fb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_solid_game_object.html">SolidGameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a630e34379ddbd08788c89ba3bdc722fb">GetGameObjects</a> ()</td></tr>
+<tr class="separator:a630e34379ddbd08788c89ba3bdc722fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b7ac91a29caabcabec5a4dd544ec978"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_solid_light.html">SolidLight</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a4b7ac91a29caabcabec5a4dd544ec978">GetLights</a> ()</td></tr>
+<tr class="separator:a4b7ac91a29caabcabec5a4dd544ec978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084924e7f40329543c83b73b3c2d7177"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_camera.html">SolidCamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#a084924e7f40329543c83b73b3c2d7177">GetActiveCamera</a> ()</td></tr>
+<tr class="separator:a084924e7f40329543c83b73b3c2d7177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a7fff2dfd41729bc341024d4108ccb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#aa8a7fff2dfd41729bc341024d4108ccb">AddGameObject</a> (<a class="el" href="class_solid_game_object.html">SolidGameObject</a> *gameObject)</td></tr>
+<tr class="separator:aa8a7fff2dfd41729bc341024d4108ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78fc046c5d35d93124e98af32c3eb8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_scene.html#ad78fc046c5d35d93124e98af32c3eb8a">AddLight</a> (<a class="el" href="class_solid_light.html">SolidLight</a> *light)</td></tr>
+<tr class="separator:ad78fc046c5d35d93124e98af32c3eb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00003">3</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00010">10</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa8a7fff2dfd41729bc341024d4108ccb" name="aa8a7fff2dfd41729bc341024d4108ccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a7fff2dfd41729bc341024d4108ccb">&#9670;&nbsp;</a></span>AddGameObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidScene::AddGameObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_game_object.html">SolidGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00030">30</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad78fc046c5d35d93124e98af32c3eb8a" name="ad78fc046c5d35d93124e98af32c3eb8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad78fc046c5d35d93124e98af32c3eb8a">&#9670;&nbsp;</a></span>AddLight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidScene::AddLight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_light.html">SolidLight</a> *&#160;</td>
+          <td class="paramname"><em>light</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00034">34</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a034b5fd0e3c118ad36d08fdcbd3d0127" name="a034b5fd0e3c118ad36d08fdcbd3d0127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034b5fd0e3c118ad36d08fdcbd3d0127">&#9670;&nbsp;</a></span>CreateEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidScene::CreateEmpty </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a084924e7f40329543c83b73b3c2d7177" name="a084924e7f40329543c83b73b3c2d7177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084924e7f40329543c83b73b3c2d7177">&#9670;&nbsp;</a></span>GetActiveCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_camera.html">SolidCamera</a> * SolidScene::GetActiveCamera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00012">12</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a630e34379ddbd08788c89ba3bdc722fb" name="a630e34379ddbd08788c89ba3bdc722fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630e34379ddbd08788c89ba3bdc722fb">&#9670;&nbsp;</a></span>GetGameObjects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_solid_game_object.html">SolidGameObject</a> * &gt; SolidScene::GetGameObjects </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00019">19</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4b7ac91a29caabcabec5a4dd544ec978" name="a4b7ac91a29caabcabec5a4dd544ec978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b7ac91a29caabcabec5a4dd544ec978">&#9670;&nbsp;</a></span>GetLights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_solid_light.html">SolidLight</a> * &gt; SolidScene::GetLights </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00020">20</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a82c44917629c8feced21503392f24596" name="a82c44917629c8feced21503392f24596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c44917629c8feced21503392f24596">&#9670;&nbsp;</a></span>GetSceneName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * SolidScene::GetSceneName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00017">17</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e19b74580ecbd6dd772e6fd4fefdd1c" name="a2e19b74580ecbd6dd772e6fd4fefdd1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e19b74580ecbd6dd772e6fd4fefdd1c">&#9670;&nbsp;</a></span>GetScenePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * SolidScene::GetScenePath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8hpp_source.html#l00016">16</a> of file <a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a682e99dfe61b7976add7a6966eb8114b" name="a682e99dfe61b7976add7a6966eb8114b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a682e99dfe61b7976add7a6966eb8114b">&#9670;&nbsp;</a></span>Load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidScene::Load </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00009">9</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae552a8774603e293654c8f289e31f117" name="ae552a8774603e293654c8f289e31f117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae552a8774603e293654c8f289e31f117">&#9670;&nbsp;</a></span>Save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidScene::Save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_scene_8cpp_source.html#l00010">10</a> of file <a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>SOLID/include/<a class="el" href="_solid_scene_8hpp_source.html">SolidScene.hpp</a></li>
+<li>SOLID/src/<a class="el" href="_solid_scene_8cpp_source.html">SolidScene.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -204,7 +204,7 @@ $(document).ready(function(){initNavTree('_solid_editor_8cpp_source.html',''); i
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        glfwGetWindowSize(mWindow, &amp;viewportX, &amp;viewportY);</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        glm::vec2 viewport = glm::vec2(viewportX, viewportY);</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <a class="code hl_variable" href="_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a>.<a class="code hl_function" href="class_solid_scene_camera.html#a422d554047a6e3da2ade4c0503984e25">ProcessMouseOrbit</a>(xoffset, yoffset, viewport);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <a class="code hl_variable" href="_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a>.<a class="code hl_function" href="class_solid_scene_camera.html#a422d554047a6e3da2ade4c0503984e25">ProcessMouseOrbit</a>(-xoffset, yoffset, viewport);</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
@@ -276,49 +276,55 @@ $(document).ready(function(){initNavTree('_solid_editor_8cpp_source.html',''); i
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    mEditorGrid.<a class="code hl_function" href="class_solid_editor_grid.html#aa71cd3d1605b0b921050408e6df25872">Init</a>();</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordflow">while</span> (!glfwWindowShouldClose(mWindow)) {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        glfwPollEvents();</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        ProcessInput();</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        glEnable(GL_DEPTH_TEST);</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        SolidUI::DrawUI(sceneTexture, mLogger);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        glClearColor(</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].x,</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].y,</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].z,</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            1.0f</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        );</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        mEditorGrid.<a class="code hl_function" href="class_solid_editor_grid.html#a53d90d7f83f1be9103e524498b46a360">Draw</a>(<a class="code hl_variable" href="_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a>);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        glBindFramebuffer(GL_FRAMEBUFFER, 0);</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        glDisable(GL_DEPTH_TEST);</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        SolidUI::RenderUI();</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        glfwSwapBuffers(mWindow);</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>}</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keywordtype">void</span> SolidEditor::Shutdown() {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    mEditorGrid.<a class="code hl_function" href="class_solid_editor_grid.html#a8aa309ac5590fe03e0a19276f03d0d3a">Destroy</a>();</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    SolidUI::ShutdownUI();</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    glfwDestroyWindow(mWindow);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    glfwTerminate();</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">  237</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">SolidEditor::Run</a>() {</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    Init();</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    Render();</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    Shutdown();</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        UpdateWindowTitle();</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        glfwPollEvents();</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        ProcessInput();</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        glEnable(GL_DEPTH_TEST);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        SolidUI::DrawUI(sceneTexture, mLogger);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        glClearColor(</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].x,</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].y,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            SolidUI::GetColors()[<span class="stringliteral">&quot;scene&quot;</span>].z,</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            1.0f</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        );</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        mEditorGrid.<a class="code hl_function" href="class_solid_editor_grid.html#a53d90d7f83f1be9103e524498b46a360">Draw</a>(<a class="code hl_variable" href="_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        glBindFramebuffer(GL_FRAMEBUFFER, 0);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        glDisable(GL_DEPTH_TEST);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        SolidUI::RenderUI();</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        glfwSwapBuffers(mWindow);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>}</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordtype">void</span> SolidEditor::UpdateWindowTitle() {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    std::string title = std::string(<a class="code hl_define" href="_solid_editor_8cpp.html#a3adf7b7b13572f2baf3379a8f2f4220a">WINDOW_TITLE</a>) + std::string(mProject.<a class="code hl_function" href="class_solid_project.html#a90c50709d241d42afa8669652aa66756">GetProjectName</a>()) + <span class="stringliteral">&quot; - &quot;</span> + std::string(mProject.<a class="code hl_function" href="class_solid_project.html#a9cd47bc4e5768d685d9aa71a0c65b19d">GetActiveScene</a>()-&gt;<a class="code hl_function" href="class_solid_scene.html#a82c44917629c8feced21503392f24596">GetSceneName</a>());</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    glfwSetWindowTitle(mWindow, title.c_str());</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>}</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="keywordtype">void</span> SolidEditor::Shutdown() {</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    mEditorGrid.<a class="code hl_function" href="class_solid_editor_grid.html#a8aa309ac5590fe03e0a19276f03d0d3a">Destroy</a>();</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    SolidUI::ShutdownUI();</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    glfwDestroyWindow(mWindow);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    glfwTerminate();</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="_solid_editor_8cpp.html#a76259e93488aa188c59d8b8a80517f74">  243</a></span><span class="keywordtype">void</span> GLAPIENTRY <a class="code hl_function" href="_solid_editor_8cpp.html#ab368382a0223322c0af044f12af633ef">MessageCallback</a>(GLenum source, GLenum type, GLuint <span class="keywordtype">id</span>, GLenum severity, GLsizei length, <span class="keyword">const</span> GLchar* message, <span class="keyword">const</span> <span class="keywordtype">void</span>* userParam) {</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    fprintf(stderr, <span class="stringliteral">&quot;[GL CALLBACK]: %s type = 0x%x, severity = 0x%x, message = %s\n&quot;</span>,</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        (type == GL_DEBUG_TYPE_ERROR ? <span class="stringliteral">&quot;** GL ERROR **&quot;</span> : <span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        type, severity, message);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">  243</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">SolidEditor::Run</a>() {</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    Init();</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    Render();</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    Shutdown();</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>}</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno"><a class="line" href="_solid_editor_8cpp.html#a76259e93488aa188c59d8b8a80517f74">  249</a></span><span class="keywordtype">void</span> GLAPIENTRY <a class="code hl_function" href="_solid_editor_8cpp.html#ab368382a0223322c0af044f12af633ef">MessageCallback</a>(GLenum source, GLenum type, GLuint <span class="keywordtype">id</span>, GLenum severity, GLsizei length, <span class="keyword">const</span> GLchar* message, <span class="keyword">const</span> <span class="keywordtype">void</span>* userParam) {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    fprintf(stderr, <span class="stringliteral">&quot;[GL CALLBACK]: %s type = 0x%x, severity = 0x%x, message = %s\n&quot;</span>,</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        (type == GL_DEBUG_TYPE_ERROR ? <span class="stringliteral">&quot;** GL ERROR **&quot;</span> : <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        type, severity, message);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>}</div>
 <div class="ttc" id="a_solid_editor_8cpp_html_a06ad2502008f16fbcf01dfaa7f7bc9ea"><div class="ttname"><a href="_solid_editor_8cpp.html#a06ad2502008f16fbcf01dfaa7f7bc9ea">scroll_callback</a></div><div class="ttdeci">void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)</div></div>
 <div class="ttc" id="a_solid_editor_8cpp_html_a3adf7b7b13572f2baf3379a8f2f4220a"><div class="ttname"><a href="_solid_editor_8cpp.html#a3adf7b7b13572f2baf3379a8f2f4220a">WINDOW_TITLE</a></div><div class="ttdeci">#define WINDOW_TITLE</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_8cpp_source.html#l00025">SolidEditor.cpp:25</a></div></div>
 <div class="ttc" id="a_solid_editor_8cpp_html_a498d9f026138406895e9a34b504ac6a6"><div class="ttname"><a href="_solid_editor_8cpp.html#a498d9f026138406895e9a34b504ac6a6">WINDOW_WIDTH</a></div><div class="ttdeci">#define WINDOW_WIDTH</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_8cpp_source.html#l00023">SolidEditor.cpp:23</a></div></div>
@@ -336,10 +342,13 @@ $(document).ready(function(){initNavTree('_solid_editor_8cpp_source.html',''); i
 <div class="ttc" id="aclass_solid_editor_grid_html_a53d90d7f83f1be9103e524498b46a360"><div class="ttname"><a href="class_solid_editor_grid.html#a53d90d7f83f1be9103e524498b46a360">SolidEditorGrid::Draw</a></div><div class="ttdeci">void Draw(SolidSceneCamera &amp;sceneCamera)</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_grid_8cpp_source.html#l00026">SolidEditorGrid.cpp:26</a></div></div>
 <div class="ttc" id="aclass_solid_editor_grid_html_a8aa309ac5590fe03e0a19276f03d0d3a"><div class="ttname"><a href="class_solid_editor_grid.html#a8aa309ac5590fe03e0a19276f03d0d3a">SolidEditorGrid::Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_grid_8cpp_source.html#l00045">SolidEditorGrid.cpp:45</a></div></div>
 <div class="ttc" id="aclass_solid_editor_grid_html_aa71cd3d1605b0b921050408e6df25872"><div class="ttname"><a href="class_solid_editor_grid.html#aa71cd3d1605b0b921050408e6df25872">SolidEditorGrid::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_grid_8cpp_source.html#l00009">SolidEditorGrid.cpp:9</a></div></div>
-<div class="ttc" id="aclass_solid_editor_html_a8fef4565f56af43cf2c25db9fd579a2a"><div class="ttname"><a href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">SolidEditor::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdoc">Initializes the editor and runs the main loop, terminating and cleaning up when the editor is closed.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_8cpp_source.html#l00237">SolidEditor.cpp:237</a></div></div>
+<div class="ttc" id="aclass_solid_editor_html_a8fef4565f56af43cf2c25db9fd579a2a"><div class="ttname"><a href="class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a">SolidEditor::Run</a></div><div class="ttdeci">void Run()</div><div class="ttdoc">Initializes the editor and runs the main loop, terminating and cleaning up when the editor is closed.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_editor_8cpp_source.html#l00243">SolidEditor.cpp:243</a></div></div>
 <div class="ttc" id="aclass_solid_logger_html_a760046bc14114aa68357df1b8c210cf0"><div class="ttname"><a href="class_solid_logger.html#a760046bc14114aa68357df1b8c210cf0">SolidLogger::Log</a></div><div class="ttdeci">void Log(const char *message, const char *details, const char *file, int *line, LogLevel level)</div><div class="ttdoc">Log a message to the console.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_logger_8cpp_source.html#l00003">SolidLogger.cpp:3</a></div></div>
+<div class="ttc" id="aclass_solid_project_html_a90c50709d241d42afa8669652aa66756"><div class="ttname"><a href="class_solid_project.html#a90c50709d241d42afa8669652aa66756">SolidProject::GetProjectName</a></div><div class="ttdeci">const char * GetProjectName()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_project_8hpp_source.html#l00077">SolidProject.hpp:77</a></div></div>
+<div class="ttc" id="aclass_solid_project_html_a9cd47bc4e5768d685d9aa71a0c65b19d"><div class="ttname"><a href="class_solid_project.html#a9cd47bc4e5768d685d9aa71a0c65b19d">SolidProject::GetActiveScene</a></div><div class="ttdeci">SolidScene * GetActiveScene()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_project_8hpp_source.html#l00083">SolidProject.hpp:83</a></div></div>
 <div class="ttc" id="aclass_solid_scene_camera_html"><div class="ttname"><a href="class_solid_scene_camera.html">SolidSceneCamera</a></div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00020">SolidSceneCamera.hpp:20</a></div></div>
 <div class="ttc" id="aclass_solid_scene_camera_html_a422d554047a6e3da2ade4c0503984e25"><div class="ttname"><a href="class_solid_scene_camera.html#a422d554047a6e3da2ade4c0503984e25">SolidSceneCamera::ProcessMouseOrbit</a></div><div class="ttdeci">void ProcessMouseOrbit(float xoffset, float yoffset, glm::vec2 viewport)</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_camera_8hpp_source.html#l00064">SolidSceneCamera.hpp:64</a></div></div>
+<div class="ttc" id="aclass_solid_scene_html_a82c44917629c8feced21503392f24596"><div class="ttname"><a href="class_solid_scene.html#a82c44917629c8feced21503392f24596">SolidScene::GetSceneName</a></div><div class="ttdeci">const char * GetSceneName() const</div><div class="ttdef"><b>Definition:</b> <a href="_solid_scene_8hpp_source.html#l00017">SolidScene.hpp:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

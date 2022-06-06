@@ -85,16 +85,355 @@ $(document).ready(function(){initNavTree('class_solid_game_object.html',''); ini
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="class_solid_game_object-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidGameObject Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a447590fdec82f30031b1fa5a7abcd2ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a447590fdec82f30031b1fa5a7abcd2ef">SolidGameObject</a> (const char *name, <a class="el" href="_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47f">SolidGameObjectType</a> type)</td></tr>
+<tr class="separator:a447590fdec82f30031b1fa5a7abcd2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf11124d7da49a4f983632cdcb6a6ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47f">SolidGameObjectType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a1cf11124d7da49a4f983632cdcb6a6ac">GetType</a> () const</td></tr>
+<tr class="separator:a1cf11124d7da49a4f983632cdcb6a6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44bb0c892ca57934fe3708efe519cded"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a44bb0c892ca57934fe3708efe519cded"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a44bb0c892ca57934fe3708efe519cded">GetComponent</a> ()</td></tr>
+<tr class="separator:a44bb0c892ca57934fe3708efe519cded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf2f479f1bcf71c0b411e257b33f523"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aebf2f479f1bcf71c0b411e257b33f523"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#aebf2f479f1bcf71c0b411e257b33f523">AddComponent</a> (T *component)</td></tr>
+<tr class="separator:aebf2f479f1bcf71c0b411e257b33f523"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55379222d6d720db3818fa3833eb5cb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a55379222d6d720db3818fa3833eb5cb4">Awake</a> ()</td></tr>
+<tr class="separator:a55379222d6d720db3818fa3833eb5cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b002d7f17a14ca8eb1604ef8d8aea94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a8b002d7f17a14ca8eb1604ef8d8aea94">Start</a> ()</td></tr>
+<tr class="separator:a8b002d7f17a14ca8eb1604ef8d8aea94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c78c28534aaf6d17b2e75075e87d683"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a0c78c28534aaf6d17b2e75075e87d683">Update</a> ()</td></tr>
+<tr class="separator:a0c78c28534aaf6d17b2e75075e87d683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a455343519c32ecd4ddc1195d261a2e43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a455343519c32ecd4ddc1195d261a2e43">LateUpdate</a> ()</td></tr>
+<tr class="separator:a455343519c32ecd4ddc1195d261a2e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafb36b636ce3553c25fd91045b052d87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#aafb36b636ce3553c25fd91045b052d87">FixedUpdate</a> ()</td></tr>
+<tr class="separator:aafb36b636ce3553c25fd91045b052d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57ef4f47566d6d54ad60dd81ab92b65b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a57ef4f47566d6d54ad60dd81ab92b65b">Destroyed</a> ()</td></tr>
+<tr class="separator:a57ef4f47566d6d54ad60dd81ab92b65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:adb335c66053726e09a5188ca4f267260"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#adb335c66053726e09a5188ca4f267260">mName</a></td></tr>
+<tr class="separator:adb335c66053726e09a5188ca4f267260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd5e4e8447705f2592f9fdca3fe3fde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_transform.html">SolidTransform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a2fd5e4e8447705f2592f9fdca3fe3fde">mTransform</a></td></tr>
+<tr class="separator:a2fd5e4e8447705f2592f9fdca3fe3fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b9938c2eace2a535faad4c1d0794b02"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_solid_component.html">SolidComponent</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a2b9938c2eace2a535faad4c1d0794b02">mComponents</a></td></tr>
+<tr class="separator:a2b9938c2eace2a535faad4c1d0794b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de1d4124986e70abd539d42ff885937"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_solid_game_object.html">SolidGameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_game_object.html#a9de1d4124986e70abd539d42ff885937">mChildren</a></td></tr>
+<tr class="separator:a9de1d4124986e70abd539d42ff885937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00003">3</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00018">18</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a447590fdec82f30031b1fa5a7abcd2ef" name="a447590fdec82f30031b1fa5a7abcd2ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a447590fdec82f30031b1fa5a7abcd2ef">&#9670;&nbsp;</a></span>SolidGameObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SolidGameObject::SolidGameObject </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47f">SolidGameObjectType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aebf2f479f1bcf71c0b411e257b33f523" name="aebf2f479f1bcf71c0b411e257b33f523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf2f479f1bcf71c0b411e257b33f523">&#9670;&nbsp;</a></span>AddComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::AddComponent </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00040">40</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a55379222d6d720db3818fa3833eb5cb4" name="a55379222d6d720db3818fa3833eb5cb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55379222d6d720db3818fa3833eb5cb4">&#9670;&nbsp;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::Awake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00010">10</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a57ef4f47566d6d54ad60dd81ab92b65b" name="a57ef4f47566d6d54ad60dd81ab92b65b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57ef4f47566d6d54ad60dd81ab92b65b">&#9670;&nbsp;</a></span>Destroyed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::Destroyed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00060">60</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aafb36b636ce3553c25fd91045b052d87" name="aafb36b636ce3553c25fd91045b052d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafb36b636ce3553c25fd91045b052d87">&#9670;&nbsp;</a></span>FixedUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::FixedUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00050">50</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a44bb0c892ca57934fe3708efe519cded" name="a44bb0c892ca57934fe3708efe519cded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44bb0c892ca57934fe3708efe519cded">&#9670;&nbsp;</a></span>GetComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * SolidGameObject::GetComponent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00030">30</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1cf11124d7da49a4f983632cdcb6a6ac" name="a1cf11124d7da49a4f983632cdcb6a6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cf11124d7da49a4f983632cdcb6a6ac">&#9670;&nbsp;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47f">SolidGameObjectType</a> SolidGameObject::GetType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00024">24</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a455343519c32ecd4ddc1195d261a2e43" name="a455343519c32ecd4ddc1195d261a2e43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a455343519c32ecd4ddc1195d261a2e43">&#9670;&nbsp;</a></span>LateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::LateUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00040">40</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b002d7f17a14ca8eb1604ef8d8aea94" name="a8b002d7f17a14ca8eb1604ef8d8aea94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b002d7f17a14ca8eb1604ef8d8aea94">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00020">20</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0c78c28534aaf6d17b2e75075e87d683" name="a0c78c28534aaf6d17b2e75075e87d683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c78c28534aaf6d17b2e75075e87d683">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidGameObject::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8cpp_source.html#l00030">30</a> of file <a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9de1d4124986e70abd539d42ff885937" name="a9de1d4124986e70abd539d42ff885937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de1d4124986e70abd539d42ff885937">&#9670;&nbsp;</a></span>mChildren</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_solid_game_object.html">SolidGameObject</a>*&gt; SolidGameObject::mChildren</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00027">27</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2b9938c2eace2a535faad4c1d0794b02" name="a2b9938c2eace2a535faad4c1d0794b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b9938c2eace2a535faad4c1d0794b02">&#9670;&nbsp;</a></span>mComponents</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_solid_component.html">SolidComponent</a>*&gt; SolidGameObject::mComponents</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00026">26</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adb335c66053726e09a5188ca4f267260" name="adb335c66053726e09a5188ca4f267260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb335c66053726e09a5188ca4f267260">&#9670;&nbsp;</a></span>mName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* SolidGameObject::mName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00020">20</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2fd5e4e8447705f2592f9fdca3fe3fde" name="a2fd5e4e8447705f2592f9fdca3fe3fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd5e4e8447705f2592f9fdca3fe3fde">&#9670;&nbsp;</a></span>mTransform</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_transform.html">SolidTransform</a> SolidGameObject::mTransform</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_game_object_8hpp_source.html#l00021">21</a> of file <a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>SOLID/include/<a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a></li>
+<li>SOLID/src/<a class="el" href="_solid_game_object_8cpp_source.html">SolidGameObject.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -6,5 +6,6 @@ var searchData=
   ['solidprimitive_3',['SolidPrimitive',['../namespace_solid_primitive.html',1,'']]],
   ['solidprofiler_4',['SolidProfiler',['../namespace_solid_profiler.html',1,'']]],
   ['solidui_5',['SolidUI',['../namespace_solid_u_i.html',1,'']]],
-  ['solidutils_6',['SolidUtils',['../namespace_solid_utils.html',1,'']]]
+  ['soliduicomponents_6',['SolidUIComponents',['../namespace_solid_u_i_components.html',1,'']]],
+  ['solidutils_7',['SolidUtils',['../namespace_solid_utils.html',1,'']]]
 ];

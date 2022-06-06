@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['updateprojectionmatrix_0',['UpdateProjectionMatrix',['../class_solid_scene_camera.html#a3164b29e6bebc626439a7dfd9ea9dc2b',1,'SolidSceneCamera']]],
-  ['updateviewmatrix_1',['UpdateViewMatrix',['../class_solid_scene_camera.html#a99effb40652c01c42f7670cb0cc0f16c',1,'SolidSceneCamera']]],
-  ['use_2',['Use',['../class_solid_shader.html#af97fdebab6036886d0f0d939abdfbaa5',1,'SolidShader']]]
+  ['resumelogging_0',['ResumeLogging',['../class_solid_logger.html#a7a54468177834ad8ae3797a9da1c22a4',1,'SolidLogger']]],
+  ['rotate_1',['Rotate',['../class_solid_transform.html#adb410d2840670757f93d6932c92da9a3',1,'SolidTransform']]],
+  ['run_2',['Run',['../class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a',1,'SolidEditor']]]
 ];

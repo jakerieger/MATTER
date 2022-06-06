@@ -1,5 +1,6 @@
 var class_solid_project =
 [
+    [ "GetActiveScene", "class_solid_project.html#a9cd47bc4e5768d685d9aa71a0c65b19d", null ],
     [ "GetBuildSettings", "class_solid_project.html#a4b3781df3816941d190302c074c1a058", null ],
     [ "GetInputManager", "class_solid_project.html#a901684e1cb386d52607ffe381314a741", null ],
     [ "GetProjectName", "class_solid_project.html#a90c50709d241d42afa8669652aa66756", null ],
@@ -7,6 +8,7 @@ var class_solid_project =
     [ "GetProjectSettings", "class_solid_project.html#a75e2de3300d68c12ee8e7e219734f5b8", null ],
     [ "Load", "class_solid_project.html#a975d5390e061a14eb027033047f52d4d", null ],
     [ "Save", "class_solid_project.html#a8f486acc8cbc4277bc11e115d749f20e", null ],
+    [ "SetActiveScene", "class_solid_project.html#adfb58ab75205286ddaeebd26d8842fde", null ],
     [ "SetBuildSettings", "class_solid_project.html#a6cb53353b7ba89c83fec8a821ecc9027", null ],
     [ "SetInputManager", "class_solid_project.html#afd806b18fb7d0e574e2682b13b0bd6e8", null ],
     [ "SetProjectName", "class_solid_project.html#a6c1f199d9df7e27f5defa53afc341777", null ],

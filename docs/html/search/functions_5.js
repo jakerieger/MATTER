@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['messagecallback_1',['MessageCallback',['../_solid_editor_8cpp.html#ab368382a0223322c0af044f12af633ef',1,'MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const char *message, const void *userParam):&#160;SolidEditor.cpp'],['../_solid_editor_8cpp.html#a76259e93488aa188c59d8b8a80517f74',1,'MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam):&#160;SolidEditor.cpp']]],
-  ['mouse_5fcallback_2',['mouse_callback',['../_solid_editor_8cpp.html#af4ca2891044ac10a664b8d83ce590f1f',1,'SolidEditor.cpp']]]
+  ['init_0',['Init',['../class_solid_editor_grid.html#aa71cd3d1605b0b921050408e6df25872',1,'SolidEditorGrid']]],
+  ['initconfig_1',['InitConfig',['../class_solid_editor_config.html#ae1fd20e52a8b3420ce0c70c978d2b664',1,'SolidEditorConfig']]],
+  ['isloggingpaused_2',['IsLoggingPaused',['../class_solid_logger.html#a397b3b4217469fdcac5baf0fd800529a',1,'SolidLogger']]]
 ];
