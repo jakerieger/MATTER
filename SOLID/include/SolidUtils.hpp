@@ -10,6 +10,9 @@
  * @brief Utility functions use by other SOLID classes
  * 
  * Adding new functions is safe but changing existing functions is not recommended as many SOLID classes rely on these functions.
+ * 
+ * @note This namespace is not really meant to be used by the user.
+ * @author Jake Rieger
  */
 namespace SolidUtils {
     inline static std::string GetResourcesPath() {

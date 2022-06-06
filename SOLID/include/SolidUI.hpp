@@ -19,6 +19,10 @@
 
 /**
  * @brief All SOLID UI related code belongs to the SolidUI namespace.
+ * 
+ * @attention All SolidUI code is experimental and subject to change.
+ * @note SolidUI is a namespace and should not be used as a class.
+ * @author Jake Rieger
  */
 namespace SolidUI {
     // Intialize our theme colors dictionary

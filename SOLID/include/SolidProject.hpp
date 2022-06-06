@@ -55,6 +55,7 @@ struct ProjectSettings {
 /**
  * @brief Class for managing project loading, saving, and settings
  * 
+ * @author Jake Rieger
  */
 class SolidProject {
 public:

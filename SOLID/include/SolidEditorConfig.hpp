@@ -44,7 +44,6 @@ struct EditorPreferences {
  * Handles loading, saving, and initializing the Solid Editor configuration
  * 
  * @author Jake Rieger
- * 
  */
 class SolidEditorConfig {
 public:

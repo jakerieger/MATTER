@@ -21,6 +21,11 @@ struct LogEntry {
     LogLevel level; ///< The level of the log entry
 };
 
+/**
+ * @brief Handles logging functionality for the editor console
+ * 
+ * @author Jake Rieger
+ */
 class SolidLogger {
 public:
     /**
