@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-/*******************************************************************************************
+/**
  * This is the camera used in the scene view.
  * It implements the Arcball (aka Orbit) camera mode.
  * FOV, aspect ratio, and near/far planes are configurable but the defaults are recommended.
@@ -16,7 +16,7 @@
  * Marie Eve Dube here: https://asliceofrendering.com/camera/2019/11/30/ArcballCamera/
  *
  * @authors Jake Rieger, Marie Eve Dube
- ********************************************************************************************/
+ */
 class SolidSceneCamera {
 public:
     SolidSceneCamera() = default;

@@ -9,10 +9,15 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +53,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_solid_editor_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,20 +84,20 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_45321a3bcb7b5ca74741802ae8a3febd.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">SolidEditor.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_solid_u_i_8hpp_source.html">SolidUI.hpp</a>&quot;</code><br />
-</div><table class="memberdecls">
+<code>#include &quot;<a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>&quot;</code><br />
+</div>
+<p><a href="_solid_editor_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a498d9f026138406895e9a34b504ac6a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#a498d9f026138406895e9a34b504ac6a6">WINDOW_WIDTH</a>&#160;&#160;&#160;1600</td></tr>
@@ -90,6 +112,22 @@ Macros</h2></td></tr>
 <tr class="separator:a6cfcce641e6bce1855e2c8f745eb397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a941913c43e2c41a5ec14d2944412b849"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#a941913c43e2c41a5ec14d2944412b849">CLEAR_COLOR_B</a>&#160;&#160;&#160;58</td></tr>
 <tr class="separator:a941913c43e2c41a5ec14d2944412b849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af4ca2891044ac10a664b8d83ce590f1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#af4ca2891044ac10a664b8d83ce590f1f">mouse_callback</a> (GLFWwindow *window, double xpos, double ypos)</td></tr>
+<tr class="separator:af4ca2891044ac10a664b8d83ce590f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#a06ad2502008f16fbcf01dfaa7f7bc9ea">scroll_callback</a> (GLFWwindow *window, double xoffset, double yoffset)</td></tr>
+<tr class="separator:a06ad2502008f16fbcf01dfaa7f7bc9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab368382a0223322c0af044f12af633ef"><td class="memItemLeft" align="right" valign="top">void GLAPIENTRY&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#ab368382a0223322c0af044f12af633ef">MessageCallback</a> (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const char *message, const void *userParam)</td></tr>
+<tr class="separator:ab368382a0223322c0af044f12af633ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76259e93488aa188c59d8b8a80517f74"><td class="memItemLeft" align="right" valign="top">void GLAPIENTRY&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#a76259e93488aa188c59d8b8a80517f74">MessageCallback</a> (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)</td></tr>
+<tr class="separator:a76259e93488aa188c59d8b8a80517f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ada6f7f62c1a52aa807f595f5f0edc49d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_scene_camera.html">SolidSceneCamera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d">sceneCamera</a> (glm::vec3(0.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f))</td></tr>
+<tr class="separator:ada6f7f62c1a52aa807f595f5f0edc49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a941913c43e2c41a5ec14d2944412b849" name="a941913c43e2c41a5ec14d2944412b849"></a>
@@ -103,6 +141,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00028">28</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -118,6 +158,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00027">27</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ab6cd64bbb0d03a381d8e4ff92cc24cf3" name="ab6cd64bbb0d03a381d8e4ff92cc24cf3"></a>
@@ -131,6 +173,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00026">26</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -146,6 +190,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00024">24</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a3adf7b7b13572f2baf3379a8f2f4220a" name="a3adf7b7b13572f2baf3379a8f2f4220a"></a>
@@ -160,6 +206,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00025">25</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a498d9f026138406895e9a34b504ac6a6" name="a498d9f026138406895e9a34b504ac6a6"></a>
@@ -173,13 +221,258 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >This file is the heart of the SOLID Editor.</p>
+<p >It is responsible for the following:</p><ul>
+<li>Initializing OpenGL and the window it renders to</li>
+<li>Setting up framebuffers and textures to pass to the UI</li>
+<li>Creating the main render loop and rendering the UI and scene</li>
+<li>Handling user input</li>
+<li>Dispatching events to the UI</li>
+<li>Handling the UI's events</li>
+<li>Handling the scene's events</li>
+<li>Cleaning up buffers and shutting down OpenGL</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Callback functions are defined globally instead of as class members because OpenGL takes a C-style pointer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00023">23</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab368382a0223322c0af044f12af633ef" name="ab368382a0223322c0af044f12af633ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab368382a0223322c0af044f12af633ef">&#9670;&nbsp;</a></span>MessageCallback() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GLAPIENTRY MessageCallback </td>
+          <td>(</td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>severity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLsizei&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>userParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76259e93488aa188c59d8b8a80517f74" name="a76259e93488aa188c59d8b8a80517f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76259e93488aa188c59d8b8a80517f74">&#9670;&nbsp;</a></span>MessageCallback() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GLAPIENTRY MessageCallback </td>
+          <td>(</td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>severity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLsizei&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>userParam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00243">243</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>                                                                                                                                                      {</div>
+<div class="line"><span class="lineno">  244</span>    fprintf(stderr, <span class="stringliteral">&quot;[GL CALLBACK]: %s type = 0x%x, severity = 0x%x, message = %s\n&quot;</span>,</div>
+<div class="line"><span class="lineno">  245</span>        (type == GL_DEBUG_TYPE_ERROR ? <span class="stringliteral">&quot;** GL ERROR **&quot;</span> : <span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line"><span class="lineno">  246</span>        type, severity, message);</div>
+<div class="line"><span class="lineno">  247</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af4ca2891044ac10a664b8d83ce590f1f" name="af4ca2891044ac10a664b8d83ce590f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ca2891044ac10a664b8d83ce590f1f">&#9670;&nbsp;</a></span>mouse_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mouse_callback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xpos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ypos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06ad2502008f16fbcf01dfaa7f7bc9ea" name="a06ad2502008f16fbcf01dfaa7f7bc9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06ad2502008f16fbcf01dfaa7f7bc9ea">&#9670;&nbsp;</a></span>scroll_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scroll_callback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>yoffset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ada6f7f62c1a52aa807f595f5f0edc49d" name="ada6f7f62c1a52aa807f595f5f0edc49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6f7f62c1a52aa807f595f5f0edc49d">&#9670;&nbsp;</a></span>sceneCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_scene_camera.html">SolidSceneCamera</a> sceneCamera(glm::vec3(0.0f, 1.0f, 4.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3(0.0f, 1.0f, 4.0f)&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3(0.0f, 0.0f, 0.0f)&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3(0.0f, 1.0f, 0.0f)&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_45321a3bcb7b5ca74741802ae8a3febd.html">src</a></li><li class="navelem"><a class="el" href="_solid_editor_8cpp.html">SolidEditor.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
 </body>
 </html>

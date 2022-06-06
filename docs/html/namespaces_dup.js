@@ -1,7 +1,7 @@
 var namespaces_dup =
 [
-    [ "SolidPrimitive", "d7/d32/namespace_solid_primitive.html", null ],
-    [ "SolidProfiler", "d4/d8b/namespace_solid_profiler.html", "d4/d8b/namespace_solid_profiler" ],
-    [ "SolidUI", "de/db7/namespace_solid_u_i.html", "de/db7/namespace_solid_u_i" ],
-    [ "SolidUtils", "d0/da8/namespace_solid_utils.html", null ]
+    [ "SolidPrimitive", "namespace_solid_primitive.html", null ],
+    [ "SolidProfiler", "namespace_solid_profiler.html", "namespace_solid_profiler" ],
+    [ "SolidUI", "namespace_solid_u_i.html", "namespace_solid_u_i" ],
+    [ "SolidUtils", "namespace_solid_utils.html", null ]
 ];

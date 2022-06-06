@@ -9,7 +9,7 @@ PROJECT_NUMBER         = 0.1.0
 PROJECT_BRIEF          = "Open source game engine with a soft body physics engine"
 PROJECT_LOGO           = docs/logo.png
 OUTPUT_DIRECTORY       = docs
-CREATE_SUBDIRS         = YES
+CREATE_SUBDIRS         = NO
 CREATE_SUBDIRS_LEVEL   = 8
 ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
@@ -33,7 +33,7 @@ STRIP_FROM_PATH        =
 STRIP_FROM_INC_PATH    =
 SHORT_NAMES            = NO
 JAVADOC_AUTOBRIEF      = NO
-JAVADOC_BANNER         = NO
+JAVADOC_BANNER         = YES
 JAVADOC_BLOCK          = YES
 QT_AUTOBRIEF           = NO
 MULTILINE_CPP_IS_BRIEF = NO
@@ -195,9 +195,9 @@ USE_MDFILE_AS_MAINPAGE =
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
 #---------------------------------------------------------------------------
-SOURCE_BROWSER         = NO
-INLINE_SOURCES         = NO
-STRIP_CODE_COMMENTS    = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+STRIP_CODE_COMMENTS    = NO
 REFERENCED_BY_RELATION = NO
 REFERENCES_RELATION    = NO
 REFERENCES_LINK_SOURCE = YES

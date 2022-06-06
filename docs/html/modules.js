@@ -1,4 +1,4 @@
 var modules =
 [
-    [ "Setters", "d4/d4b/group___uniform.html", "d4/d4b/group___uniform" ]
+    [ "Setters", "group___uniform.html", "group___uniform" ]
 ];
