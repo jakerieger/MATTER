@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_0',['X',['../_solid_transform_8hpp.html#a7d09299e7ce46a204c065820524f0d15a58833a3110c570fb05130d40c365d1e4',1,'SolidTransform.hpp']]]
+  ['transparent_0',['Transparent',['../_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70ac719d3f34968bcf992d4c0c48841cf63',1,'SolidMaterial.hpp']]]
 ];

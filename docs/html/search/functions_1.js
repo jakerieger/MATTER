@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['clearlogs_0',['ClearLogs',['../class_solid_logger.html#a0002df027269b2992c5be9abf8e5d6ef',1,'SolidLogger']]],
-  ['createempty_1',['CreateEmpty',['../class_solid_scene.html#a034b5fd0e3c118ad36d08fdcbd3d0127',1,'SolidScene']]]
+  ['bind_0',['Bind',['../class_solid_material.html#ac36005230f8b7f6d82eb00147c98885f',1,'SolidMaterial::Bind()'],['../class_phong_material.html#a510c52cb66be8000ca829eb635d37f03',1,'PhongMaterial::Bind()'],['../class_unlit_material.html#ae338af63b6e814c90047cf650043947c',1,'UnlitMaterial::Bind()']]]
 ];

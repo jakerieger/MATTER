@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logentry_0',['LogEntry',['../struct_log_entry.html',1,'']]]
+  ['inputmanager_0',['InputManager',['../struct_input_manager.html',1,'']]]
 ];

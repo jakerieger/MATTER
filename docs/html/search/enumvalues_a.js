@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z_0',['Z',['../_solid_transform_8hpp.html#a7d09299e7ce46a204c065820524f0d15aa70478ce277ffc322f8e1e3418e07355',1,'SolidTransform.hpp']]]
+  ['warning_0',['WARNING',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81',1,'SolidLogger.hpp']]]
 ];

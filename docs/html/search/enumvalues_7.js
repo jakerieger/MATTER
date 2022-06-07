@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['warning_0',['WARNING',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81',1,'SolidLogger.hpp']]]
+  ['perspective_0',['Perspective',['../_solid_camera_8hpp.html#addbdeb0c4a9113fece681e37faca81d3ad28963ad8af924a09c6ef14c97ca3a7a',1,'SolidCamera.hpp']]],
+  ['phong_1',['Phong',['../_solid_shader_8hpp.html#a6230e1b9ecbf2d82d10856fd7e1fde46afddebb2d49591c42cb6890f0afc9ec9b',1,'SolidShader.hpp']]]
 ];

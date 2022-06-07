@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('class_solid_shader.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_solid_shader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidShader Class Reference</div></div>
@@ -133,6 +134,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:gacc030f23a33a7ec1286556eb5f5e5067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___uniform.html#gacc030f23a33a7ec1286556eb5f5e5067">setMat4</a> (const std::string &amp;name, const glm::mat4 &amp;mat) const</td></tr>
 <tr class="separator:gacc030f23a33a7ec1286556eb5f5e5067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a0ae0ac758b3f7cfef65bdabc3a711784"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_solid_shader.html">SolidShader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_shader.html#a0ae0ac758b3f7cfef65bdabc3a711784">NewFromType</a> (<a class="el" href="_solid_shader_8hpp.html#a6230e1b9ecbf2d82d10856fd7e1fde46">ShaderType</a> type)</td></tr>
+<tr class="separator:a0ae0ac758b3f7cfef65bdabc3a711784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a58c519fe31a9fbbced09bda2fd01ef86"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_shader.html#a58c519fe31a9fbbced09bda2fd01ef86">ID</a></td></tr>
@@ -142,7 +148,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p >Class used to load, compile, and link GLSL shaders. </p>
 <dl class="section author"><dt>Author</dt><dd>Jake Rieger </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8hpp_source.html#l00016">16</a> of file <a class="el" href="_solid_shader_8hpp_source.html">SolidShader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8hpp_source.html#l00018">18</a> of file <a class="el" href="_solid_shader_8hpp_source.html">SolidShader.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a52eddf12b27ee470700314f918354113" name="a52eddf12b27ee470700314f918354113"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52eddf12b27ee470700314f918354113">&#9670;&nbsp;</a></span>SolidShader()</h2>
@@ -160,7 +166,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00004">4</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
 
 </div>
 </div>
@@ -179,7 +185,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00060">60</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00074">74</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
 
 </div>
 </div>
@@ -199,7 +205,35 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00068">68</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00082">82</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0ae0ac758b3f7cfef65bdabc3a711784" name="a0ae0ac758b3f7cfef65bdabc3a711784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae0ac758b3f7cfef65bdabc3a711784">&#9670;&nbsp;</a></span>NewFromType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_shader.html">SolidShader</a> * SolidShader::NewFromType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_solid_shader_8hpp.html#a6230e1b9ecbf2d82d10856fd7e1fde46">ShaderType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00061">61</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +252,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00064">64</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8cpp_source.html#l00078">78</a> of file <a class="el" href="_solid_shader_8cpp_source.html">SolidShader.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +269,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_shader_8hpp_source.html#l00018">18</a> of file <a class="el" href="_solid_shader_8hpp_source.html">SolidShader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_shader_8hpp_source.html#l00020">20</a> of file <a class="el" href="_solid_shader_8hpp_source.html">SolidShader.hpp</a>.</p>
 
 </div>
 </div>

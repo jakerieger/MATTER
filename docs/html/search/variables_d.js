@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['texcoords_0',['texCoords',['../struct_primitive.html#ad70b6f6dc8a422ebd1da081223866bc5',1,'Primitive']]],
-  ['texcoords_1',['TexCoords',['../struct_vertex.html#a921a513c1e6d1e63e99d477fa837a317',1,'Vertex']]],
-  ['timestamp_2',['timestamp',['../struct_log_entry.html#a584c1aa77642ddf394cb1d0e4b453422',1,'LogEntry']]],
-  ['type_3',['type',['../struct_texture.html#a916a835d009806f2a57546c7705942b1',1,'Texture']]]
+  ['scenecamera_0',['sceneCamera',['../_solid_editor_8cpp.html#ada6f7f62c1a52aa807f595f5f0edc49d',1,'SolidEditor.cpp']]],
+  ['showwelcomescreenonstartup_1',['showWelcomeScreenOnStartup',['../struct_general_preferences.html#a8aad6f82427d77686f92e24da23de1b2',1,'GeneralPreferences']]],
+  ['strength_2',['strength',['../struct_specular.html#afa7d119eac5baf50cc396e49f7b5ebe8',1,'Specular::strength()'],['../struct_emission.html#a579a230b8a4f71043efd9f9315abd911',1,'Emission::strength()']]]
 ];

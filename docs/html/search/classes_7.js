@@ -1,23 +1,6 @@
 var searchData=
 [
-  ['solidarealight_0',['SolidAreaLight',['../class_solid_area_light.html',1,'']]],
-  ['solidaxisgizmo_1',['SolidAxisGizmo',['../class_solid_axis_gizmo.html',1,'']]],
-  ['solidcamera_2',['SolidCamera',['../class_solid_camera.html',1,'']]],
-  ['solidcomponent_3',['SolidComponent',['../class_solid_component.html',1,'']]],
-  ['soliddirectionallight_4',['SolidDirectionalLight',['../class_solid_directional_light.html',1,'']]],
-  ['solideditor_5',['SolidEditor',['../class_solid_editor.html',1,'']]],
-  ['solideditorconfig_6',['SolidEditorConfig',['../class_solid_editor_config.html',1,'']]],
-  ['solideditorgrid_7',['SolidEditorGrid',['../class_solid_editor_grid.html',1,'']]],
-  ['solidgameobject_8',['SolidGameObject',['../class_solid_game_object.html',1,'']]],
-  ['solidgizmo_9',['SolidGizmo',['../class_solid_gizmo.html',1,'']]],
-  ['solidlight_10',['SolidLight',['../class_solid_light.html',1,'']]],
-  ['solidlogger_11',['SolidLogger',['../class_solid_logger.html',1,'']]],
-  ['solidmeshrenderer_12',['SolidMeshRenderer',['../class_solid_mesh_renderer.html',1,'']]],
-  ['solidpointlight_13',['SolidPointLight',['../class_solid_point_light.html',1,'']]],
-  ['solidproject_14',['SolidProject',['../class_solid_project.html',1,'']]],
-  ['solidscene_15',['SolidScene',['../class_solid_scene.html',1,'']]],
-  ['solidscenecamera_16',['SolidSceneCamera',['../class_solid_scene_camera.html',1,'']]],
-  ['solidshader_17',['SolidShader',['../class_solid_shader.html',1,'']]],
-  ['solidspotlight_18',['SolidSpotLight',['../class_solid_spot_light.html',1,'']]],
-  ['solidtransform_19',['SolidTransform',['../class_solid_transform.html',1,'']]]
+  ['phongmaterial_0',['PhongMaterial',['../class_phong_material.html',1,'']]],
+  ['primitive_1',['Primitive',['../struct_primitive.html',1,'']]],
+  ['projectsettings_2',['ProjectSettings',['../struct_project_settings.html',1,'']]]
 ];

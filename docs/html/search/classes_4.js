@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputmanager_0',['InputManager',['../struct_input_manager.html',1,'']]]
+  ['generalpreferences_0',['GeneralPreferences',['../struct_general_preferences.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['orthographic_0',['Orthographic',['../_solid_camera_8hpp.html#addbdeb0c4a9113fece681e37faca81d3ac130c48aea11ca5aff222ee3e75ab9a9',1,'SolidCamera.hpp']]]
+  ['info_0',['INFO',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806',1,'SolidLogger.hpp']]]
 ];

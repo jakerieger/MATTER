@@ -7,6 +7,7 @@ var dir_45321a3bcb7b5ca74741802ae8a3febd =
     [ "SolidEditorGrid.cpp", "_solid_editor_grid_8cpp.html", null ],
     [ "SolidGameObject.cpp", "_solid_game_object_8cpp.html", null ],
     [ "SolidLogger.cpp", "_solid_logger_8cpp.html", null ],
+    [ "SolidMaterial.cpp", "_solid_material_8cpp.html", null ],
     [ "SolidMeshRenderer.cpp", "_solid_mesh_renderer_8cpp.html", null ],
     [ "SolidProfiler.cpp", "_solid_profiler_8cpp.html", null ],
     [ "SolidProject.cpp", "_solid_project_8cpp.html", null ],
