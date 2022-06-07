@@ -29,7 +29,7 @@ public:
     std::vector<Texture> mTextures;
 
     SolidMeshRenderer(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
-    void Draw();
+    void Draw(glm::mat4& MVP);
 
 private:
     unsigned int VAO, VBO, EBO;

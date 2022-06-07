@@ -43,8 +43,7 @@ public:
     void SetTexture(std::string name, const unsigned int texture);
 
     virtual void Bind(glm::mat4 MVP) {}
-
-private:
+    
     SolidShader* mShader;
     RenderingMode mRenderingMode;
 };

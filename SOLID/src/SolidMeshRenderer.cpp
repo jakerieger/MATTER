@@ -41,8 +41,8 @@ void SolidMeshRenderer::SetupMesh() {
  * @todo Pass a material to this function and use it to set the shader uniforms.
  * Practically, each material will have one texture map for each texture type.
  */
-void SolidMeshRenderer::Draw() {
-    mMaterial->Bind();
+void SolidMeshRenderer::Draw(glm::mat4& MVP) {
+    mMaterial->Bind(MVP);
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
