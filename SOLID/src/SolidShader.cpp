@@ -1,4 +1,5 @@
 #include "SolidShader.hpp"
+#include "SolidUtils.hpp"
 
 SolidShader::SolidShader(const char* shaderPath) {
     std::string shaderCode;
@@ -55,6 +56,19 @@ SolidShader::SolidShader(const char* shaderPath) {
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);   
+}
+
+SolidShader* SolidShader::NewFromType(ShaderType type) {
+    switch (type) {
+        case Phong:
+            return new SolidShader((SolidUtils::GetEditorShadersPath() + "\\Phong.shader").c_str());
+        case BlinnPhong:
+            return new SolidShader((SolidUtils::GetEditorShadersPath() + "\\Phong.shader").c_str());
+        case Unlit:
+            return new SolidShader((SolidUtils::GetEditorShadersPath() + "\\Unlit.shader").c_str());
+        default:
+            return nullptr;
+    }
 }
 
 SolidShader::~SolidShader() {

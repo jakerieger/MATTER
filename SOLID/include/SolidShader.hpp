@@ -8,6 +8,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
+enum ShaderType { Phong, BlinnPhong, Unlit };
+
 /**
  * @brief Class used to load, compile, and link GLSL shaders
  * 
@@ -18,6 +20,7 @@ public:
     unsigned int ID;
     SolidShader(const char* shaderPath);
     ~SolidShader();
+    static SolidShader* NewFromType(ShaderType type);
     void Use();
     void Destroy();
 

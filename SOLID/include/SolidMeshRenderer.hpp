@@ -8,6 +8,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "SolidMaterial.hpp"
+
 struct Vertex {
     glm::vec3 Position;
     glm::vec3 Normal;
@@ -31,5 +33,6 @@ public:
 
 private:
     unsigned int VAO, VBO, EBO;
+    SolidMaterial* mMaterial;
     void SetupMesh();
 };

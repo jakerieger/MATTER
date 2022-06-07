@@ -26,6 +26,7 @@ add_executable(
     src/SolidGameObject.cpp
     src/SolidScene.cpp
     src/SolidTransform.cpp
+    src/SolidMaterial.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -42,6 +43,7 @@ add_executable(
     include/SolidComponent.hpp
     include/SolidLight.hpp
     include/SolidUIComponents.hpp
+    include/SolidMaterial.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp

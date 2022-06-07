@@ -33,6 +33,8 @@ void SolidMeshRenderer::SetupMesh() {
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
 
     glBindVertexArray(0);
+
+    mMaterial = new UnlitMaterial();
 }
 
 /**
@@ -40,22 +42,7 @@ void SolidMeshRenderer::SetupMesh() {
  * Practically, each material will have one texture map for each texture type.
  */
 void SolidMeshRenderer::Draw() {
-    // unsigned int diffuseNr = 1;
-    // unsigned int specularNr = 1;
-    // for (unsigned int i = 0; i < mTextures.size(); i++) {
-    //     glActiveTexture(GL_TEXTURE0 + i);
-    //     std::string number;
-    //     std::string name = mTextures[i].type;
-    //     if (name == "texture_diffuse") {
-    //         number = std::to_string(diffuseNr++);
-    //     } else if (name == "texture_specular") {
-    //         number = std::to_string(specularNr++);
-    //     }
-    //     glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
-    //     glBindTexture(GL_TEXTURE_2D, mTextures[i].ID);
-    // }
-
-    // glActiveTexture(GL_TEXTURE0);
+    mMaterial->Bind();
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, mIndices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
