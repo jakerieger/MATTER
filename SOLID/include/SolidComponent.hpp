@@ -18,6 +18,7 @@ public:
     const char* mName;
     SolidGameObject* mGameObject;
 
+    void SetType(SolidComponentType type) { mType = std::move(type); }
     SolidComponentType GetType() const { return mType; }
 
     virtual void Awake() {}

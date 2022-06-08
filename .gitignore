@@ -6,3 +6,8 @@ build/
 *.pdb
 
 .vscode/
+
+MANAGED/**/bin
+MANAGED/**/obj
+MANAGED/**/Debug
+MANAGED/**/Release

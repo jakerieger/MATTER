@@ -2,6 +2,9 @@
 #include <istream>
 #include <fstream>
 
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+
 #include "SolidEditorConfig.hpp"
 #include "SolidEditor.hpp"
 #include "SolidUtils.hpp"
@@ -9,6 +12,19 @@
 
 #include <nlohmann/json.hpp>
 using JSON = nlohmann::json;
+
+std::tuple<MonoDomain*, MonoAssembly*> LoadManagedLibs() {
+    MonoDomain* domain;
+    domain = mono_jit_init("MatterEngine");
+    MonoAssembly* assembly;
+    assembly = mono_domain_assembly_open(domain, "MatterEngine.dll");
+
+    return std::make_tuple(domain, assembly);
+}
+
+void CleanupManagedLibs(MonoDomain* domain) {
+    mono_jit_cleanup(domain);
+}
 
 int main(int argc, char *argv[]) {
     // Get last opened project
@@ -42,6 +58,8 @@ int main(int argc, char *argv[]) {
     editor.SetEditorConfig(editorConfig);
     editor.SetProject(testProject);
     editor.Run();
+
+    CleanupManagedLibs(std::get<0>(managed_libs));
 
     return 0;
 }

@@ -28,6 +28,7 @@ add_executable(
     src/SolidTransform.cpp
     src/SolidMaterial.cpp
     src/SolidColor.cpp
+    src/SolidModel.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -46,6 +47,7 @@ add_executable(
     include/SolidUIComponents.hpp
     include/SolidMaterial.hpp
     include/SolidColor.hpp
+    include/SolidModel.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp
@@ -62,3 +64,5 @@ target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/gl
 
 target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/assimp-vc143-mtd.lib
                             optimized ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/assimp-vc143-mt.lib)
+
+target_link_libraries(SOLID ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/mono-2.0-sgen.lib)
