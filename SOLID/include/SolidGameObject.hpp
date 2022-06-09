@@ -30,6 +30,9 @@ public:
     unsigned int GetID() const { return mID; }
     void SetID(unsigned int id) { mID = std::move(id); }
 
+    const char* GetTag() const { return mTag; }
+    void SetTag(const char* tag) { mTag = std::move(tag); }
+
     template<typename T>
     T* GetComponent() {
         for (auto& component : mComponents) {
@@ -56,4 +59,5 @@ public:
 private:
     SolidGameObjectType mType;
     unsigned int mID;
+    const char* mTag;
 };

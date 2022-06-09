@@ -152,7 +152,7 @@ void SolidEditor::Init() {
 
     mLogger.Log("Editor initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
 
-    SolidUI::InitUI(mWindow);
+    SolidUI::InitUI(mWindow, mProject);
 }
 
 std::tuple<unsigned int, unsigned int> SolidEditor::CreateRenderBuffers() {

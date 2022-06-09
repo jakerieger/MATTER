@@ -151,5 +151,17 @@ namespace SolidUtils {
             printf("Failed to load texture");
             stbi_image_free(data);
         }
+
+        return textureID;
     }
+
+    inline static unsigned int ColorVecToIMU32(ImVec4 color) {
+        unsigned int r = (unsigned int)(color.x * 255);
+        unsigned int g = (unsigned int)(color.y * 255);
+        unsigned int b = (unsigned int)(color.z * 255);
+        unsigned int a = 255;
+
+        unsigned int colorUint = (a << 24) | (b << 16) | (g << 8) | r;
+        return colorUint;
+    };
 }

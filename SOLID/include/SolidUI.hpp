@@ -24,6 +24,7 @@
 #include "SolidGameObject.hpp"
 #include "SolidModel.hpp"
 #include "SolidMeshRenderer.hpp"
+#include "SolidMaterial.hpp"
 // #include <WIN32/Dialogs.hpp>
 
 /**
@@ -72,7 +73,22 @@ namespace SolidUI {
 
     static unsigned int game_object_selected_id = 0;
 
+    static char* textureName = "None";
+
     inline static std::map<std::string, ImVec4> GetColors() { return colors; }
+
+    struct ProjectAssets {
+        std::vector<std::string> textures;
+        std::vector<std::string> meshes;
+        std::vector<std::string> materials;
+        std::vector<std::string> scenes;
+        std::vector<std::string> game_objects;
+        std::vector<std::string> scripts;
+        std::vector<std::string> audio;
+        std::vector<std::string> fonts;
+    };
+
+    static ProjectAssets project_assets;
 
     namespace Helpers {
         inline static void LoadColors(std::string themeName) {
@@ -115,7 +131,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_PopupBg]                = colors["menu"];
             styleColors[ImGuiCol_Border]                 = colors["border"];
             styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.f, 0.f, 0.f, 0.f);
-            styleColors[ImGuiCol_FrameBg]                = colors["frame"];
+            styleColors[ImGuiCol_FrameBg]                = colors["menu"];
             styleColors[ImGuiCol_FrameBgHovered]         = colors["frame"];
             styleColors[ImGuiCol_FrameBgActive]          = colors["frame"];
             styleColors[ImGuiCol_TitleBg]                = colors["panel"];
@@ -186,6 +202,51 @@ namespace SolidUI {
 
             // Fonts[4]
             ImFont* consoleFontBold = io.Fonts->AddFontFromFileTTF((SolidUtils::GetEditorFontsPath() + "/FiraCode-Bold.ttf").c_str(), 16.0f);
+        }
+    
+        inline static void ParseProjectAssets(SolidProject &project) {
+            project_assets.textures.clear();
+            project_assets.meshes.clear();
+            project_assets.materials.clear();
+            project_assets.fonts.clear();
+            project_assets.scripts.clear();
+            project_assets.scenes.clear();
+            project_assets.game_objects.clear();
+            project_assets.audio.clear();
+            project_assets.fonts.clear();
+
+            for (const auto &entry : std::filesystem::directory_iterator(project.GetProjectPath())) {
+                SolidUtils::FileType type = SolidUtils::GetFileType(entry.path().extension().string());
+
+                switch (type) {
+                    case SolidUtils::FileType::FileType_Font:
+                        project_assets.fonts.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Script:
+                        project_assets.scripts.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Scene:
+                        project_assets.scenes.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Unknown:
+                        project_assets.game_objects.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Texture:
+                        project_assets.textures.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Model:
+                        project_assets.meshes.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Material:
+                        project_assets.materials.push_back(entry.path().string());
+                        break;
+                    case SolidUtils::FileType::FileType_Sound:
+                        project_assets.audio.push_back(entry.path().string());
+                        break;
+                    default:
+                        return;
+                }
+            }
         }
     }
 
@@ -509,36 +570,36 @@ namespace SolidUI {
             for (const auto &entry : std::filesystem::directory_iterator(project.GetProjectPath())) {
                 if (entry.is_directory()) {
                     if (std::filesystem::is_empty(entry.path())) {
-                        SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_FolderEmpty, colors["text"]);
+                        SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_FolderEmpty, colors["text"]);
                     } else {
-                        SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_Folder, colors["text"]);
+                        SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_Folder, colors["text"]);
                     }
                 } else {
                     SolidUtils::FileType file_type = SolidUtils::GetFileType(entry.path().extension().string());
                     switch (file_type) {
                         case SolidUtils::FileType::FileType_Script:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Script, colors["accent"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Script, colors["accent"]);
                             break;
                         case SolidUtils::FileType::FileType_Texture:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Texture, colors["success"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Texture, colors["success"]);
                             break;
                         case SolidUtils::FileType::FileType_Sound:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Sound, colors["warning"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Sound, colors["warning"]);
                             break;
                         case SolidUtils::FileType::FileType_Font:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Font, colors["error"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Font, colors["error"]);
                             break;
                         case SolidUtils::FileType::FileType_Model:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Model, colors["info"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Model, colors["info"]);
                             break;
                         case SolidUtils::FileType::FileType_Scene:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Scene, colors["text"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Scene, colors["text"]);
                             break;
                         case SolidUtils::FileType::FileType_Unknown:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File, colors["text"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File, colors["text"]);
                             break;
                         case SolidUtils::FileType::FileType_Project:
-                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File, colors["text"]);
+                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File, colors["text"]);
                             break;
                     }
                 }
@@ -575,7 +636,8 @@ namespace SolidUI {
                         SolidUIComponents::DragFloatN_Colored(
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mPosition,
-                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f
+                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f,
+                            colors["error"], colors["success"], colors["info"]
                         );
 
                         ImGui::Text("Rotation");
@@ -584,7 +646,8 @@ namespace SolidUI {
                         SolidUIComponents::DragFloatN_Colored(
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mRotation,
-                            3, 0.1f, -359.99f, 359.99f, "%.1f", 1.0f
+                            3, 0.1f, -359.99f, 359.99f, "%.1f", 1.0f,
+                            colors["error"], colors["success"], colors["info"]
                         );
 
                         ImGui::Text("Scale");
@@ -593,7 +656,8 @@ namespace SolidUI {
                         SolidUIComponents::DragFloatN_Colored(
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mScale,
-                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f
+                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f,
+                            colors["error"], colors["success"], colors["info"]
                         );
                     }
                     ImGui::Separator();
@@ -607,16 +671,45 @@ namespace SolidUI {
                     for (const auto &component : currentScene->GetGameObjects()[game_object_selected_id - 1]->mComponents) {
                         if (component->GetType() == SolidComponentType::COM_Model) {
                             if (ImGui::CollapsingHeader(component->mName, ImGuiTreeNodeFlags_DefaultOpen)) {
-                                SolidModel* model = dynamic_cast<SolidModel*>(component);
-                                for (auto &mesh : model->mMeshes) {
+                                for (auto &mesh : dynamic_cast<SolidModel*>(component)->mMeshes) {
                                     if (ImGui::CollapsingHeader("Mesh")) {
-                                        ImGui::Text("Material");
-                                        UnlitMaterial* material = dynamic_cast<UnlitMaterial*>(mesh.GetMaterial());
-                                        ImGui::ColorPicker4("Color", (float*)&material->GetDiffuse().color);
-                                        ImGui::Text("Texture");
-                                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth());
-                                        if (ImGui::BeginDragDropTarget()) {
+                                        MaterialType materialType = mesh.GetMaterial()->GetType();
+                                        std::string matTypes[] = { "Phong", "Unlit" };
+                                        if (ImGui::TreeNode(("Material (" + matTypes[materialType] + ")").c_str())) {
+                                            if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Phong) {
+                                                
+                                            } else if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Unlit) {
+                                                ImGui::Text("Color");
+                                                ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
+                                                ImGui::ColorEdit4(
+                                                    "Diffuse",
+                                                    (float*)&dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.color,
+                                                    ImGuiColorEditFlags_NoLabel
+                                                );
 
+                                                ImGui::Text("Texture");
+                                                ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
+                                                if (SolidUIComponents::DragDropTarget(ProjectItemType::ProjectItemType_File_Texture, ImVec2(ImGui::GetContentRegionAvail().x, 24.f))) {
+                                                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
+                                                        const char *path = (const char*)payload->Data;
+                                                        unsigned int texID = SolidUtils::LoadTexture(path);
+                                                        dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &texID;
+                                                    }
+
+                                                    ImGui::EndDragDropTarget();
+                                                }
+
+                                                // if (ImGui::BeginDragDropTarget()) {
+                                                //     if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
+                                                //         textureName = (char*)payload->Data;
+                                                //         unsigned int textureID = 0;
+                                                //         dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &textureID;
+                                                //     }
+                                                //     ImGui::EndDragDropTarget();
+                                                // }
+                                            }
+
+                                            ImGui::TreePop();
                                         }
                                     }
                                 }
@@ -692,15 +785,17 @@ namespace SolidUI {
         }
     }
 
-    inline static void InitUI(GLFWwindow* window) {
+    inline static void InitUI(GLFWwindow* window, SolidProject &project) {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO(); (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable;
         
-        Helpers::LoadColors("Pro");
+        Helpers::LoadColors("Default");
         Helpers::ApplyColors();
         Helpers::LoadFonts(io);
+
+        Helpers::ParseProjectAssets(project);
 
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 460");

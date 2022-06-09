@@ -1,24 +1,24 @@
 <theme
-    name="Default"
+    name="Pro"
     author="Jake Rieger"
     version="1.0"
-    description="A clean, flat dark theme based on Tokyo Night for VS Code."
+    description="Dark grey theme with good contrast"
 >
     <colors>
-        <color name="panel" value="1F2334" opacity="1.0"/>
-        <color name="scene" value="24283A" opacity="1.0"/>
-        <color name="frame" value="292E41" opacity="1.0"/>
-        <color name="accent" value="47A6F2" opacity="1.0"/>
-        <color name="border" value="1B1E2E" opacity="1.0"/>
-        <color name="text" value="9EB1D5" opacity="1.0"/>
-        <color name="text_inactive" value="7982A8" opacity="1.0"/>
-        <color name="selected" value="292E41" opacity="1.0"/>
-        <color name="header" value="1F2334" opacity="1.0"/>
-        <color name="menu" value="1A1C29" opacity="1.0"/>
-        <color name="success" value="8bc351" opacity="1.0"/>
-        <color name="warning" value="dfaf6c" opacity="1.0"/>
-        <color name="error" value="f2423c" opacity="1.0"/>
-        <color name="info" value="2689e2" opacity="1.0"/>
+        <color name="panel" value="2b2b2b" opacity="1.0"/>
+        <color name="scene" value="323232" opacity="1.0"/>
+        <color name="frame" value="1c1c1c" opacity="1.0"/>
+        <color name="accent" value="545a99" opacity="1.0"/>
+        <color name="border" value="1c1c1c" opacity="1.0"/>
+        <color name="text" value="cccccc" opacity="1.0"/>
+        <color name="text_inactive" value="8c8c8c" opacity="1.0"/>
+        <color name="selected" value="404040" opacity="1.0"/>
+        <color name="header" value="2b2b2b" opacity="1.0"/>
+        <color name="menu" value="1c1c1c" opacity="1.0"/>
+        <color name="success" value="6ce582" opacity="1.0"/>
+        <color name="warning" value="de9545" opacity="1.0"/>
+        <color name="error" value="e35b5b" opacity="1.0"/>
+        <color name="info" value="2d89e5" opacity="1.0"/>
     </colors>
     <fonts>
         <font type="interface" name="TitilliumWeb-Regular" size="20"/>

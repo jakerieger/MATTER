@@ -28,9 +28,14 @@ void SolidMaterial::SetTexture(std::string name, const unsigned int texture) {
     mShader->setInt(name, texture);
 }
 
-PhongMaterial::PhongMaterial() {
+PhongMaterial::PhongMaterial() : SolidMaterial() {
     mShader = SolidShader::NewFromType(ShaderType::Phong);
     mRenderingMode = Opaque;
+    SetType(MaterialType::MAT_Phong);
+
+    mDiffuse = Diffuse();
+    mSpecular = Specular();
+    mEmission = Emission();
 }
 
 PhongMaterial::~PhongMaterial() {
@@ -50,18 +55,45 @@ void PhongMaterial::Bind(glm::mat4 MVP) {
     SetMatrix("MVP", MVP);
 }
 
-UnlitMaterial::UnlitMaterial() {
+UnlitMaterial::UnlitMaterial() : SolidMaterial() {
     mShader = SolidShader::NewFromType(ShaderType::Unlit);
     mRenderingMode = Opaque;
+    SetType(MaterialType::MAT_Unlit);
+
+    mDiffuse = Diffuse();
 }
 
 void UnlitMaterial::Bind(glm::mat4 MVP) {
     mShader->Use();
     SetColor("material.diffuse", mDiffuse.color);
-    // SetTexture("material.diffuseTexture", *mDiffuse.texture);
+
+    if (mDiffuse.texture != nullptr) {
+        SetTexture("material.texture", *mDiffuse.texture);
+        SetInteger("material.hasTexture", 1);
+    } else {
+        SetInteger("material.hasTexture", 0);
+    }
+
     SetMatrix("MVP", MVP);
 }
 
 UnlitMaterial::~UnlitMaterial() {
     delete mShader;
+}
+
+Diffuse::Diffuse() {
+    color = SolidColor(1.0f, 1.0f, 1.0f, 1.0f);
+    texture = nullptr;
+}
+
+Specular::Specular() {
+    color = SolidColor(1.0f, 1.0f, 1.0f, 1.0f);
+    texture = nullptr;
+    strength = 1.0f;
+}
+
+Emission::Emission() {
+    color = SolidColor(1.0f, 1.0f, 1.0f, 1.0f);
+    texture = nullptr;
+    strength = 1.0f;
 }

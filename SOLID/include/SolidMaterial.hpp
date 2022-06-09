@@ -10,21 +10,25 @@
 struct Diffuse {
     SolidColor color;
     unsigned int* texture;
+    Diffuse();
 };
 
 struct Specular {
     SolidColor color;
     unsigned int* texture;
     float strength;
+    Specular();
 };
 
 struct Emission {
     SolidColor color;
     unsigned int* texture;
     float strength;
+    Emission();
 };
 
 enum RenderingMode { Opaque, Transparent };
+enum MaterialType { MAT_Phong, MAT_Unlit };
 
 class SolidMaterial {
 public:
@@ -43,9 +47,14 @@ public:
     void SetTexture(std::string name, const unsigned int texture);
 
     virtual void Bind(glm::mat4 MVP) {}
+    MaterialType GetType() { return mType; }
+    void SetType(MaterialType type) { mType = type; }
     
     SolidShader* mShader;
     RenderingMode mRenderingMode;
+
+private:
+    MaterialType mType;
 };
 
 class PhongMaterial : public SolidMaterial {
@@ -57,13 +66,8 @@ public:
     void SetSpecular(const Specular& specular) { mSpecular = specular; }
     void SetEmission(const Emission& emission) { mEmission = emission; }
 
-    Diffuse GetDiffuse() { return mDiffuse; }
-    Specular GetSpecular() { return mSpecular; }
-    Emission GetEmission() { return mEmission; }
-
     void Bind(glm::mat4 MVP);
 
-private:
     Diffuse mDiffuse;
     Specular mSpecular;
     Emission mEmission;
@@ -78,7 +82,5 @@ public:
     Diffuse GetDiffuse() { return mDiffuse; }
 
     void Bind(glm::mat4 MVP);
-
-private:
     Diffuse mDiffuse;
 };
