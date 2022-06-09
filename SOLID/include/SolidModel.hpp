@@ -11,18 +11,19 @@
 
 #include "SolidMeshRenderer.hpp"
 #include "SolidComponent.hpp"
+#include "SolidSceneCamera.hpp"
 
 class SolidModel : public SolidComponent {
 public:
     SolidModel(char* path);
     ~SolidModel();
 
-    void Draw();
+    void Draw(glm::mat4 MVP);
     std::vector<SolidMeshRenderer> mMeshes;
 
     void Awake();
     void Start();
-    void Update();
+    void Update(SolidSceneCamera& sceneCamera);
     void LateUpdate();
     void FixedUpdate();
     void Destroyed();

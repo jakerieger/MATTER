@@ -21,6 +21,6 @@ struct Material {
 uniform Material material;
 
 void main() {
-    FragColor = material.color;
+    FragColor = material.diffuse;
 }
 @ENDFRAGMENT

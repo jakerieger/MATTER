@@ -98,10 +98,23 @@ vec3 CalcDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirectio
     vec3 reflectDirection = reflect(-lightDirection, normal);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), uMaterial.shininess);
 
-    // combine results
-    vec3 ambient  = light.ambient  *        texture(uMaterial.diffuse,  TexCoords).rgb;
-    vec3 diffuse  = light.diffuse  * diff * texture(uMaterial.diffuse,  TexCoords).rgb;
-    vec3 specular = light.specular * spec * texture(uMaterial.specular, TexCoords).rgb;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    if (uMaterial.diffuse != 0) {
+        ambient  = light.ambient  *        texture(uMaterial.diffuse,  TexCoords).rgb;
+        diffuse  = light.diffuse  * diff * texture(uMaterial.diffuse,  TexCoords).rgb;
+    } else {
+        ambient  = light.ambient;
+        diffuse  = light.diffuse * diff;
+    }
+
+    if (uMaterial.specular != 0) {
+        specular = light.specular * spec * texture(uMaterial.specular, TexCoords).rgb;
+    } else {
+        specular = light.specular * spec;
+    }
 
     return (ambient + diffuse + specular);
 }
@@ -116,10 +129,24 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDirect
     // attenuation
     float distance    = length(light.position - fragPos);
     float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
-    // combine results
-    vec3 ambient  = light.ambient  *        vec3(texture(uMaterial.diffuse,  TexCoords));
-    vec3 diffuse  = light.diffuse  * diff * vec3(texture(uMaterial.diffuse,  TexCoords));
-    vec3 specular = light.specular * spec * vec3(texture(uMaterial.specular, TexCoords));
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    if (uMaterial.diffuse != 0) {
+        ambient  = light.ambient  *        texture(uMaterial.diffuse,  TexCoords).rgb;
+        diffuse  = light.diffuse  * diff * texture(uMaterial.diffuse,  TexCoords).rgb;
+    } else {
+        ambient  = light.ambient;
+        diffuse  = light.diffuse * diff;
+    }
+
+    if (uMaterial.specular != 0) {
+        specular = light.specular * spec * texture(uMaterial.specular, TexCoords).rgb;
+    } else {
+        specular = light.specular * spec;
+    }
 
     ambient  *= attenuation;
     diffuse  *= attenuation;

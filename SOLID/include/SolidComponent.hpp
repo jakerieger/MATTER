@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SolidSceneCamera.hpp"
+
 class SolidGameObject; ///< Forward declaration
 
 enum SolidComponentType {
@@ -23,7 +25,7 @@ public:
 
     virtual void Awake() {}
     virtual void Start() {}
-    virtual void Update() {}
+    virtual void Update(SolidSceneCamera& sceneCamera) {}
     virtual void FixedUpdate() {}
     virtual void LateUpdate() {}
     virtual void Destroyed() {}

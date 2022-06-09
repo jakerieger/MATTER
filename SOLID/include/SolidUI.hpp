@@ -6,6 +6,7 @@
 #include <fstream>
 #include <map>
 
+#include <glad/glad.h>
 #include <imgui/IconsFontAwesome6.h>
 #include <imgui/imgui.h>
 #include <imgui/imgui_internal.h>
@@ -18,6 +19,11 @@
 #include "SolidLogger.hpp"
 #include "SolidProfiler.hpp"
 #include "SolidUIComponents.hpp"
+#include "SolidProject.hpp"
+#include "SolidScene.hpp"
+#include "SolidGameObject.hpp"
+#include "SolidModel.hpp"
+#include "SolidMeshRenderer.hpp"
 // #include <WIN32/Dialogs.hpp>
 
 /**
@@ -55,6 +61,16 @@ namespace SolidUI {
     // This is confusing variable naming, but it's just a way to keep track of the current state of the console UI
     static bool console_item_selected = false;
     static unsigned int console_selected_item = 0;
+
+    // Toolbar button states
+    //                                       move   rotate  scale
+    static bool transformation_states[3] = { true, false, false };
+    //                             snap   enabled
+    static bool grid_states[2] = { true, true };
+    //                               wireframe solid  lit
+    static bool render_states[3] = { false,    true, false };
+
+    static unsigned int game_object_selected_id = 0;
 
     inline static std::map<std::string, ImVec4> GetColors() { return colors; }
 
@@ -96,7 +112,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_TextDisabled]           = colors["text_inactive"];
             styleColors[ImGuiCol_WindowBg]               = colors["panel"];
             styleColors[ImGuiCol_ChildBg]                = colors["panel"];
-            styleColors[ImGuiCol_PopupBg]                = colors["panel"];
+            styleColors[ImGuiCol_PopupBg]                = colors["menu"];
             styleColors[ImGuiCol_Border]                 = colors["border"];
             styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.f, 0.f, 0.f, 0.f);
             styleColors[ImGuiCol_FrameBg]                = colors["frame"];
@@ -117,17 +133,17 @@ namespace SolidUI {
             styleColors[ImGuiCol_ButtonHovered]          = SolidUtils::ChangeColorAlpha(colors["selected"], 0.7f);
             styleColors[ImGuiCol_ButtonActive]           = SolidUtils::ChangeColorAlpha(colors["selected"], 0.55f);
             styleColors[ImGuiCol_Header]                 = colors["header"];
-            styleColors[ImGuiCol_HeaderHovered]          = colors["selected"];
-            styleColors[ImGuiCol_HeaderActive]           = colors["selected"];
+            styleColors[ImGuiCol_HeaderHovered]          = colors["accent"];
+            styleColors[ImGuiCol_HeaderActive]           = colors["accent"];
             styleColors[ImGuiCol_Separator]              = SolidUtils::ChangeColorAlpha(styleColors[ImGuiCol_Border], 0.67f);
             styleColors[ImGuiCol_SeparatorHovered]       = colors["accent"];
             styleColors[ImGuiCol_SeparatorActive]        = colors["accent"];
             styleColors[ImGuiCol_ResizeGrip]             = ImVec4(0.26f, 0.59f, 0.98f, 0.20f);
             styleColors[ImGuiCol_ResizeGripHovered]      = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
             styleColors[ImGuiCol_ResizeGripActive]       = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
-            styleColors[ImGuiCol_Tab]                    = styleColors[ImGuiCol_Header];
-            styleColors[ImGuiCol_TabHovered]             = styleColors[ImGuiCol_HeaderHovered];
-            styleColors[ImGuiCol_TabActive]              = styleColors[ImGuiCol_HeaderActive];
+            styleColors[ImGuiCol_Tab]                    = colors["header"];
+            styleColors[ImGuiCol_TabHovered]             = colors["selected"];
+            styleColors[ImGuiCol_TabActive]              = colors["selected"];
             styleColors[ImGuiCol_TabUnfocused]           = styleColors[ImGuiCol_Tab];
             styleColors[ImGuiCol_TabUnfocusedActive]     = styleColors[ImGuiCol_TabActive];
             styleColors[ImGuiCol_TableBorderLight]       = ImVec4(0.f, 0.f, 0.f, 0.f);
@@ -254,33 +270,150 @@ namespace SolidUI {
 
         inline static void Toolbar() {
             ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_MenuBar;
-            if (ImGui::BeginViewportSideBar("##toolbar", ImGui::GetMainViewport(), ImGuiDir_Up, ImGui::GetFrameHeightWithSpacing(), window_flags)) {
+            ImGui::PushStyleColor(ImGuiCol_Separator, colors["panel"]);
+            if (ImGui::BeginViewportSideBar("##toolbar", ImGui::GetMainViewport(), ImGuiDir_Up, ImGui::GetFrameHeight(), window_flags)) {
                 if (ImGui::BeginMenuBar()) {
-                    if (ImGui::Button(ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT, ImVec2(36, 36))) {
-
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT,
+                        ImVec2(36, 24),
+                        transformation_states[0],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        transformation_states[0] = true;
+                        transformation_states[1] = false;
+                        transformation_states[2] = false;
                     }
 
-                    if (ImGui::Button(ICON_FA_ROTATE, ImVec2(36, 36))) {
-
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_ROTATE,
+                        ImVec2(36, 24),
+                        transformation_states[1],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        transformation_states[0] = false;
+                        transformation_states[1] = true;
+                        transformation_states[2] = false;
                     }
 
-                    if (ImGui::Button(ICON_FA_MAXIMIZE, ImVec2(36, 36))) {
-
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_MAXIMIZE,
+                        ImVec2(36, 24),
+                        transformation_states[2],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        transformation_states[0] = false;
+                        transformation_states[1] = false;
+                        transformation_states[2] = true;
                     }
 
-                    if (ImGui::Button(ICON_FA_MAGNET, ImVec2(36, 36))) {
+                    ImGui::Separator();
 
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_MAGNET,
+                        ImVec2(36, 24),
+                        grid_states[0],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        grid_states[0] = !grid_states[0];
                     }
 
-                    if (ImGui::Button(ICON_FA_CUBES, ImVec2(36, 36))) {
-
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_BORDER_ALL,
+                        ImVec2(36, 24),
+                        grid_states[1],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        grid_states[1] = !grid_states[1];
                     }
+
+                    ImGui::Separator();
+
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_SQUARE,
+                        ImVec2(36, 24),
+                        render_states[0],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        render_states[0] = true;
+                        render_states[1] = false;
+                        render_states[2] = false;
+
+                        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                    }
+
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_DICE_D6,
+                        ImVec2(36, 24),
+                        render_states[1],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        render_states[0] = false;
+                        render_states[1] = true;
+                        render_states[2] = false;
+
+                        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                    }
+
+                    if (SolidUIComponents::ToggleButton(
+                        ICON_FA_CUBES,
+                        ImVec2(36, 24),
+                        render_states[2],
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
+                        render_states[0] = false;
+                        render_states[1] = false;
+                        render_states[2] = true;
+
+                        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                    }
+
+                    ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - 56);
+                    ImGui::BeginGroup();
+                        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+                        if (ImGui::Button(ICON_FA_PLAY, ImVec2(36, 24))) {
+
+                        }
+
+                        if (ImGui::Button(ICON_FA_PAUSE, ImVec2(36, 24))) {
+
+                        }
+
+                        if (ImGui::Button(ICON_FA_FORWARD_FAST, ImVec2(36, 24))) {
+
+                        }
+                        ImGui::PopStyleVar();
+                    ImGui::EndGroup();
 
                     ImGui::EndMenuBar();
                 }
 
                 ImGui::End();
             }
+            ImGui::PopStyleColor();
         }
 
         inline static void Console(SolidLogger &logger) {
@@ -313,8 +446,7 @@ namespace SolidUI {
                 ImGui::EndGroup();
                 
                 ImGui::BeginChild("##console_log", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
-                    for (int i = 0; i < logger.GetLogs().size(); i++) {
-                        LogEntry &log = logger.GetLogs()[i];
+                    for (auto &log : logger.GetLogs()) {
                         if (log.level == LogLevel::INFO) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["info"], ICON_FA_CIRCLE_EXCLAMATION);
@@ -371,13 +503,52 @@ namespace SolidUI {
             ImGui::End();
         }
 
-        inline static void Project() {
+        inline static void Project(SolidProject &project) {
             ImGui::Begin(ICON_FA_FOLDER_CLOSED " Project");
+
+            for (const auto &entry : std::filesystem::directory_iterator(project.GetProjectPath())) {
+                if (entry.is_directory()) {
+                    if (std::filesystem::is_empty(entry.path())) {
+                        SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_FolderEmpty, colors["text"]);
+                    } else {
+                        SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_Folder, colors["text"]);
+                    }
+                } else {
+                    SolidUtils::FileType file_type = SolidUtils::GetFileType(entry.path().extension().string());
+                    switch (file_type) {
+                        case SolidUtils::FileType::FileType_Script:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Script, colors["accent"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Texture:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Texture, colors["success"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Sound:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Sound, colors["warning"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Font:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Font, colors["error"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Model:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Model, colors["info"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Scene:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File_Scene, colors["text"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Unknown:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File, colors["text"]);
+                            break;
+                        case SolidUtils::FileType::FileType_Project:
+                            SolidUIComponents::ProjectItem(entry.path().filename().string().c_str(), ProjectItemType::ProjectItemType_File, colors["text"]);
+                            break;
+                    }
+                }
+            }
 
             ImGui::End();
         }
 
         inline static void Scene(unsigned int sceneTexture) {
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
             ImGui::Begin(ICON_FA_IMAGE " Scene");
                 ImGui::BeginChild("SceneTexture");
                     ImVec2 viewportSize = ImGui::GetWindowSize();
@@ -388,17 +559,84 @@ namespace SolidUI {
                     ImGui::Image((void*)sceneTexture, viewportSize, ImVec2(0, 1), ImVec2(1, 0));
                 ImGui::EndChild();
             ImGui::End();
+            ImGui::PopStyleVar();
         }
 
-        inline static void Inspector() {
+        inline static void Inspector(SolidScene *currentScene) {
             ImGui::Begin(ICON_FA_CUBE " Inspector");
+                ImGui::PushStyleColor(ImGuiCol_Header, colors["menu"]);
+                if (game_object_selected_id != 0) {
+                    ImGui::Text(currentScene->GetGameObjects()[game_object_selected_id - 1]->mName);
+                    ImGui::Separator();
+                    if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
+                        ImGui::Text("Position");
+                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth());
+                        std::string labelID = "##Position" + std::to_string(game_object_selected_id);
+                        SolidUIComponents::DragFloatN_Colored(
+                            labelID.c_str(),
+                            (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mPosition,
+                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f
+                        );
 
+                        ImGui::Text("Rotation");
+                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth());
+                        labelID = "##Rotation" + std::to_string(game_object_selected_id);
+                        SolidUIComponents::DragFloatN_Colored(
+                            labelID.c_str(),
+                            (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mRotation,
+                            3, 0.1f, -359.99f, 359.99f, "%.1f", 1.0f
+                        );
+
+                        ImGui::Text("Scale");
+                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth());
+                        labelID = "##Scale" + std::to_string(game_object_selected_id);
+                        SolidUIComponents::DragFloatN_Colored(
+                            labelID.c_str(),
+                            (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mScale,
+                            3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f
+                        );
+                    }
+                    ImGui::Separator();
+
+                    if (currentScene->GetGameObjects()[game_object_selected_id - 1]->GetType() == GO_Light) {
+                        if (ImGui::CollapsingHeader("Light", ImGuiTreeNodeFlags_DefaultOpen)) {
+                            ImGui::Text("Light properties");
+                        }
+                    }
+
+                    for (const auto &component : currentScene->GetGameObjects()[game_object_selected_id - 1]->mComponents) {
+                        if (component->GetType() == SolidComponentType::COM_Model) {
+                            if (ImGui::CollapsingHeader(component->mName, ImGuiTreeNodeFlags_DefaultOpen)) {
+                                SolidModel* model = dynamic_cast<SolidModel*>(component);
+                                for (auto &mesh : model->mMeshes) {
+                                    if (ImGui::CollapsingHeader("Mesh")) {
+                                        ImGui::Text("Material");
+                                        UnlitMaterial* material = dynamic_cast<UnlitMaterial*>(mesh.GetMaterial());
+                                        ImGui::ColorPicker4("Color", (float*)&material->GetDiffuse().color);
+                                        ImGui::Text("Texture");
+                                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth());
+                                        if (ImGui::BeginDragDropTarget()) {
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                ImGui::PopStyleColor();
             ImGui::End();
         }
 
-        inline static void SceneHierarchy() {
+        inline static void SceneHierarchy(SolidScene *currentScene) {
             ImGui::Begin(ICON_FA_DIAGRAM_PROJECT " Hierarchy");
-
+                ImGui::PushStyleColor(ImGuiCol_HeaderActive, colors["accent"]);
+                for (auto& gameObject : currentScene->GetGameObjects()) {
+                    if (ImGui::Selectable(gameObject->mName, game_object_selected_id == gameObject->GetID())) {
+                        game_object_selected_id = gameObject->GetID();
+                    }
+                }
+                ImGui::PopStyleColor();
             ImGui::End();
         }
 
@@ -468,7 +706,7 @@ namespace SolidUI {
         ImGui_ImplOpenGL3_Init("#version 460");
     }
 
-    inline static void DrawUI(unsigned int sceneTexture, SolidLogger &logger) {
+    inline static void DrawUI(unsigned int sceneTexture, SolidLogger &logger, SolidProject &project) {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -477,10 +715,10 @@ namespace SolidUI {
         ImGUIWindows::MainMenuBar();
         ImGUIWindows::Toolbar();
         ImGUIWindows::Console(logger);
-        ImGUIWindows::Project();
+        ImGUIWindows::Project(project);
         ImGUIWindows::Scene(sceneTexture);
-        ImGUIWindows::Inspector();
-        ImGUIWindows::SceneHierarchy();
+        ImGUIWindows::Inspector(project.GetActiveScene());
+        ImGUIWindows::SceneHierarchy(project.GetActiveScene());
         ImGUIWindows::Analytics();
     }
 

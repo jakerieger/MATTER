@@ -11,9 +11,9 @@ SolidModel::~SolidModel() {
 
 }
 
-void SolidModel::Draw() {
+void SolidModel::Draw(glm::mat4 MVP) {
     for (unsigned int i = 0; i < mMeshes.size(); i++) {
-        mMeshes[i].Draw(glm::mat4(1.0f));
+        mMeshes[i].Draw(MVP);
     }
 }
 
@@ -46,11 +46,76 @@ SolidMeshRenderer SolidModel::ProcessMesh(aiMesh* mesh, const aiScene* scene) {
     std::vector<unsigned int> indices;
     std::vector<Texture> textures;
 
+    for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
+        Vertex vertex;
+        glm::vec3 vector;
+        vector.x = mesh->mVertices[i].x;
+        vector.y = mesh->mVertices[i].y;
+        vector.z = mesh->mVertices[i].z;
+        vertex.Position = vector;
+
+        vector.x = mesh->mNormals[i].x;
+        vector.y = mesh->mNormals[i].y;
+        vector.z = mesh->mNormals[i].z;
+        vertex.Normal = vector;
+
+        if (mesh->mTextureCoords[0]) {
+            glm::vec2 vec;
+            vec.x = mesh->mTextureCoords[0][i].x;
+            vec.y = mesh->mTextureCoords[0][i].y;
+            vertex.TexCoords = vec;
+        } else {
+            vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+        }
+
+        vertices.push_back(vertex);
+    }
+
+    for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
+        aiFace face = mesh->mFaces[i];
+
+        for (unsigned int j = 0; j < face.mNumIndices; j++) {
+            indices.push_back(face.mIndices[j]);
+        }
+    }
+
+    if (mesh->mMaterialIndex >= 0) {
+        aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+
+        std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+        textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+        std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+        textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+    }
+
     return SolidMeshRenderer(vertices, indices, textures);
 }
 
 std::vector<Texture> SolidModel::LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {
-    return std::vector<Texture>();
+    std::vector<Texture> textures;
+
+    for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
+        aiString str;
+        mat->GetTexture(type, i, &str);
+        bool skip = false;
+
+        for (unsigned int j = 0; j < mTexturesLoaded.size(); j++) {
+            if (std::strcmp(mTexturesLoaded[j].path.data(), str.C_Str()) == 0) {
+                textures.push_back(mTexturesLoaded[j]);
+                skip = true;
+                break;
+            }
+        }
+
+        if (!skip) {
+            /**
+             * @todo Load textures from model
+             */
+        }
+    }
+
+    return textures;
 }
 
 void SolidModel::Awake() {
@@ -61,8 +126,13 @@ void SolidModel::Start() {
 
 }
 
-void SolidModel::Update() {
+void SolidModel::Update(SolidSceneCamera& sceneCamera) {
+    glm::mat4 model = this->mGameObject->mTransform.GetModelMatrix();
+    glm::mat4 view = sceneCamera.GetViewMatrix();
+    glm::mat4 projection = sceneCamera.GetProjectionMatrix();
+    glm::mat4 MVP = projection * view * model;
 
+    Draw(MVP);
 }
 
 void SolidModel::LateUpdate() {

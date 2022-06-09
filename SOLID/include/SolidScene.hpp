@@ -17,15 +17,13 @@ public:
     const char* GetSceneName() const { return mName; }
 
     std::vector<SolidGameObject*> GetGameObjects() { return mGameObjects; }
-    std::vector<SolidLight*> GetLights() { return mLights; }
+    std::vector<SolidLight*> GetLights();
     SolidCamera* GetActiveCamera();
 
     void AddGameObject(SolidGameObject* gameObject);
-    void AddLight(SolidLight* light);
 
 private:
-    std::vector<SolidGameObject*> mGameObjects; 
-    std::vector<SolidLight*> mLights;
+    std::vector<SolidGameObject*> mGameObjects;
     const char* mPath;
     const char* mName;
 };

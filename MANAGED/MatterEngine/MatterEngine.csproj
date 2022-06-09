@@ -7,8 +7,8 @@
     <ProjectGuid>9a0e42a1-ac5b-4332-bcd3-3042dd7a0354</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MatterEngine</RootNamespace>
-    <AssemblyName>MatterEngine</AssemblyName>
+    <RootNamespace>SolidManaged</RootNamespace>
+    <AssemblyName>SolidManaged</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Solid.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>

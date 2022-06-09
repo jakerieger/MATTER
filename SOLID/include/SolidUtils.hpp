@@ -1,10 +1,13 @@
 #pragma once
 
+#include <stb_image.h>
+#include <glad/glad.h>
 #include <imgui/imgui.h>
 #include <string>
 #include <filesystem>
 #include <chrono>
 #include <ctime>
+#include <stdio.h>
 
 /**
  * @brief Utility functions use by other SOLID classes
@@ -15,6 +18,18 @@
  * @author Jake Rieger
  */
 namespace SolidUtils {
+    enum FileType {
+        FileType_Unknown,
+        FileType_Script,
+        FileType_Material,
+        FileType_Texture,
+        FileType_Model,
+        FileType_Font,
+        FileType_Sound,
+        FileType_Scene,
+        FileType_Project,
+    };
+
     inline static std::string GetResourcesPath() {
         std::filesystem::path cwd = std::filesystem::current_path();
         std::filesystem::path resourcesPath = cwd / "resources";
@@ -83,5 +98,58 @@ namespace SolidUtils {
         timestamp += buffer;
 
         return timestamp;
+    }
+
+    inline static FileType GetFileType(std::string ext) {
+        if (ext == ".cs") {
+            return FileType_Script;
+        } else if (ext == ".mat") {
+            return FileType_Material;
+        } else if (ext == ".png" || ext == ".jpg" || ext == ".jpeg" || ext == ".bmp" || ext == ".tga" || ext == ".hdr") {
+            return FileType_Texture;
+        } else if (ext == ".fbx" || ext == ".obj" || ext == ".dae") {
+            return FileType_Model;
+        } else if (ext == ".ttf" || ext == ".otf") {
+            return FileType_Font;
+        } else if (ext == ".wav" || ext == ".mp3" || ext == ".ogg") {
+            return FileType_Sound;
+        } else if (ext == ".scene") {
+            return FileType_Scene;
+        } else if (ext == ".solid") {
+            return FileType_Project;
+        } else {
+            return FileType_Unknown;
+        }
+    }
+
+    inline static unsigned int LoadTexture(const char* path) {
+        unsigned int textureID;
+        glGenTextures(1, &textureID);
+
+        int width, height, nrComponents;
+        unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
+        if (data) {
+            GLenum format;
+            if (nrComponents == 1)
+                format = GL_RED;
+            else if (nrComponents == 3)
+                format = GL_RGB;
+            else if (nrComponents == 4)
+                format = GL_RGBA;
+
+            glBindTexture(GL_TEXTURE_2D, textureID);
+            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D);
+
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+            stbi_image_free(data);
+        } else {
+            printf("Failed to load texture");
+            stbi_image_free(data);
+        }
     }
 }

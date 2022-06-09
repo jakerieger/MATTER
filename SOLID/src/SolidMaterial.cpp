@@ -58,7 +58,7 @@ UnlitMaterial::UnlitMaterial() {
 void UnlitMaterial::Bind(glm::mat4 MVP) {
     mShader->Use();
     SetColor("material.diffuse", mDiffuse.color);
-    SetTexture("material.diffuseTexture", *mDiffuse.texture);
+    // SetTexture("material.diffuseTexture", *mDiffuse.texture);
     SetMatrix("MVP", MVP);
 }
 

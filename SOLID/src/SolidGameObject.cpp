@@ -27,13 +27,15 @@ void SolidGameObject::Start() {
     }
 }
 
-void SolidGameObject::Update() {
+void SolidGameObject::Update(SolidSceneCamera& sceneCamera) {
+    mTransform.Update();
+
     for (auto& component : mComponents) {
-        component->Update();
+        component->Update(sceneCamera);
     }
 
     for (auto& child : mChildren) {
-        child->Update();
+        child->Update(sceneCamera);
     }
 }
 

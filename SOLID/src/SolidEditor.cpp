@@ -18,6 +18,9 @@
 #include "SolidEditor.hpp"
 #include "SolidUI.hpp"
 #include "SolidSceneCamera.hpp"
+#include "SolidGameObject.hpp"
+#include "SolidModel.hpp"
+#include "SolidLight.hpp"
 
 // Define some default values for the editor to avoid taking up memory
 #define WINDOW_WIDTH 1600
@@ -58,6 +61,7 @@ int SolidEditor::InitGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
 
     mWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, NULL, NULL);
 
@@ -201,6 +205,19 @@ void SolidEditor::Render() {
 
     mEditorGrid.Init();
 
+    SolidGameObject testObject("TestObject", GO_GameObject);
+    SolidModel testModel("Y:\\tmp\\TestProject\\meshes\\cube.obj");
+    testObject.AddComponent<SolidModel>(&testModel);
+    mProject.GetActiveScene()->AddGameObject(&testObject);
+
+    SolidDirectionalLight sceneLight("SceneLight");
+    sceneLight.mTransform.SetPositionAndRotation(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+    mProject.GetActiveScene()->AddGameObject(&sceneLight);
+
+    for (auto& gameObject : mProject.GetActiveScene()->GetGameObjects()) {
+        gameObject->Start();
+    }
+
     while (!glfwWindowShouldClose(mWindow)) {
         UpdateWindowTitle();
         glfwPollEvents();
@@ -208,7 +225,7 @@ void SolidEditor::Render() {
 
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glEnable(GL_DEPTH_TEST);
-        SolidUI::DrawUI(sceneTexture, mLogger);
+        SolidUI::DrawUI(sceneTexture, mLogger, mProject);
 
         glClearColor(
             SolidUI::GetColors()["scene"].x,
@@ -218,7 +235,11 @@ void SolidEditor::Render() {
         );
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        mEditorGrid.Draw(sceneCamera);
+        // mEditorGrid.Draw(sceneCamera);
+
+        for (auto& gameObject : mProject.GetActiveScene()->GetGameObjects()) {
+            gameObject->Update(sceneCamera);
+        }
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glDisable(GL_DEPTH_TEST);

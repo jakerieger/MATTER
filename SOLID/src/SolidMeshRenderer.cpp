@@ -35,6 +35,9 @@ void SolidMeshRenderer::SetupMesh() {
     glBindVertexArray(0);
 
     mMaterial = new UnlitMaterial();
+    Diffuse diff;
+    diff.color = SolidColor(1.0f, 0.0f, 0.0f, 1.0f);
+    static_cast<UnlitMaterial*>(mMaterial)->SetDiffuse(diff);
 }
 
 /**

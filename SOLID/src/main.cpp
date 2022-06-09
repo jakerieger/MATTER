@@ -50,6 +50,7 @@ int main(int argc, char *argv[]) {
 
     SolidProject testProject;
     testProject.SetProjectName("Test Project");
+    testProject.SetProjectPath("Y:\\tmp\\TestProject");
     SolidScene testScene;
     testScene.CreateEmpty("TestScene");
     testProject.SetActiveScene(&testScene);
@@ -58,8 +59,6 @@ int main(int argc, char *argv[]) {
     editor.SetEditorConfig(editorConfig);
     editor.SetProject(testProject);
     editor.Run();
-
-    CleanupManagedLibs(std::get<0>(managed_libs));
 
     return 0;
 }

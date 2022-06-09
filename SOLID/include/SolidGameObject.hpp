@@ -6,6 +6,7 @@
 #include "SolidCamera.hpp"
 #include "SolidTransform.hpp"
 #include "SolidComponent.hpp"
+#include "SolidSceneCamera.hpp"
 
 enum SolidGameObjectType {
     GO_GameObject,
@@ -26,6 +27,9 @@ public:
     std::vector<SolidComponent*> mComponents;
     std::vector<SolidGameObject*> mChildren;
 
+    unsigned int GetID() const { return mID; }
+    void SetID(unsigned int id) { mID = std::move(id); }
+
     template<typename T>
     T* GetComponent() {
         for (auto& component : mComponents) {
@@ -44,11 +48,12 @@ public:
 
     void Awake();
     void Start();
-    void Update();
+    void Update(SolidSceneCamera& sceneCamera);
     void LateUpdate();
     void FixedUpdate();
     void Destroyed();
 
 private:
     SolidGameObjectType mType;
+    unsigned int mID;
 };
