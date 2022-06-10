@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(SOLID VERSION 0.1.0)
 
+set(CMAKE_PREFIX_PATH Y:/vcpkg/installed/x64-windows)
+find_package(msgpack REQUIRED)
+
+set(APP_ICON_RESOURCE_WINDOWS ${CMAKE_CURRENT_SOURCE_DIR}/appres.rc)
+
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/src
@@ -29,6 +34,7 @@ add_executable(
     src/SolidMaterial.cpp
     src/SolidColor.cpp
     src/SolidModel.cpp
+    src/SolidIO.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -48,6 +54,7 @@ add_executable(
     include/SolidMaterial.hpp
     include/SolidColor.hpp
     include/SolidModel.hpp
+    include/SolidIO.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp
@@ -57,6 +64,7 @@ add_executable(
     ../EXTERNAL/src/imgui/imgui_tables.cpp
     ../EXTERNAL/src/imgui/imgui_widgets.cpp
     ../EXTERNAL/src/pugixml.cpp
+    ${APP_ICON_RESOURCE_WINDOWS}
 )
 
 target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/glfw3.lib
@@ -66,3 +74,5 @@ target_link_libraries(SOLID debug ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Debug/as
                             optimized ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/assimp-vc143-mt.lib)
 
 target_link_libraries(SOLID ${PROJECT_SOURCE_DIR}/../EXTERNAL/lib/Release/mono-2.0-sgen.lib)
+
+target_link_libraries(SOLID msgpackc-cxx)

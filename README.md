@@ -22,6 +22,12 @@ Simply put, **no**. MATTER is a personal learning project being developed as a v
 
 Documentation is sparse and incomplete, but is being continuously updated. You can find it [here](https://jakerieger.github.io/MATTER).
 
+## Project Structure
+
+MATTER is split in to a couple different components. SOLID is the editor, LIQUID is the physics engine and PLASMA handles rendering. Any of the folders that aren't capitalized are not necessary to build and run the engine and mostly contain build chain specific scripts, config files, and documentation.
+
+`EDITOR/` contains all the resources used by SOLID such as fonts, themes, icons, etc. The `EDITOR/resources` directory needs to be copied to the same location as the SOLID executable for the editor to run.
+
 ## Build Status
 
 MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may come in the future but is not being prioritized as OpenGL support is poor at best. Therefore, the following table is referring to the specificed compilers running on Windows 10.
@@ -34,6 +40,7 @@ MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may 
 |MSVC 15 |x64 |Release| - |
 |MinGW GCC 6|x64 |Debug| - |
 |MinGW GCC 6|x64 |Release| - |
+
 ## Resources
 
 This is a list of resources I've found helpful while developing MATTER.

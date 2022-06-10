@@ -1,3 +1,18 @@
+/** Copyright 2022 Jake Rieger
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #pragma once
 
 #include <stdio.h>
@@ -78,14 +93,14 @@ namespace SolidUI {
     inline static std::map<std::string, ImVec4> GetColors() { return colors; }
 
     struct ProjectAssets {
-        std::vector<std::string> textures;
-        std::vector<std::string> meshes;
-        std::vector<std::string> materials;
-        std::vector<std::string> scenes;
-        std::vector<std::string> game_objects;
-        std::vector<std::string> scripts;
-        std::vector<std::string> audio;
-        std::vector<std::string> fonts;
+        std::vector<std::filesystem::path> textures;
+        std::vector<std::filesystem::path> meshes;
+        std::vector<std::filesystem::path> materials;
+        std::vector<std::filesystem::path> scenes;
+        std::vector<std::filesystem::path> game_objects;
+        std::vector<std::filesystem::path> scripts;
+        std::vector<std::filesystem::path> audio;
+        std::vector<std::filesystem::path> fonts;
     };
 
     static ProjectAssets project_assets;
@@ -220,28 +235,28 @@ namespace SolidUI {
 
                 switch (type) {
                     case SolidUtils::FileType::FileType_Font:
-                        project_assets.fonts.push_back(entry.path().string());
+                        project_assets.fonts.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Script:
-                        project_assets.scripts.push_back(entry.path().string());
+                        project_assets.scripts.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Scene:
-                        project_assets.scenes.push_back(entry.path().string());
+                        project_assets.scenes.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Unknown:
-                        project_assets.game_objects.push_back(entry.path().string());
+                        project_assets.game_objects.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Texture:
-                        project_assets.textures.push_back(entry.path().string());
+                        project_assets.textures.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Model:
-                        project_assets.meshes.push_back(entry.path().string());
+                        project_assets.meshes.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Material:
-                        project_assets.materials.push_back(entry.path().string());
+                        project_assets.materials.push_back(entry.path());
                         break;
                     case SolidUtils::FileType::FileType_Sound:
-                        project_assets.audio.push_back(entry.path().string());
+                        project_assets.audio.push_back(entry.path());
                         break;
                     default:
                         return;
@@ -567,42 +582,109 @@ namespace SolidUI {
         inline static void Project(SolidProject &project) {
             ImGui::Begin(ICON_FA_FOLDER_CLOSED " Project");
 
-            for (const auto &entry : std::filesystem::directory_iterator(project.GetProjectPath())) {
-                if (entry.is_directory()) {
-                    if (std::filesystem::is_empty(entry.path())) {
-                        SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_FolderEmpty, colors["text"]);
-                    } else {
-                        SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_Folder, colors["text"]);
+            if (ImGui::TreeNode(ICON_FA_FILE_CODE " Scripts")) {
+                for (int i = 0; i < project_assets.scripts.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.scripts[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Script", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.scripts[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
                     }
-                } else {
-                    SolidUtils::FileType file_type = SolidUtils::GetFileType(entry.path().extension().string());
-                    switch (file_type) {
-                        case SolidUtils::FileType::FileType_Script:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Script, colors["accent"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Texture:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Texture, colors["success"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Sound:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Sound, colors["warning"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Font:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Font, colors["error"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Model:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Model, colors["info"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Scene:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File_Scene, colors["text"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Unknown:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File, colors["text"]);
-                            break;
-                        case SolidUtils::FileType::FileType_Project:
-                            SolidUIComponents::ProjectItem(entry.path(), ProjectItemType::ProjectItemType_File, colors["text"]);
-                            break;
-                    }
+                    ImGui::PopID();
                 }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_BRUSH " Materials")) {
+                for (int i = 0; i < project_assets.materials.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.materials[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Material", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.materials[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_IMAGE " Textures")) {
+                for (int i = 0; i < project_assets.textures.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.textures[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Texture", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.textures[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_SHAPES " Models")) {
+                for (int i = 0; i < project_assets.meshes.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.meshes[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Model", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.meshes[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_FONT " Fonts")) {
+                for (int i = 0; i < project_assets.fonts.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.fonts[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Font", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.fonts[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_MUSIC " Sounds")) {
+                for (int i = 0; i < project_assets.audio.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.audio[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Audio", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.audio[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
+            }
+
+            if (ImGui::TreeNode(ICON_FA_MAP " Scenes")) {
+                for (int i = 0; i < project_assets.scenes.size(); i++) {
+                    ImGui::PushID(i);
+                    if (ImGui::Selectable(project_assets.scenes[i].filename().string().c_str(), false)) {}
+                    if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                        ImGui::SetDragDropPayload("Scene", &i, sizeof(int));
+                        ImGui::Text("%s", project_assets.scenes[i].filename().string().c_str());
+                        ImGui::EndDragDropSource();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::TreePop();
             }
 
             ImGui::End();
@@ -691,22 +773,19 @@ namespace SolidUI {
                                                 ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
                                                 if (SolidUIComponents::DragDropTarget(ProjectItemType::ProjectItemType_File_Texture, ImVec2(ImGui::GetContentRegionAvail().x, 24.f))) {
                                                     if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
-                                                        const char *path = (const char*)payload->Data;
-                                                        unsigned int texID = SolidUtils::LoadTexture(path);
+                                                        int id = *(int*)payload->Data;
+                                                        std::filesystem::path texPath = project_assets.textures[id];
+                                                        printf("%s\n", texPath.string().c_str());
+                                                        unsigned int texID = SolidUtils::LoadTexture(texPath.string().c_str());
+
+                                                        /**
+                                                         * @todo This works but is pretty wasteful. Need to gen tex ID once and then just update it.
+                                                         */
                                                         dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &texID;
                                                     }
 
                                                     ImGui::EndDragDropTarget();
                                                 }
-
-                                                // if (ImGui::BeginDragDropTarget()) {
-                                                //     if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
-                                                //         textureName = (char*)payload->Data;
-                                                //         unsigned int textureID = 0;
-                                                //         dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &textureID;
-                                                //     }
-                                                //     ImGui::EndDragDropTarget();
-                                                // }
                                             }
 
                                             ImGui::TreePop();
@@ -741,8 +820,24 @@ namespace SolidUI {
                 float used_memory = std::get<1>(SolidProfiler::GPU::GetMemoryUsage());
                 float total_memory = std::get<0>(SolidProfiler::GPU::GetMemoryUsage());
 
+                char fps[10];
+                char ms[10];
+                char used_memory_str[100];
+                char total_memory_str[100];
+
+                snprintf(fps, sizeof(fps), "%.1f", framerate);
+                snprintf(ms, sizeof(ms), "%.1f", frametime);
+                snprintf(used_memory_str, sizeof(used_memory_str), "%.1f", used_memory);
+                snprintf(total_memory_str, sizeof(total_memory_str), "%.1f", total_memory);
+
+                ImGui::Text("GPU:");
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize(gpu_renderer.c_str()).x - ImGui::CalcTextSize("  ").x));
+                ImGui::Text("%s", gpu_renderer.c_str());
+
+                ImGui::Separator();
+
                 ImGui::Text("Framerate:");
-                ImGui::SameLine();
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(fps).x);
                 if (framerate >= 59.f) {
                     ImGui::TextColored(colors["success"], "%.2f", framerate);
                 } else if (framerate >= 30.f) {
@@ -751,8 +846,10 @@ namespace SolidUI {
                     ImGui::TextColored(colors["error"], "%.2f", framerate);
                 }
 
+                ImGui::Separator();
+
                 ImGui::Text("Frame Time:");
-                ImGui::SameLine();
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(ms).x);
                 if (frametime <= 16.94f) {
                     ImGui::TextColored(colors["success"], "%.2f", frametime);
                 } else if (frametime <= 33.33f) {
@@ -761,14 +858,12 @@ namespace SolidUI {
                     ImGui::TextColored(colors["error"], "%.2f", frametime);
                 }
 
+                ImGui::Separator();
+
                 float gpu_memory_usage = used_memory / total_memory;
 
-                ImGui::Text("GPU:");
-                ImGui::SameLine();
-                ImGui::Text("%s", gpu_renderer.c_str());
-
                 ImGui::Text("Memory (used):");
-                ImGui::SameLine();
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(used_memory_str).x);
                 if (gpu_memory_usage <= 0.75f) {
                     ImGui::TextColored(colors["success"], "%.2f MB", used_memory / 1000.f);
                 } else if (gpu_memory_usage <= 0.9f) {
@@ -777,9 +872,13 @@ namespace SolidUI {
                     ImGui::TextColored(colors["error"], "%.2f MB", used_memory / 1000.f);
                 }
 
+                ImGui::Separator();
+
                 ImGui::Text("Memory (total):");
-                ImGui::SameLine();
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(total_memory_str).x);
                 ImGui::Text("%.2f MB", total_memory / 1000.f);
+
+                ImGui::Separator();
 
             ImGui::End();
         }
