@@ -58,4 +58,4 @@ MATTER uses several third party libraries. License information can be found here
 
 ## License
 
-MATTER is licensed under the [ISC license](LICENSE). All third party sources are licensed under their respective licenses detailed [here](/EXTERNAL/licenses/).
+MATTER is licensed under the [Apache-2.0 license](LICENSE). All third party sources are licensed under their respective licenses detailed [here](/EXTERNAL/licenses/).
