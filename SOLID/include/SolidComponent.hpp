@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <msgpack.hpp>
 #include "SolidSceneCamera.hpp"
 
 class SolidGameObject; ///< Forward declaration
@@ -28,6 +29,8 @@ enum SolidComponentType {
     COM_Terrain,
     COM_Material
 };
+
+MSGPACK_ADD_ENUM(SolidComponentType);
 
 class SolidComponent {
 public:
@@ -44,6 +47,8 @@ public:
     virtual void FixedUpdate() {}
     virtual void LateUpdate() {}
     virtual void Destroyed() {}
+
+    MSGPACK_DEFINE(mActive, mType);
 
 private:
     SolidComponentType mType;

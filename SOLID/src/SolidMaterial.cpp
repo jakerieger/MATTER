@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "SolidMaterial.hpp"
 
 void SolidMaterial::SetColor(std::string name, const SolidColor& color) {
@@ -41,6 +43,18 @@ void SolidMaterial::SetMatrix(std::string name, const glm::mat4& matrix) {
 
 void SolidMaterial::SetTexture(std::string name, const unsigned int texture) {
     mShader->setInt(name, texture);
+}
+
+void SolidMaterial::Serialize(std::string projectDir, std::string name, SolidMaterial* mat) {
+    msgpack::sbuffer sbuf;
+    msgpack::pack(sbuf, *mat);
+
+    std::string outpath = projectDir + "\\" + name + ".mat";
+
+    FILE *fp;
+    fopen_s(&fp, outpath.c_str(), "wb");
+    fwrite(sbuf.data(), 1, sbuf.size(), fp);
+    fclose(fp);
 }
 
 PhongMaterial::PhongMaterial() : SolidMaterial() {

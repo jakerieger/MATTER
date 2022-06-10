@@ -20,5 +20,5 @@
 #include <msgpack.hpp>
 
 namespace SolidIO {
-    
+    // static void SerializeMaterial();
 }

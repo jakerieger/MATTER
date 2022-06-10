@@ -18,6 +18,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <msgpack.hpp>
 
 enum RotationAxis { X, Y, Z };
 
@@ -39,7 +40,8 @@ public:
 
     void Update();
 
+    MSGPACK_DEFINE(mPosition[0], mPosition[1], mPosition[2], mRotation[0], mRotation[1], mRotation[2], mScale[0], mScale[1], mScale[2]);
+
 private:
     glm::mat4 mModelMatrix;
-
 };

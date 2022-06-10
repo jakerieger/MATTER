@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #pragma once
 
 #include <imgui/imgui.h>
 #include <glm/glm.hpp>
 #include <string>
+#include <msgpack.hpp>
 
 /**
  * @brief General purpose color class
@@ -35,6 +35,7 @@
  */
 struct SolidColor {
     float r, g, b, a;
+    MSGPACK_DEFINE(r, g, b, a);
 
     SolidColor();
     SolidColor(float r, float g, float b, float a);

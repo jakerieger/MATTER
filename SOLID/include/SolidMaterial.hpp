@@ -18,6 +18,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <msgpack.hpp>
 
 #include "SolidColor.hpp"
 #include "SolidShader.hpp"
@@ -26,6 +27,7 @@ struct Diffuse {
     SolidColor color;
     unsigned int* texture;
     Diffuse();
+    MSGPACK_DEFINE(color, *texture);
 };
 
 struct Specular {
@@ -33,6 +35,7 @@ struct Specular {
     unsigned int* texture;
     float strength;
     Specular();
+    MSGPACK_DEFINE(color, *texture, strength);
 };
 
 struct Emission {
@@ -40,10 +43,14 @@ struct Emission {
     unsigned int* texture;
     float strength;
     Emission();
+    MSGPACK_DEFINE(color, *texture, strength);
 };
 
 enum RenderingMode { Opaque, Transparent };
 enum MaterialType { MAT_Phong, MAT_Unlit };
+
+MSGPACK_ADD_ENUM(RenderingMode);
+MSGPACK_ADD_ENUM(MaterialType);
 
 class SolidMaterial {
 public:
@@ -68,6 +75,10 @@ public:
     SolidShader* mShader;
     RenderingMode mRenderingMode;
 
+    MSGPACK_DEFINE(mType, mRenderingMode);
+
+    static void Serialize(std::string projectDir, std::string name, SolidMaterial* mat);
+
 private:
     MaterialType mType;
 };
@@ -86,6 +97,8 @@ public:
     Diffuse mDiffuse;
     Specular mSpecular;
     Emission mEmission;
+
+    MSGPACK_DEFINE(mDiffuse, mSpecular, mEmission);
 };
 
 class UnlitMaterial: public SolidMaterial {
@@ -98,4 +111,6 @@ public:
 
     void Bind(glm::mat4 MVP);
     Diffuse mDiffuse;
+
+    MSGPACK_DEFINE(mDiffuse);
 };

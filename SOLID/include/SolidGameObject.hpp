@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <map>
+#include <msgpack.hpp>
 
 #include "SolidCamera.hpp"
 #include "SolidTransform.hpp"
@@ -30,6 +31,8 @@ enum SolidGameObjectType {
     GO_Terrain,
     GO_Skybox
 };
+
+MSGPACK_ADD_ENUM(SolidGameObjectType);
 
 class SolidGameObject {
 public:
@@ -70,6 +73,10 @@ public:
     void LateUpdate();
     void FixedUpdate();
     void Destroyed();
+
+    MSGPACK_DEFINE(mTransform, mType, mID);
+
+    static void Serialize(SolidGameObject& gameObject);
 
 private:
     SolidGameObjectType mType;

@@ -33,7 +33,7 @@ std::vector<LogEntry> SolidLogger::GetInfos() {
     std::vector<LogEntry> infos;
 
     for (auto& log : mLogs) {
-        if (log.level == INFO) {
+        if (log.level == LogLevel_INFO) {
             infos.push_back(log);
         }
     }
@@ -45,7 +45,7 @@ std::vector<LogEntry> SolidLogger::GetWarnings() {
     std::vector<LogEntry> warnings;
 
     for (auto& log : mLogs) {
-        if (log.level == WARNING) {
+        if (log.level == LogLevel_WARNING) {
             warnings.push_back(log);
         }
     }
@@ -57,7 +57,7 @@ std::vector<LogEntry> SolidLogger::GetErrors() {
     std::vector<LogEntry> errors;
 
     for (auto& log : mLogs) {
-        if (log.level == ERROR) {
+        if (log.level == LogLevel_ERROR) {
             errors.push_back(log);
         }
     }
@@ -69,7 +69,7 @@ std::vector<LogEntry> SolidLogger::GetFatals() {
     std::vector<LogEntry> fatals;
 
     for (auto& log : mLogs) {
-        if (log.level == FATAL) {
+        if (log.level == LogLevel_FATAL) {
             fatals.push_back(log);
         }
     }

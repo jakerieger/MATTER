@@ -21,10 +21,10 @@
 #include "SolidUtils.hpp"
 
 enum LogLevel {
-    INFO,
-    WARNING,
-    ERROR,
-    FATAL
+    LogLevel_INFO,
+    LogLevel_WARNING,
+    LogLevel_ERROR,
+    LogLevel_FATAL
 };
 
 struct LogEntry {

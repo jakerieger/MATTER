@@ -523,7 +523,7 @@ namespace SolidUI {
                 
                 ImGui::BeginChild("##console_log", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
                     for (auto &log : logger.GetLogs()) {
-                        if (log.level == LogLevel::INFO) {
+                        if (log.level == LogLevel::LogLevel_INFO) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["info"], ICON_FA_CIRCLE_EXCLAMATION);
                             ImGui::PopFont();
@@ -534,7 +534,7 @@ namespace SolidUI {
                                 ImGui::PopFont();
                                 ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
-                        } else if (log.level == LogLevel::WARNING) {
+                        } else if (log.level == LogLevel::LogLevel_WARNING) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["warning"], ICON_FA_TRIANGLE_EXCLAMATION);
                             ImGui::PopFont();
@@ -545,7 +545,7 @@ namespace SolidUI {
                                 ImGui::PopFont();
                                 ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
-                        } else if (log.level == LogLevel::ERROR) {
+                        } else if (log.level == LogLevel::LogLevel_ERROR) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["error"], ICON_FA_XMARK);
                             ImGui::PopFont();
@@ -556,7 +556,7 @@ namespace SolidUI {
                                 ImGui::PopFont();
                                 ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
-                        } else if (log.level == LogLevel::FATAL) {
+                        } else if (log.level == LogLevel::LogLevel_FATAL) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["error"], ICON_FA_XMARK);
                             ImGui::PopFont();
@@ -705,7 +705,7 @@ namespace SolidUI {
             ImGui::PopStyleVar();
         }
 
-        inline static void Inspector(SolidScene *currentScene) {
+        inline static void Inspector(SolidScene *currentScene, SolidProject &project) {
             ImGui::Begin(ICON_FA_CUBE " Inspector");
                 ImGui::PushStyleColor(ImGuiCol_Header, colors["menu"]);
                 if (game_object_selected_id != 0) {
@@ -785,6 +785,10 @@ namespace SolidUI {
                                                     }
 
                                                     ImGui::EndDragDropTarget();
+                                                }
+
+                                                if (ImGui::Button("Save")) {
+                                                    SolidMaterial::Serialize(std::string(project.GetProjectPath()), "Test", dynamic_cast<UnlitMaterial*>(mesh.GetMaterial()));
                                                 }
                                             }
 
@@ -911,7 +915,7 @@ namespace SolidUI {
         ImGUIWindows::Console(logger);
         ImGUIWindows::Project(project);
         ImGUIWindows::Scene(sceneTexture);
-        ImGUIWindows::Inspector(project.GetActiveScene());
+        ImGUIWindows::Inspector(project.GetActiveScene(), project);
         ImGUIWindows::SceneHierarchy(project.GetActiveScene());
         ImGUIWindows::Analytics();
     }

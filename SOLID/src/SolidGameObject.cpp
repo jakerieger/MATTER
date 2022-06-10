@@ -83,3 +83,7 @@ void SolidGameObject::Destroyed() {
         child->Destroyed();
     }
 }
+
+void SolidGameObject::Serialize(SolidGameObject& gameObject) {
+
+}

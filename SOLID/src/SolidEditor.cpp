@@ -98,7 +98,7 @@ int SolidEditor::InitGLFW() {
     // VSYNC
     glfwSwapInterval(1);
 
-    mLogger.Log("GLFW initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
+    mLogger.Log("GLFW initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
     return INIT_RESULT_SUCCESS;
 }
@@ -109,7 +109,7 @@ int SolidEditor::InitGlad() {
         return INIT_RESULT_FAILURE;
     }
 
-    mLogger.Log("GLAD initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
+    mLogger.Log("GLAD initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
     return INIT_RESULT_SUCCESS;
 }
@@ -122,7 +122,7 @@ int SolidEditor::InitOpenGL() {
     glEnable(GL_BLEND);
     glDebugMessageCallback(MessageCallback, 0);
 
-    mLogger.Log("OpenGL initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
+    mLogger.Log("OpenGL initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
     return INIT_RESULT_SUCCESS;
 }
@@ -167,7 +167,7 @@ void SolidEditor::Init() {
     INIT_RESULT = InitOpenGL();
     if (INIT_RESULT == INIT_RESULT_FAILURE) { return; }
 
-    mLogger.Log("Editor initialized", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
+    mLogger.Log("Editor initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
     SolidUI::InitUI(mWindow, mProject);
 }
@@ -195,7 +195,7 @@ std::tuple<unsigned int, unsigned int> SolidEditor::CreateRenderBuffers() {
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    mLogger.Log("Created render buffers", "", __FILE__, (int*)__LINE__, LogLevel::INFO);
+    mLogger.Log("Created render buffers", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
     return std::make_tuple(framebuffer, sceneTextureBuffer);
 }
@@ -203,16 +203,16 @@ std::tuple<unsigned int, unsigned int> SolidEditor::CreateRenderBuffers() {
 void SolidEditor::CheckFramebufferStatus() {
     auto fboStatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     if (fboStatus != GL_FRAMEBUFFER_COMPLETE)
-        mLogger.Log("Framebuffer is not complete", "", __FILE__, (int*)__LINE__, LogLevel::ERROR);
+        mLogger.Log("Framebuffer is not complete", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
 
     if (fboStatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
-        mLogger.Log("Framebuffer is incomplete attachment", "", __FILE__, (int*)__LINE__, LogLevel::ERROR);
+        mLogger.Log("Framebuffer is incomplete attachment", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
 
     if (fboStatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
-        mLogger.Log("Framebuffer is incomplete missing attachment", "", __FILE__, (int*)__LINE__, LogLevel::ERROR);
+        mLogger.Log("Framebuffer is incomplete missing attachment", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
 
     if (fboStatus == GL_FRAMEBUFFER_UNSUPPORTED)
-        mLogger.Log("Framebuffer is unsupported", "", __FILE__, (int*)__LINE__, LogLevel::ERROR);
+        mLogger.Log("Framebuffer is unsupported", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
 }
 
 void SolidEditor::Render() {
