@@ -2,7 +2,7 @@
     <img src="docs/header.jpg">
 </p>
 <p align="center">
-    <img src="https://img.shields.io/github/license/jakerieger/MATTER?style=for-the-badge"/>
+    <img src="https://img.shields.io/github/license/jakerieger/MATTER?style=for-the-badge "/>
     <img src="https://img.shields.io/github/issues-raw/jakerieger/MATTER?style=for-the-badge"/>
     <img src="https://img.shields.io/github/stars/jakerieger/MATTER?style=for-the-badge"/>
     <img src="https://img.shields.io/tokei/lines/github/jakerieger/MATTER?style=for-the-badge"/>
