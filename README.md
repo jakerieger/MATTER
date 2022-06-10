@@ -8,8 +8,6 @@
     <img src="https://img.shields.io/tokei/lines/github/jakerieger/MATTER?style=for-the-badge"/>
 </p>
 
-<hr>
-
 ## Another game engine?
 
 *There are dozens of great and feature-complete game engines already available on the market today, why develop another one? Is MATTER trying to compete with those?*
