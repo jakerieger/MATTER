@@ -39,6 +39,10 @@ struct LogEntry {
 /**
  * @brief Handles logging functionality for the editor console
  * 
+ * @note I've implemented the logger as a singleton to make it easy to access from anywhere in the codebase.
+ * This is generally a bad idea, but in this case it's fine because the logger is used globally by the
+ * whole system and should only ever exist as one instance.
+ * 
  * @author Jake Rieger
  */
 class SolidLogger {
@@ -71,7 +75,18 @@ public:
     std::vector<LogEntry> GetFatals();
     std::vector<LogEntry> Search(const char* query);
 
+    /**
+     * @brief Singleton accessor
+     * 
+     * Based on the implementation found here: https://stackoverflow.com/a/40337728
+     */
+    SolidLogger(SolidLogger const&) = delete;
+    SolidLogger& operator=(SolidLogger const&) = delete;
+    static std::shared_ptr<SolidLogger> GetInstance();
+
 private:
     std::vector<LogEntry> mLogs;
     bool mLoggingPaused = false;
+
+    SolidLogger() {}
 };

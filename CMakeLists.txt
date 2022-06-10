@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 
-project(MATTER VERSION 0.1.0)
+project(MATTER VERSION 2022.01)
 
 # add_subdirectory(LIQUID)
 # add_subdirectory(PLASMA)

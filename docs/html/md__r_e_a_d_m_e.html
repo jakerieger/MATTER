@@ -91,8 +91,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 <div class="textblock"><p  align="center"></p>
 <p ><img src="docs/header.jpg" alt="" class="inline"/> </p>
 <p  align="center"></p>
-<p ><img src="https://img.shields.io/github/license/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/github/issues-raw/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/github/stars/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/github/milestones/closed/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> </p>
-<hr  />
+<p ><img src="https://img.shields.io/github/license/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/github/issues-raw/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/github/stars/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> <img src="https://img.shields.io/tokei/lines/github/jakerieger/MATTER?style=for-the-badge" alt="" class="inline"/> </p>
 <h2><a class="anchor" id="autotoc_md0"></a>
 Another game engine?</h2>
 <p ><em>There are dozens of great and feature-complete game engines already available on the market today, why develop another one? Is MATTER trying to compete with those?</em></p>
@@ -102,6 +101,10 @@ Another game engine?</h2>
 Documentation</h2>
 <p >Documentation is sparse and incomplete, but is being continuously updated. You can find it <a href="https://jakerieger.github.io/MATTER">here</a>.</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
+Project Structure</h2>
+<p >MATTER is split in to a couple different components. SOLID is the editor, LIQUID is the physics engine and PLASMA handles rendering. Any of the folders that aren't capitalized are not necessary to build and run the engine and mostly contain build chain specific scripts, config files, and documentation.</p>
+<p ><code>EDITOR/</code> contains all the resources used by SOLID such as fonts, themes, icons, etc. The <code>EDITOR/resources</code> directory needs to be copied to the same location as the SOLID executable for the editor to run.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Build Status</h2>
 <p >MATTER is targetting Windows <b>only</b> at the moment. Support for Unix/macOS may come in the future but is not being prioritized as OpenGL support is poor at best. Therefore, the following table is referring to the specificed compilers running on Windows 10.</p>
 <table class="markdownTable">
@@ -120,7 +123,7 @@ Build Status</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">MinGW GCC 6   </td><td class="markdownTableBodyNone">x64   </td><td class="markdownTableBodyNone">Release   </td><td class="markdownTableBodyNone">-   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Resources</h2>
 <p >This is a list of resources I've found helpful while developing MATTER.</p>
 <ul>
@@ -133,10 +136,10 @@ Resources</h2>
 <li><a href="https://michaelwalczyk.com/blog-ray-marching.html">Ray Marching</a> - An overview of the Ray Marching alrgoithm and how it can be implemented in shaders</li>
 <li><a href="https://documentation.beamng.com/">BeamNG.drive Docs</a> - Some nice documentation on the inner-workings of the BeamNG softbody physics engine</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Third Party Libraries</h2>
 <p >MATTER uses several third party libraries. License information can be found here: <a href="/EXTERNAL/licenses/">Third Party Licenses</a>.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 License</h2>
 <p >MATTER is licensed under the [ISC license](LICENSE). All third party sources are licensed under their respective licenses detailed <a href="/EXTERNAL/licenses/">here</a>. </p>
 </div></div><!-- contents -->

@@ -87,13 +87,15 @@ $(document).ready(function(){initNavTree('_solid_material_8hpp.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">SolidMaterial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;glm/glm.hpp&gt;</code><br />
 <code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
 <code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
+<code>#include &lt;msgpack.hpp&gt;</code><br />
 <code>#include &quot;<a class="el" href="_solid_color_8hpp_source.html">SolidColor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_solid_shader_8hpp_source.html">SolidShader.hpp</a>&quot;</code><br />
 </div>
@@ -120,8 +122,39 @@ Enumerations</h2></td></tr>
 , <a class="el" href="_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70ac719d3f34968bcf992d4c0c48841cf63">Transparent</a>
  }</td></tr>
 <tr class="separator:a87cafe63badc45546f2eb940f2a94d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace55764233310da429c994a8c334b32a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a> { <a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32aa6219f631784173a89be39acb39dfd888">MAT_Phong</a>
+, <a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32aabe663a15c1a323a92409b16e326739ee">MAT_Unlit</a>
+ }</td></tr>
+<tr class="separator:ace55764233310da429c994a8c334b32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0f693e9a6ee33a630d65b9c3ae3d0cd3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_material_8hpp.html#a0f693e9a6ee33a630d65b9c3ae3d0cd3">MSGPACK_ADD_ENUM</a> (<a class="el" href="_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70">RenderingMode</a>)</td></tr>
+<tr class="separator:a0f693e9a6ee33a630d65b9c3ae3d0cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99489731a61bd65bdc14266863a11f2a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_material_8hpp.html#a99489731a61bd65bdc14266863a11f2a">MSGPACK_ADD_ENUM</a> (<a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a>)</td></tr>
+<tr class="separator:a99489731a61bd65bdc14266863a11f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ace55764233310da429c994a8c334b32a" name="ace55764233310da429c994a8c334b32a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace55764233310da429c994a8c334b32a">&#9670;&nbsp;</a></span>MaterialType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ace55764233310da429c994a8c334b32aa6219f631784173a89be39acb39dfd888" name="ace55764233310da429c994a8c334b32aa6219f631784173a89be39acb39dfd888"></a>MAT_Phong&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ace55764233310da429c994a8c334b32aabe663a15c1a323a92409b16e326739ee" name="ace55764233310da429c994a8c334b32aabe663a15c1a323a92409b16e326739ee"></a>MAT_Unlit&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00050">50</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a87cafe63badc45546f2eb940f2a94d70" name="a87cafe63badc45546f2eb940f2a94d70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87cafe63badc45546f2eb940f2a94d70">&#9670;&nbsp;</a></span>RenderingMode</h2>
 
@@ -138,7 +171,44 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a87cafe63badc45546f2eb940f2a94d70ac719d3f34968bcf992d4c0c48841cf63" name="a87cafe63badc45546f2eb940f2a94d70ac719d3f34968bcf992d4c0c48841cf63"></a>Transparent&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00027">27</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00049">49</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a99489731a61bd65bdc14266863a11f2a" name="a99489731a61bd65bdc14266863a11f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99489731a61bd65bdc14266863a11f2a">&#9670;&nbsp;</a></span>MSGPACK_ADD_ENUM() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MSGPACK_ADD_ENUM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f693e9a6ee33a630d65b9c3ae3d0cd3" name="a0f693e9a6ee33a630d65b9c3ae3d0cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f693e9a6ee33a630d65b9c3ae3d0cd3">&#9670;&nbsp;</a></span>MSGPACK_ADD_ENUM() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MSGPACK_ADD_ENUM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70">RenderingMode</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

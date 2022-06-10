@@ -1,7 +1,6 @@
 var class_solid_scene =
 [
     [ "AddGameObject", "class_solid_scene.html#aa8a7fff2dfd41729bc341024d4108ccb", null ],
-    [ "AddLight", "class_solid_scene.html#ad78fc046c5d35d93124e98af32c3eb8a", null ],
     [ "CreateEmpty", "class_solid_scene.html#a034b5fd0e3c118ad36d08fdcbd3d0127", null ],
     [ "GetActiveCamera", "class_solid_scene.html#a084924e7f40329543c83b73b3c2d7177", null ],
     [ "GetGameObjects", "class_solid_scene.html#a630e34379ddbd08788c89ba3bdc722fb", null ],

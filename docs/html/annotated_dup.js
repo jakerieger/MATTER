@@ -1,5 +1,11 @@
 var annotated_dup =
 [
+    [ "Matter", "namespace_matter.html", [
+      [ "Solid", "class_matter_1_1_solid.html", null ]
+    ] ],
+    [ "SolidUI", "namespace_solid_u_i.html", [
+      [ "ProjectAssets", "struct_solid_u_i_1_1_project_assets.html", "struct_solid_u_i_1_1_project_assets" ]
+    ] ],
     [ "ActionMapping", "struct_action_mapping.html", "struct_action_mapping" ],
     [ "AxisMapping", "struct_axis_mapping.html", "struct_axis_mapping" ],
     [ "BuildSettings", "struct_build_settings.html", "struct_build_settings" ],
@@ -18,22 +24,23 @@ var annotated_dup =
     [ "SolidCamera", "class_solid_camera.html", "class_solid_camera" ],
     [ "SolidColor", "struct_solid_color.html", "struct_solid_color" ],
     [ "SolidComponent", "class_solid_component.html", "class_solid_component" ],
-    [ "SolidDirectionalLight", "class_solid_directional_light.html", null ],
+    [ "SolidDirectionalLight", "class_solid_directional_light.html", "class_solid_directional_light" ],
     [ "SolidEditor", "class_solid_editor.html", "class_solid_editor" ],
     [ "SolidEditorConfig", "class_solid_editor_config.html", "class_solid_editor_config" ],
     [ "SolidEditorGrid", "class_solid_editor_grid.html", "class_solid_editor_grid" ],
     [ "SolidGameObject", "class_solid_game_object.html", "class_solid_game_object" ],
     [ "SolidGizmo", "class_solid_gizmo.html", "class_solid_gizmo" ],
-    [ "SolidLight", "class_solid_light.html", null ],
+    [ "SolidLight", "class_solid_light.html", "class_solid_light" ],
     [ "SolidLogger", "class_solid_logger.html", "class_solid_logger" ],
     [ "SolidMaterial", "class_solid_material.html", "class_solid_material" ],
     [ "SolidMeshRenderer", "class_solid_mesh_renderer.html", "class_solid_mesh_renderer" ],
+    [ "SolidModel", "class_solid_model.html", "class_solid_model" ],
     [ "SolidPointLight", "class_solid_point_light.html", null ],
     [ "SolidProject", "class_solid_project.html", "class_solid_project" ],
     [ "SolidScene", "class_solid_scene.html", "class_solid_scene" ],
     [ "SolidSceneCamera", "class_solid_scene_camera.html", "class_solid_scene_camera" ],
     [ "SolidShader", "class_solid_shader.html", "class_solid_shader" ],
-    [ "SolidSpotLight", "class_solid_spot_light.html", null ],
+    [ "SolidSpotLight", "class_solid_spot_light.html", "class_solid_spot_light" ],
     [ "SolidTransform", "class_solid_transform.html", "class_solid_transform" ],
     [ "Specular", "struct_specular.html", "struct_specular" ],
     [ "Texture", "struct_texture.html", "struct_texture" ],

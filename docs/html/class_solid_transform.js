@@ -3,6 +3,7 @@ var class_solid_transform =
     [ "SolidTransform", "class_solid_transform.html#accf7b3f53a5c4850600851fe566d32c3", null ],
     [ "GetEulerAngles", "class_solid_transform.html#aecdabf89ebd5e1ad243681c70cd23ed0", null ],
     [ "GetModelMatrix", "class_solid_transform.html#a370935bf33d50cc8d7129bf3ae6091db", null ],
+    [ "MSGPACK_DEFINE", "class_solid_transform.html#ae2d1b749d13a0993f16f24b67999fae3", null ],
     [ "Rotate", "class_solid_transform.html#adb410d2840670757f93d6932c92da9a3", null ],
     [ "Scale", "class_solid_transform.html#a55859f9ee59585bde6e8911c22ddbfb3", null ],
     [ "SetPositionAndRotation", "class_solid_transform.html#a1c6bbfe139029fd84d86fffc202a83fb", null ],

@@ -99,8 +99,10 @@ $(document).ready(function(){initNavTree('class_solid_mesh_renderer.html',''); i
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8cc86b90b8c59266d1f0ae34af53dd2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a8cc86b90b8c59266d1f0ae34af53dd2c">SolidMeshRenderer</a> (std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, std::vector&lt; unsigned int &gt; indices, std::vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt; textures)</td></tr>
 <tr class="separator:a8cc86b90b8c59266d1f0ae34af53dd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a644b63b18c2b608ad35adb82d3d874e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a644b63b18c2b608ad35adb82d3d874e5">Draw</a> ()</td></tr>
-<tr class="separator:a644b63b18c2b608ad35adb82d3d874e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b958e3afa1d7e4cd3a7d56543c1aa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a14b958e3afa1d7e4cd3a7d56543c1aa8">Draw</a> (glm::mat4 &amp;MVP)</td></tr>
+<tr class="separator:a14b958e3afa1d7e4cd3a7d56543c1aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04874ebe6bb2d15d81997cab98099e96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_material.html">SolidMaterial</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a04874ebe6bb2d15d81997cab98099e96">GetMaterial</a> ()</td></tr>
+<tr class="separator:a04874ebe6bb2d15d81997cab98099e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -113,7 +115,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00025">25</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00040">40</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8cc86b90b8c59266d1f0ae34af53dd2c" name="a8cc86b90b8c59266d1f0ae34af53dd2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8cc86b90b8c59266d1f0ae34af53dd2c">&#9670;&nbsp;</a></span>SolidMeshRenderer()</h2>
@@ -146,14 +148,17 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Copyright 2022 Jake Rieger</p>
+<p >Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
+</pre><p> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00018">18</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a644b63b18c2b608ad35adb82d3d874e5" name="a644b63b18c2b608ad35adb82d3d874e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644b63b18c2b608ad35adb82d3d874e5">&#9670;&nbsp;</a></span>Draw()</h2>
+<a id="a14b958e3afa1d7e4cd3a7d56543c1aa8" name="a14b958e3afa1d7e4cd3a7d56543c1aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b958e3afa1d7e4cd3a7d56543c1aa8">&#9670;&nbsp;</a></span>Draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,14 +166,42 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void SolidMeshRenderer::Draw </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">glm::mat4 &amp;&#160;</td>
+          <td class="paramname"><em>MVP</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Pass a material to this function and use it to set the shader uniforms. Practically, each material will have one texture map for each texture type. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Pass a material to this function and use it to set the shader uniforms. Practically, each material will have one texture map for each texture type. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00044">44</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00062">62</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a04874ebe6bb2d15d81997cab98099e96" name="a04874ebe6bb2d15d81997cab98099e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04874ebe6bb2d15d81997cab98099e96">&#9670;&nbsp;</a></span>GetMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_material.html">SolidMaterial</a> * SolidMeshRenderer::GetMaterial </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +218,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00028">28</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -201,7 +234,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00029">29</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -217,7 +250,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00027">27</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00042">42</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>

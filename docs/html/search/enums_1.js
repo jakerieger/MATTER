@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectiontype_0',['ProjectionType',['../_solid_camera_8hpp.html#addbdeb0c4a9113fece681e37faca81d3',1,'SolidCamera.hpp']]]
+  ['loglevel_0',['LogLevel',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9',1,'SolidLogger.hpp']]]
 ];

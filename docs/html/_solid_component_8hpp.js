@@ -9,5 +9,6 @@ var _solid_component_8hpp =
       [ "COM_Softbody", "_solid_component_8hpp.html#acf8931ca91bf505712587f10d8e4f277a0326346280834849f3953519a4f37e5a", null ],
       [ "COM_Terrain", "_solid_component_8hpp.html#acf8931ca91bf505712587f10d8e4f277a1844c5d4c6ac4d2e164f09c0faa3253c", null ],
       [ "COM_Material", "_solid_component_8hpp.html#acf8931ca91bf505712587f10d8e4f277aa4fdd30969d85e84a88610d22c0162a1", null ]
-    ] ]
+    ] ],
+    [ "MSGPACK_ADD_ENUM", "_solid_component_8hpp.html#ae844c7eb624f4349ac1a51a0e20a6266", null ]
 ];

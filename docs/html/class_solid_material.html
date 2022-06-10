@@ -87,6 +87,8 @@ $(document).ready(function(){initNavTree('class_solid_material.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_solid_material-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidMaterial Class Reference</div></div>
 </div><!--header-->
@@ -130,10 +132,28 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5f6d717de8bdd14844e9c022e25071d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac36005230f8b7f6d82eb00147c98885f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#ac36005230f8b7f6d82eb00147c98885f">Bind</a> (glm::mat4 MVP)</td></tr>
 <tr class="separator:ac36005230f8b7f6d82eb00147c98885f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d68bda9d1b0fc647fc532a9158e0a26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#a0d68bda9d1b0fc647fc532a9158e0a26">GetType</a> ()</td></tr>
+<tr class="separator:a0d68bda9d1b0fc647fc532a9158e0a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70f50c87ab0d2377bf14b7ea25de7da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#ae70f50c87ab0d2377bf14b7ea25de7da">SetType</a> (<a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a> type)</td></tr>
+<tr class="separator:ae70f50c87ab0d2377bf14b7ea25de7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb0acccc83f3f0a3a74d31463241303"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#adcb0acccc83f3f0a3a74d31463241303">MSGPACK_DEFINE</a> (mType, <a class="el" href="class_solid_material.html#a395a5067be18edd74be1d1beee71abc9">mRenderingMode</a>)</td></tr>
+<tr class="separator:adcb0acccc83f3f0a3a74d31463241303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a4680b477d5eb430ff707087418c8e0d2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#a4680b477d5eb430ff707087418c8e0d2">Serialize</a> (std::string projectDir, std::string name, <a class="el" href="class_solid_material.html">SolidMaterial</a> *mat)</td></tr>
+<tr class="separator:a4680b477d5eb430ff707087418c8e0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa6e80e8e0a400a8a9999292c007204cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_shader.html">SolidShader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#aa6e80e8e0a400a8a9999292c007204cb">mShader</a></td></tr>
+<tr class="separator:aa6e80e8e0a400a8a9999292c007204cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395a5067be18edd74be1d1beee71abc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70">RenderingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_material.html#a395a5067be18edd74be1d1beee71abc9">mRenderingMode</a></td></tr>
+<tr class="separator:a395a5067be18edd74be1d1beee71abc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00029">29</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00055">55</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac36005230f8b7f6d82eb00147c98885f" name="ac36005230f8b7f6d82eb00147c98885f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac36005230f8b7f6d82eb00147c98885f">&#9670;&nbsp;</a></span>Bind()</h2>
@@ -161,7 +181,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_phong_material.html#a510c52cb66be8000ca829eb635d37f03">PhongMaterial</a>, and <a class="el" href="class_unlit_material.html#ae338af63b6e814c90047cf650043947c">UnlitMaterial</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00045">45</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00071">71</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>
@@ -188,7 +208,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00035">35</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00061">61</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>
@@ -215,7 +235,106 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00032">32</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00058">58</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0d68bda9d1b0fc647fc532a9158e0a26" name="a0d68bda9d1b0fc647fc532a9158e0a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d68bda9d1b0fc647fc532a9158e0a26">&#9670;&nbsp;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a> SolidMaterial::GetType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00072">72</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adcb0acccc83f3f0a3a74d31463241303" name="adcb0acccc83f3f0a3a74d31463241303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcb0acccc83f3f0a3a74d31463241303">&#9670;&nbsp;</a></span>MSGPACK_DEFINE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SolidMaterial::MSGPACK_DEFINE </td>
+          <td>(</td>
+          <td class="paramtype">mType&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_solid_material.html#a395a5067be18edd74be1d1beee71abc9">mRenderingMode</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4680b477d5eb430ff707087418c8e0d2" name="a4680b477d5eb430ff707087418c8e0d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4680b477d5eb430ff707087418c8e0d2">&#9670;&nbsp;</a></span>Serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidMaterial::Serialize </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>projectDir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_solid_material.html">SolidMaterial</a> *&#160;</td>
+          <td class="paramname"><em>mat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00048">48</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -244,8 +363,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Copyright 2022 Jake Rieger</p>
+<p >Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
+</pre><p> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00020">20</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +397,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00011">11</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00028">28</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -305,7 +427,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00007">7</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00024">24</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +457,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00023">23</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00040">40</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,7 +485,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00034">34</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00060">60</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>
@@ -391,7 +513,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00031">31</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00057">57</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +543,35 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00027">27</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00044">44</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae70f50c87ab0d2377bf14b7ea25de7da" name="ae70f50c87ab0d2377bf14b7ea25de7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70f50c87ab0d2377bf14b7ea25de7da">&#9670;&nbsp;</a></span>SetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidMaterial::SetType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_solid_material_8hpp.html#ace55764233310da429c994a8c334b32a">MaterialType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00073">73</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +601,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00015">15</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00032">32</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +631,40 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00019">19</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_material_8cpp_source.html#l00036">36</a> of file <a class="el" href="_solid_material_8cpp_source.html">SolidMaterial.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a395a5067be18edd74be1d1beee71abc9" name="a395a5067be18edd74be1d1beee71abc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395a5067be18edd74be1d1beee71abc9">&#9670;&nbsp;</a></span>mRenderingMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_solid_material_8hpp.html#a87cafe63badc45546f2eb940f2a94d70">RenderingMode</a> SolidMaterial::mRenderingMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00076">76</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa6e80e8e0a400a8a9999292c007204cb" name="aa6e80e8e0a400a8a9999292c007204cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e80e8e0a400a8a9999292c007204cb">&#9670;&nbsp;</a></span>mShader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_shader.html">SolidShader</a>* SolidMaterial::mShader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_material_8hpp_source.html#l00075">75</a> of file <a class="el" href="_solid_material_8hpp_source.html">SolidMaterial.hpp</a>.</p>
 
 </div>
 </div>

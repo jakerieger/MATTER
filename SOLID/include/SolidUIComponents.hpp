@@ -124,44 +124,55 @@ namespace SolidUIComponents {
     inline static bool DragDropTarget(ProjectItemType type, ImVec2 &size) {
         bool dropped = false;
 
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
         ImGui::BeginChild("DragDropTarget", size, true);
-        switch (type) {
-            case ProjectItemType_Folder:
-                ImGui::Text(ICON_FA_FOLDER);
-                break;
-            case ProjectItemType_FolderEmpty:
-                ImGui::Text(ICON_FA_FOLDER_OPEN);
-                break;
-            case ProjectItemType_File:
-                ImGui::Text(ICON_FA_FILE);
-                break;
-            case ProjectItemType_File_Script:
-                ImGui::Text(ICON_FA_FILE_CODE);
-                break;
-            case ProjectItemType_File_Material:
-                ImGui::Text(ICON_FA_BRUSH);
-                break;
-            case ProjectItemType_File_Texture:
-                ImGui::Text(ICON_FA_IMAGE);
-                break;
-            case ProjectItemType_File_Model:
-                ImGui::Text(ICON_FA_SHAPES);
-                break;
-            case ProjectItemType_File_Font:
-                ImGui::Text(ICON_FA_FONT);
-                break;
-            case ProjectItemType_File_Sound:
-                ImGui::Text(ICON_FA_MUSIC);
-                break;
-            case ProjectItemType_File_Scene:
-                ImGui::Text(ICON_FA_MAP);
-                break;
-            default:
-                return false;
+        // switch (type) {
+        //     case ProjectItemType_Folder:
+        //         ImGui::Text(ICON_FA_FOLDER);
+        //         break;
+        //     case ProjectItemType_FolderEmpty:
+        //         ImGui::Text(ICON_FA_FOLDER_OPEN);
+        //         break;
+        //     case ProjectItemType_File:
+        //         ImGui::Text(ICON_FA_FILE);
+        //         break;
+        //     case ProjectItemType_File_Script:
+        //         ImGui::Text(ICON_FA_FILE_CODE);
+        //         break;
+        //     case ProjectItemType_File_Material:
+        //         ImGui::Text(ICON_FA_BRUSH);
+        //         break;
+        //     case ProjectItemType_File_Texture:
+        //         ImGui::Text(ICON_FA_IMAGE);
+        //         break;
+        //     case ProjectItemType_File_Model:
+        //         ImGui::Text(ICON_FA_SHAPES);
+        //         break;
+        //     case ProjectItemType_File_Font:
+        //         ImGui::Text(ICON_FA_FONT);
+        //         break;
+        //     case ProjectItemType_File_Sound:
+        //         ImGui::Text(ICON_FA_MUSIC);
+        //         break;
+        //     case ProjectItemType_File_Scene:
+        //         ImGui::Text(ICON_FA_MAP);
+        //         break;
+        //     default:
+        //         return false;
+
+        // }
+
+        ImGui::SetCursorPosX(ImGui::GetContentRegionAvail().x - 24.f);
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0, 0, 0, 0));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0, 0, 0, 0));
+        if (ImGui::Button(ICON_FA_CIRCLE_DOT, ImVec2(24.f, 24.f))) {
 
         }
+        ImGui::PopStyleColor(3);
 
         ImGui::EndChild();
+        ImGui::PopStyleVar();
 
         dropped = ImGui::BeginDragDropTarget();
         return dropped;    

@@ -1,5 +1,6 @@
 var class_solid_logger =
 [
+    [ "SolidLogger", "class_solid_logger.html#abd7244b8e97349c397620d1804c30d94", null ],
     [ "ClearLogs", "class_solid_logger.html#a0002df027269b2992c5be9abf8e5d6ef", null ],
     [ "GetErrorCount", "class_solid_logger.html#a27c3490e8c0d7432f24362ce30c08295", null ],
     [ "GetErrors", "class_solid_logger.html#a61ce85b8fdb194eefff1425e9d155fc2", null ],
@@ -12,6 +13,7 @@ var class_solid_logger =
     [ "GetWarnings", "class_solid_logger.html#ab6445d1065f6c9f29a749fee522bb542", null ],
     [ "IsLoggingPaused", "class_solid_logger.html#a397b3b4217469fdcac5baf0fd800529a", null ],
     [ "Log", "class_solid_logger.html#a760046bc14114aa68357df1b8c210cf0", null ],
+    [ "operator=", "class_solid_logger.html#af7d5500d65109f61ed434e8b3c6b8c64", null ],
     [ "PauseLogging", "class_solid_logger.html#a0251526d86b7a3b6f6489d6eeded2c1a", null ],
     [ "ResumeLogging", "class_solid_logger.html#a7a54468177834ad8ae3797a9da1c22a4", null ],
     [ "Search", "class_solid_logger.html#ae500049963d16b058b8086211e041da6", null ]

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['go_5fcamera_0',['GO_Camera',['../_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47fa6a7ca21a8f071b72de8eb22f10d0593e',1,'SolidGameObject.hpp']]],
-  ['go_5fgameobject_1',['GO_GameObject',['../_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47faa8191c2212c67ea18de107bdaa2d9d41',1,'SolidGameObject.hpp']]],
-  ['go_5flight_2',['GO_Light',['../_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47fa46d2a8b532573b705b85a7a1d07ec3e2',1,'SolidGameObject.hpp']]],
-  ['go_5fskybox_3',['GO_Skybox',['../_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47fa17839e275cd8c936c8cc41615afb0a0b',1,'SolidGameObject.hpp']]],
-  ['go_5fterrain_4',['GO_Terrain',['../_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47faad5f925e80464219e9bb920eb95000b8',1,'SolidGameObject.hpp']]]
+  ['loglevel_5ferror_0',['LogLevel_ERROR',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a43306589e1acd6c07d7a7390a79f17c4',1,'SolidLogger.hpp']]],
+  ['loglevel_5ffatal_1',['LogLevel_FATAL',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0a61448b999be280c3f18d817c4d0136',1,'SolidLogger.hpp']]],
+  ['loglevel_5finfo_2',['LogLevel_INFO',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9af364851ea406ecc6816a73c83c51773d',1,'SolidLogger.hpp']]],
+  ['loglevel_5fwarning_3',['LogLevel_WARNING',['../_solid_logger_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9ab1a569b1de225f1996d462012789369d',1,'SolidLogger.hpp']]]
 ];

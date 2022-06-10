@@ -86,12 +86,16 @@ $(document).ready(function(){initNavTree('_solid_u_i_components_8hpp.html',''); 
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">SolidUIComponents.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;imgui/imgui.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;imgui/IconsFontAwesome6.h&gt;</code><br />
+<code>#include &lt;imgui/imgui.h&gt;</code><br />
 <code>#include &lt;imgui/imgui_internal.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_solid_utils_8hpp_source.html">SolidUtils.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_solid_u_i_components_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -99,7 +103,58 @@ $(document).ready(function(){initNavTree('_solid_u_i_components_8hpp.html',''); 
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_solid_u_i_components"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_u_i_components.html">SolidUIComponents</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a133db7c90a851b9010872f4f5b09e4fd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fd">ProjectItemType</a> { <br />
+&#160;&#160;<a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda2dc97443709f0385a9b6a271f0c3da4c">ProjectItemType_Folder</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda239d8a47dd2df354731232cb6165963b">ProjectItemType_FolderEmpty</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda649ea3428985e5daddc883fdae904cfd">ProjectItemType_File</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdadd96e9719d0bdca4dbdf8dadeea6cf94">ProjectItemType_File_Script</a>
+, <br />
+&#160;&#160;<a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda67c6f4d91f63688dc83f3a019446fed0">ProjectItemType_File_Material</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda1eb6e9c9de938a8af21384484b331f46">ProjectItemType_File_Texture</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fda25562ed53a840b95fe52e9e8c0889920">ProjectItemType_File_Model</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdaec321404e078ea40f8005e0669965ebd">ProjectItemType_File_Font</a>
+, <br />
+&#160;&#160;<a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdadee0d30391481a2cfce31307a54c6baf">ProjectItemType_File_Sound</a>
+, <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdacefeeb646505c2e50866948f9873e33b">ProjectItemType_File_Scene</a>
+<br />
+ }</td></tr>
+<tr class="separator:a133db7c90a851b9010872f4f5b09e4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a133db7c90a851b9010872f4f5b09e4fd" name="a133db7c90a851b9010872f4f5b09e4fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133db7c90a851b9010872f4f5b09e4fd">&#9670;&nbsp;</a></span>ProjectItemType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fd">ProjectItemType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Copyright 2022 Jake Rieger</p>
+<p >Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
+</pre><p> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda2dc97443709f0385a9b6a271f0c3da4c" name="a133db7c90a851b9010872f4f5b09e4fda2dc97443709f0385a9b6a271f0c3da4c"></a>ProjectItemType_Folder&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda239d8a47dd2df354731232cb6165963b" name="a133db7c90a851b9010872f4f5b09e4fda239d8a47dd2df354731232cb6165963b"></a>ProjectItemType_FolderEmpty&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda649ea3428985e5daddc883fdae904cfd" name="a133db7c90a851b9010872f4f5b09e4fda649ea3428985e5daddc883fdae904cfd"></a>ProjectItemType_File&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fdadd96e9719d0bdca4dbdf8dadeea6cf94" name="a133db7c90a851b9010872f4f5b09e4fdadd96e9719d0bdca4dbdf8dadeea6cf94"></a>ProjectItemType_File_Script&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda67c6f4d91f63688dc83f3a019446fed0" name="a133db7c90a851b9010872f4f5b09e4fda67c6f4d91f63688dc83f3a019446fed0"></a>ProjectItemType_File_Material&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda1eb6e9c9de938a8af21384484b331f46" name="a133db7c90a851b9010872f4f5b09e4fda1eb6e9c9de938a8af21384484b331f46"></a>ProjectItemType_File_Texture&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fda25562ed53a840b95fe52e9e8c0889920" name="a133db7c90a851b9010872f4f5b09e4fda25562ed53a840b95fe52e9e8c0889920"></a>ProjectItemType_File_Model&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fdaec321404e078ea40f8005e0669965ebd" name="a133db7c90a851b9010872f4f5b09e4fdaec321404e078ea40f8005e0669965ebd"></a>ProjectItemType_File_Font&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fdadee0d30391481a2cfce31307a54c6baf" name="a133db7c90a851b9010872f4f5b09e4fdadee0d30391481a2cfce31307a54c6baf"></a>ProjectItemType_File_Sound&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a133db7c90a851b9010872f4f5b09e4fdacefeeb646505c2e50866948f9873e33b" name="a133db7c90a851b9010872f4f5b09e4fdacefeeb646505c2e50866948f9873e33b"></a>ProjectItemType_File_Scene&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_solid_u_i_components_8hpp_source.html#l00024">24</a> of file <a class="el" href="_solid_u_i_components_8hpp_source.html">SolidUIComponents.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

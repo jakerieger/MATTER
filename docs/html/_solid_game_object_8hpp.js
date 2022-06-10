@@ -7,5 +7,6 @@ var _solid_game_object_8hpp =
       [ "GO_Camera", "_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47fa6a7ca21a8f071b72de8eb22f10d0593e", null ],
       [ "GO_Terrain", "_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47faad5f925e80464219e9bb920eb95000b8", null ],
       [ "GO_Skybox", "_solid_game_object_8hpp.html#aabd8be7c4a9689d309416afc0a45e47fa17839e275cd8c936c8cc41615afb0a0b", null ]
-    ] ]
+    ] ],
+    [ "MSGPACK_ADD_ENUM", "_solid_game_object_8hpp.html#a9a5c366d7ebe47b6dfbda8e14e3af8ce", null ]
 ];

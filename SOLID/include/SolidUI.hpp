@@ -142,7 +142,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_Text]                   = colors["text"];
             styleColors[ImGuiCol_TextDisabled]           = colors["text_inactive"];
             styleColors[ImGuiCol_WindowBg]               = colors["panel"];
-            styleColors[ImGuiCol_ChildBg]                = colors["panel"];
+            styleColors[ImGuiCol_ChildBg]                = colors["frame"];
             styleColors[ImGuiCol_PopupBg]                = colors["menu"];
             styleColors[ImGuiCol_Border]                 = colors["border"];
             styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.f, 0.f, 0.f, 0.f);
@@ -189,7 +189,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_TableRowBg]             = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
             styleColors[ImGuiCol_TableRowBgAlt]          = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
             styleColors[ImGuiCol_TextSelectedBg]         = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
-            styleColors[ImGuiCol_DragDropTarget]         = ImVec4(1.00f, 1.00f, 0.00f, 0.90f);
+            styleColors[ImGuiCol_DragDropTarget]         = colors["accent"];
             styleColors[ImGuiCol_NavHighlight]           = ImVec4(30.f / 255.f, 30.f / 255.f, 30.f / 255.f, 1.00f);
             styleColors[ImGuiCol_NavWindowingHighlight]  = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
             styleColors[ImGuiCol_NavWindowingDimBg]      = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
@@ -266,11 +266,52 @@ namespace SolidUI {
     }
 
     namespace ImGUIWindows {
-        inline static void MainMenuBar() {
+        inline static void MainMenuBar(GLFWwindow* window) {
+            ImGui::PushStyleColor(ImGuiCol_Separator, colors["panel"]);
             if (ImGui::BeginMainMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
-                    if (ImGui::MenuItem("New")) {
+                    if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
 
+                    }
+
+                    if (ImGui::MenuItem("New Project", "Ctrl+Shift+N")) {
+
+                    }
+
+                    ImGui::Separator();
+
+                    if (ImGui::MenuItem("Open Scene...", "Ctrl+O")) {
+
+                    }
+
+                    if (ImGui::MenuItem("Open Project...", "Ctrl+Shift+O")) {
+
+                    }
+
+                    ImGui::Separator();
+
+                    if (ImGui::MenuItem("Save", "Ctrl+S")) {
+
+                    }
+
+                    if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S")) {
+
+                    }
+
+                    ImGui::Separator();
+
+                    if (ImGui::MenuItem("Build Settings", "F6")) {
+
+                    }
+
+                    if (ImGui::MenuItem("Build", "Ctrl+B")) {
+
+                    }
+
+                    ImGui::Separator();
+
+                    if (ImGui::MenuItem("Exit")) {
+                        glfwSetWindowShouldClose(window, true);
                     }
 
                     ImGui::EndMenu();
@@ -342,6 +383,7 @@ namespace SolidUI {
 
                 ImGui::EndMainMenuBar();
             }
+            ImGui::PopStyleColor();
         }
 
         inline static void Toolbar() {
@@ -492,20 +534,20 @@ namespace SolidUI {
             ImGui::PopStyleColor();
         }
 
-        inline static void Console(SolidLogger &logger) {
+        inline static void Console() {
             ImGui::Begin(ICON_FA_CODE " Console");
                 ImGui::BeginGroup();
                     if (ImGui::Button("Clear")) {
-                        logger.ClearLogs();
+                        SolidLogger::GetInstance()->ClearLogs();
                     }
 
                     ImGui::SameLine();
 
                     if (ImGui::Button("Pause")) {
-                        if (logger.IsLoggingPaused()) {
-                            logger.ResumeLogging();
+                        if (SolidLogger::GetInstance()->IsLoggingPaused()) {
+                            SolidLogger::GetInstance()->ResumeLogging();
                         } else {
-                            logger.PauseLogging();
+                            SolidLogger::GetInstance()->PauseLogging();
                         }
                     }
 
@@ -514,15 +556,15 @@ namespace SolidUI {
                     ImGui::InputText("##console_search", console_search_buffer, IM_ARRAYSIZE(console_search_buffer));
                     ImGui::PopItemWidth();
                     ImGui::SameLine();
-                    ImGui::TextColored(colors["info"], "%d " ICON_FA_CIRCLE_EXCLAMATION, logger.GetInfoCount());
+                    ImGui::TextColored(colors["info"], "%d " ICON_FA_CIRCLE_EXCLAMATION, SolidLogger::GetInstance()->GetInfoCount());
                     ImGui::SameLine();
-                    ImGui::TextColored(colors["warning"], "%d " ICON_FA_TRIANGLE_EXCLAMATION, logger.GetWarningCount());
+                    ImGui::TextColored(colors["warning"], "%d " ICON_FA_TRIANGLE_EXCLAMATION, SolidLogger::GetInstance()->GetWarningCount());
                     ImGui::SameLine();
-                    ImGui::TextColored(colors["error"], "%d " ICON_FA_XMARK, logger.GetErrorCount() + logger.GetFatalCount());
+                    ImGui::TextColored(colors["error"], "%d " ICON_FA_XMARK, SolidLogger::GetInstance()->GetErrorCount() + SolidLogger::GetInstance()->GetFatalCount());
                 ImGui::EndGroup();
                 
                 ImGui::BeginChild("##console_log", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
-                    for (auto &log : logger.GetLogs()) {
+                    for (auto &log : SolidLogger::GetInstance()->GetLogs()) {
                         if (log.level == LogLevel::LogLevel_INFO) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["info"], ICON_FA_CIRCLE_EXCLAMATION);
@@ -904,15 +946,15 @@ namespace SolidUI {
         ImGui_ImplOpenGL3_Init("#version 460");
     }
 
-    inline static void DrawUI(unsigned int sceneTexture, SolidLogger &logger, SolidProject &project) {
+    inline static void DrawUI(GLFWwindow* window, unsigned int sceneTexture, SolidProject &project) {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
         ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
-        ImGUIWindows::MainMenuBar();
+        ImGUIWindows::MainMenuBar(window);
         ImGUIWindows::Toolbar();
-        ImGUIWindows::Console(logger);
+        ImGUIWindows::Console();
         ImGUIWindows::Project(project);
         ImGUIWindows::Scene(sceneTexture);
         ImGUIWindows::Inspector(project.GetActiveScene(), project);

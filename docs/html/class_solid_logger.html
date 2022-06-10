@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('class_solid_logger.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_solid_logger-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidLogger Class Reference</div></div>
 </div><!--header-->
@@ -130,13 +131,54 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a03132f8c9bf0ce6a3f004e670572569c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae500049963d16b058b8086211e041da6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_log_entry.html">LogEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_logger.html#ae500049963d16b058b8086211e041da6">Search</a> (const char *query)</td></tr>
 <tr class="separator:ae500049963d16b058b8086211e041da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7244b8e97349c397620d1804c30d94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_logger.html#abd7244b8e97349c397620d1804c30d94">SolidLogger</a> (<a class="el" href="class_solid_logger.html">SolidLogger</a> const &amp;)=delete</td></tr>
+<tr class="memdesc:abd7244b8e97349c397620d1804c30d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton accessor.  <a href="class_solid_logger.html#abd7244b8e97349c397620d1804c30d94">More...</a><br /></td></tr>
+<tr class="separator:abd7244b8e97349c397620d1804c30d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d5500d65109f61ed434e8b3c6b8c64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_logger.html">SolidLogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_logger.html#af7d5500d65109f61ed434e8b3c6b8c64">operator=</a> (<a class="el" href="class_solid_logger.html">SolidLogger</a> const &amp;)=delete</td></tr>
+<tr class="separator:af7d5500d65109f61ed434e8b3c6b8c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a8616993a52d7a2f8fad6b17cf7d9df3c"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_solid_logger.html">SolidLogger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_logger.html#a8616993a52d7a2f8fad6b17cf7d9df3c">GetInstance</a> ()</td></tr>
+<tr class="separator:a8616993a52d7a2f8fad6b17cf7d9df3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Handles logging functionality for the editor console. </p>
+<dl class="section note"><dt>Note</dt><dd>I've implemented the logger as a singleton to make it easy to access from anywhere in the codebase. This is generally a bad idea, but in this case it's fine because the logger is used globally by the whole system and should only ever exist as one instance.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Jake Rieger </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00029">29</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="abd7244b8e97349c397620d1804c30d94" name="abd7244b8e97349c397620d1804c30d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd7244b8e97349c397620d1804c30d94">&#9670;&nbsp;</a></span>SolidLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SolidLogger::SolidLogger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_logger.html">SolidLogger</a> const &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Singleton accessor. </p>
+<p >Based on the implementation found here: <a href="https://stackoverflow.com/a/40337728">https://stackoverflow.com/a/40337728</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0002df027269b2992c5be9abf8e5d6ef" name="a0002df027269b2992c5be9abf8e5d6ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0002df027269b2992c5be9abf8e5d6ef">&#9670;&nbsp;</a></span>ClearLogs()</h2>
 
@@ -160,7 +202,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00062">62</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +229,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00050">50</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00069">69</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -206,7 +248,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00041">41</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00056">56</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +275,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00051">51</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00070">70</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -252,7 +294,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00053">53</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00068">68</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +321,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00067">67</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -298,7 +340,34 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00017">17</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00032">32</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8616993a52d7a2f8fad6b17cf7d9df3c" name="a8616993a52d7a2f8fad6b17cf7d9df3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8616993a52d7a2f8fad6b17cf7d9df3c">&#9670;&nbsp;</a></span>GetInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_solid_logger.html">SolidLogger</a> &gt; SolidLogger::GetInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00092">92</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -325,7 +394,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00042">42</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00061">61</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -352,7 +421,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00049">49</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00068">68</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -371,7 +440,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00029">29</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00044">44</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +467,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00046">46</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00065">65</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -453,12 +522,41 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">details</td><td>The message details </td></tr>
     <tr><td class="paramname">file</td><td>The file the message originated from </td></tr>
     <tr><td class="paramname">line</td><td>The line the message originated from </td></tr>
-    <tr><td class="paramname">level</td><td>The level of the message </td></tr>
+    <tr><td class="paramname">level</td><td>The level of the message</td></tr>
   </table>
   </dd>
 </dl>
+<p>Copyright 2022 Jake Rieger</p>
+<p >Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
+</pre><p> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00003">3</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00018">18</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af7d5500d65109f61ed434e8b3c6b8c64" name="af7d5500d65109f61ed434e8b3c6b8c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d5500d65109f61ed434e8b3c6b8c64">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_logger.html">SolidLogger</a> &amp; SolidLogger::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_logger.html">SolidLogger</a> const &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -485,7 +583,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00063">63</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -512,7 +610,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00045">45</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8hpp_source.html#l00064">64</a> of file <a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>.</p>
 
 </div>
 </div>
@@ -532,7 +630,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00065">65</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_logger_8cpp_source.html#l00080">80</a> of file <a class="el" href="_solid_logger_8cpp_source.html">SolidLogger.cpp</a>.</p>
 
 </div>
 </div>

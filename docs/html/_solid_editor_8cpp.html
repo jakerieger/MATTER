@@ -95,6 +95,10 @@ $(document).ready(function(){initNavTree('_solid_editor_8cpp.html',''); initResi
 <div class="textblock"><code>#include &quot;<a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_solid_u_i_8hpp_source.html">SolidUI.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_solid_scene_camera_8hpp_source.html">SolidSceneCamera.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_solid_game_object_8hpp_source.html">SolidGameObject.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_solid_model_8hpp_source.html">SolidModel.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_solid_light_8hpp_source.html">SolidLight.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_solid_logger_8hpp_source.html">SolidLogger.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_solid_editor_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -142,7 +146,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00028">28</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00047">47</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -158,7 +162,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00027">27</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00046">46</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +178,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00026">26</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00045">45</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,7 +194,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00024">24</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00043">43</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -206,7 +210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00025">25</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00044">44</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,7 +225,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >This file is the heart of the SOLID Editor.</p>
+<p >Copyright 2022 Jake Rieger</p>
+<p >Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
+</pre><p> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This file is the heart of the SOLID Editor.</p>
 <p >It is responsible for the following:</p><ul>
 <li>Initializing OpenGL and the window it renders to</li>
 <li>Setting up framebuffers and textures to pass to the UI</li>
@@ -234,7 +240,7 @@ Variables</h2></td></tr>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Callback functions are defined globally instead of as class members because OpenGL takes a C-style pointer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00023">23</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00042">42</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -353,7 +359,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00249">249</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00296">296</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>

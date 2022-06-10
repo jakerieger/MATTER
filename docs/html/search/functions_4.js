@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fixedupdate_0',['FixedUpdate',['../class_solid_component.html#ac574aeb6bc5bfeb37b15e19767bf0dda',1,'SolidComponent::FixedUpdate()'],['../class_solid_game_object.html#aafb36b636ce3553c25fd91045b052d87',1,'SolidGameObject::FixedUpdate()']]]
+  ['emission_0',['Emission',['../struct_emission.html#afb671475da4cd8c8b2c648938c202e7c',1,'Emission']]]
 ];

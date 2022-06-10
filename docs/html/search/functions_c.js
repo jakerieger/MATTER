@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['resumelogging_0',['ResumeLogging',['../class_solid_logger.html#a7a54468177834ad8ae3797a9da1c22a4',1,'SolidLogger']]],
-  ['rotate_1',['Rotate',['../class_solid_transform.html#adb410d2840670757f93d6932c92da9a3',1,'SolidTransform']]],
-  ['run_2',['Run',['../class_solid_editor.html#a8fef4565f56af43cf2c25db9fd579a2a',1,'SolidEditor']]]
+  ['pauselogging_0',['PauseLogging',['../class_solid_logger.html#a0251526d86b7a3b6f6489d6eeded2c1a',1,'SolidLogger']]],
+  ['phongmaterial_1',['PhongMaterial',['../class_phong_material.html#a5edfd5d4415cb5f7c10e8eea49cb692d',1,'PhongMaterial']]],
+  ['processmouseorbit_2',['ProcessMouseOrbit',['../class_solid_scene_camera.html#a422d554047a6e3da2ade4c0503984e25',1,'SolidSceneCamera']]]
 ];

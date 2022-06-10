@@ -88,3 +88,8 @@ std::vector<LogEntry> SolidLogger::Search(const char* query) {
 
     return results;
 }
+
+std::shared_ptr<SolidLogger> SolidLogger::GetInstance() {
+    static std::shared_ptr<SolidLogger> instance{new SolidLogger};
+    return instance;
+}

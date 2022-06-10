@@ -23,7 +23,6 @@
 
 #include "SolidEditorConfig.hpp"
 #include "SolidProject.hpp"
-#include "SolidLogger.hpp"
 #include "SolidEditorGrid.hpp"
 
 /**
@@ -138,11 +137,6 @@ private:
      * @brief The project class.
      */
     SolidProject mProject;
-
-    /**
-     * @brief The logging class.
-     */
-    SolidLogger mLogger;
 
     SolidEditorGrid mEditorGrid;
 

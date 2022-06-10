@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['pauselogging_0',['PauseLogging',['../class_solid_logger.html#a0251526d86b7a3b6f6489d6eeded2c1a',1,'SolidLogger']]],
-  ['phongmaterial_1',['PhongMaterial',['../class_phong_material.html#a5edfd5d4415cb5f7c10e8eea49cb692d',1,'PhongMaterial']]],
-  ['processmouseorbit_2',['ProcessMouseOrbit',['../class_solid_scene_camera.html#a422d554047a6e3da2ade4c0503984e25',1,'SolidSceneCamera']]]
+  ['operator_21_3d_0',['operator!=',['../struct_solid_color.html#ae79aa6649d9dd6d1e18adf166690042f',1,'SolidColor']]],
+  ['operator_3c_1',['operator&lt;',['../struct_solid_color.html#aca2d88fa33cdedd68b7ad06d54d2311d',1,'SolidColor']]],
+  ['operator_3c_3d_2',['operator&lt;=',['../struct_solid_color.html#af43e7d201889d30d1dfc90a5a8436de0',1,'SolidColor']]],
+  ['operator_3d_3',['operator=',['../class_solid_logger.html#af7d5500d65109f61ed434e8b3c6b8c64',1,'SolidLogger']]],
+  ['operator_3d_3d_4',['operator==',['../struct_solid_color.html#ad94f6e924fb3a1e83f640594bad702fe',1,'SolidColor']]],
+  ['operator_3e_5',['operator&gt;',['../struct_solid_color.html#a679d54ae8c59052c08f22d3d18356479',1,'SolidColor']]],
+  ['operator_3e_3d_6',['operator&gt;=',['../struct_solid_color.html#a20ccf9e31f88a8ac5aac0cf83691c200',1,'SolidColor']]]
 ];
