@@ -1,5 +1,5 @@
 <theme
-    name="Pro"
+    name="Default"
     author="Jake Rieger"
     version="1.0"
     description="Dark grey theme with good contrast"
@@ -12,6 +12,8 @@
         <color name="border" value="1c1c1c" opacity="1.0"/>
         <color name="text" value="cccccc" opacity="1.0"/>
         <color name="text_inactive" value="8c8c8c" opacity="1.0"/>
+        <color name="button" value="404040" opacity="1.0"/>
+        <color name="button_hover" value="404040" opacity="0.7"/>
         <color name="selected" value="404040" opacity="1.0"/>
         <color name="header" value="2b2b2b" opacity="1.0"/>
         <color name="menu" value="1c1c1c" opacity="1.0"/>
@@ -19,6 +21,9 @@
         <color name="warning" value="de9545" opacity="1.0"/>
         <color name="error" value="e35b5b" opacity="1.0"/>
         <color name="info" value="2d89e5" opacity="1.0"/>
+        <color name="xaxis" value="ff261c" opacity="1.0"/>
+        <color name="yaxis" value="0fd62b" opacity="1.0"/>
+        <color name="zaxis" value="1f6feb" opacity="1.0"/>
     </colors>
     <fonts>
         <font type="interface" name="TitilliumWeb-Regular" size="20"/>

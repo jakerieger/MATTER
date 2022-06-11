@@ -1,24 +1,29 @@
 <theme
-    name="Default"
+    name="Night"
     author="Jake Rieger"
     version="1.0"
-    description="A clean, flat dark theme based on Tokyo Night for VS Code."
+    description="High contrast dark theme based on GitHub's dark theme."
 >
     <colors>
-        <color name="panel" value="1F2334" opacity="1.0"/>
-        <color name="scene" value="24283A" opacity="1.0"/>
-        <color name="frame" value="292E41" opacity="1.0"/>
-        <color name="accent" value="47A6F2" opacity="1.0"/>
-        <color name="border" value="1B1E2E" opacity="1.0"/>
-        <color name="text" value="9EB1D5" opacity="1.0"/>
-        <color name="text_inactive" value="7982A8" opacity="1.0"/>
+        <color name="panel" value="0d1117" opacity="1.0"/>
+        <color name="scene" value="161b22" opacity="1.0"/>
+        <color name="frame" value="161b22" opacity="1.0"/>
+        <color name="accent" value="1f6feb" opacity="1.0"/>
+        <color name="border" value="30363d" opacity="1.0"/>
+        <color name="text" value="c9d1d9" opacity="1.0"/>
+        <color name="text_inactive" value="8b949e" opacity="1.0"/>
+        <color name="button" value="21262d" opacity="1.0"/>
+        <color name="button_hover" value="30363d" opacity="1.0"/>
         <color name="selected" value="292E41" opacity="1.0"/>
         <color name="header" value="1F2334" opacity="1.0"/>
-        <color name="menu" value="1A1C29" opacity="1.0"/>
-        <color name="success" value="8bc351" opacity="1.0"/>
-        <color name="warning" value="dfaf6c" opacity="1.0"/>
-        <color name="error" value="f2423c" opacity="1.0"/>
-        <color name="info" value="2689e2" opacity="1.0"/>
+        <color name="menu" value="0a0d12" opacity="1.0"/>
+        <color name="success" value="3fb950" opacity="1.0"/>
+        <color name="warning" value="f78166" opacity="1.0"/>
+        <color name="error" value="f85149" opacity="1.0"/>
+        <color name="info" value="58a6ff" opacity="1.0"/>
+        <color name="xaxis" value="ff261c" opacity="1.0"/>
+        <color name="yaxis" value="0fd62b" opacity="1.0"/>
+        <color name="zaxis" value="1f6feb" opacity="1.0"/>
     </colors>
     <fonts>
         <font type="interface" name="TitilliumWeb-Regular" size="20"/>

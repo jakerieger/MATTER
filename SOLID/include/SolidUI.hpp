@@ -62,12 +62,17 @@ namespace SolidUI {
         { "border",        ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "text",          ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "text_inactive", ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "button",        ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "button_hover",  ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "selected",      ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "header",        ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "menu",          ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "success",       ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "warning",       ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
         { "error",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "xaxis",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "yaxis",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
+        { "zaxis",         ImVec4(0.0f, 0.0f, 0.0f, 1.0f) },
     };
 
     // Initialize our window style vars
@@ -81,7 +86,7 @@ namespace SolidUI {
     //                                       move   rotate  scale
     static bool transformation_states[3] = { true, false, false };
     //                             snap   enabled
-    static bool grid_states[2] = { true, true };
+    static bool grid_states[2] = { false, false };
     //                               wireframe solid  lit
     static bool render_states[3] = { false,    true, false };
 
@@ -108,8 +113,8 @@ namespace SolidUI {
         namespace EditorPreferences {
             static bool show_preferences = false;
             static bool selected_general = true;
-            static bool selected_appearance = false;
             static bool selected_external_tools = false;
+            static unsigned int theme_index = 0;
         }
 
         namespace Console {
@@ -119,6 +124,14 @@ namespace SolidUI {
         
         static bool show_build_settings = false;
     }
+
+    struct Theme {
+        std::string name;
+        std::string description;
+        std::string author;
+    };
+
+    static std::vector<Theme> themes;
 
     namespace Helpers {
         inline static void LoadColors(std::string themeName) {
@@ -175,12 +188,12 @@ namespace SolidUI {
             styleColors[ImGuiCol_CheckMark]              = colors["text"];
             styleColors[ImGuiCol_SliderGrab]             = colors["accent"];
             styleColors[ImGuiCol_SliderGrabActive]       = colors["accent"];
-            styleColors[ImGuiCol_Button]                 = colors["selected"];
-            styleColors[ImGuiCol_ButtonHovered]          = SolidUtils::ChangeColorAlpha(colors["selected"], 0.7f);
-            styleColors[ImGuiCol_ButtonActive]           = SolidUtils::ChangeColorAlpha(colors["selected"], 0.55f);
+            styleColors[ImGuiCol_Button]                 = colors["button"];
+            styleColors[ImGuiCol_ButtonHovered]          = colors["button_hover"];
+            styleColors[ImGuiCol_ButtonActive]           = colors["button_hover"];
             styleColors[ImGuiCol_Header]                 = colors["header"];
-            styleColors[ImGuiCol_HeaderHovered]          = colors["accent"];
-            styleColors[ImGuiCol_HeaderActive]           = colors["accent"];
+            styleColors[ImGuiCol_HeaderHovered]          = colors["header"];
+            styleColors[ImGuiCol_HeaderActive]           = colors["header"];
             styleColors[ImGuiCol_Separator]              = SolidUtils::ChangeColorAlpha(styleColors[ImGuiCol_Border], 0.67f);
             styleColors[ImGuiCol_SeparatorHovered]       = colors["accent"];
             styleColors[ImGuiCol_SeparatorActive]        = colors["accent"];
@@ -278,11 +291,32 @@ namespace SolidUI {
                 }
             }
         }
+    
+        inline static void ParseEditorThemes() {
+            themes.clear();
+            for (const auto &entry : std::filesystem::directory_iterator(SolidUtils::GetEditorThemesPath())) {
+                std::string themeName = entry.path().filename().string();
+                std::string themeFile = SolidUtils::GetEditorThemesPath() + "\\" + themeName;
+                pugi::xml_document themeDoc;
+                pugi::xml_parse_result result = themeDoc.load_file(themeFile.c_str());
+
+                if (!result)
+                    SolidLogger::GetInstance()->Log(("Error parsing theme: " + themeName).c_str(), themeFile.c_str(), __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
+
+                pugi::xml_node themeNode = themeDoc.child("theme");
+                Theme theme;
+                theme.name = themeNode.attribute("name").as_string();
+                theme.author = themeNode.attribute("author").as_string();
+                theme.description = themeNode.attribute("description").as_string();
+
+                themes.push_back(theme);
+            }
+        }
     }
 
     namespace ImGUIWindows {
         inline static void MainMenuBar(GLFWwindow* window, SolidScene* scene) {
-            ImGui::PushStyleColor(ImGuiCol_Separator, colors["panel"]);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
             if (ImGui::BeginMainMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
                     if (ImGui::MenuItem("New Scene", "Ctrl+N")) {
@@ -388,7 +422,7 @@ namespace SolidUI {
 
                 ImGui::EndMainMenuBar();
             }
-            ImGui::PopStyleColor();
+            ImGui::PopStyleVar();
 
             if (State::EditorPreferences::show_preferences) {
                 ImGui::OpenPopup(ICON_FA_WRENCH " Preferences");
@@ -396,30 +430,45 @@ namespace SolidUI {
 
             ImGui::SetNextWindowContentSize(ImVec2(900, 500));
             ImGui::PushStyleColor(ImGuiCol_PopupBg, colors["panel"]);
+            ImGui::PushStyleColor(ImGuiCol_TitleBg, colors["menu"]);
             if (ImGui::BeginPopupModal(ICON_FA_WRENCH " Preferences", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
                 ImGui::Columns(2, "prefs_columns");
                 ImGui::SetColumnWidth(0, ImGui::GetWindowWidth() * 0.4f);
                 ImGui::SetColumnWidth(1, ImGui::GetWindowWidth() * 0.6f);
 
                 if (ImGui::Selectable("General", State::EditorPreferences::selected_general, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
-                    State::EditorPreferences::selected_general = true;
-                    State::EditorPreferences::selected_appearance = false;
-                    State::EditorPreferences::selected_external_tools = false;
-                }
-
-                if (ImGui::Selectable("Appearance", State::EditorPreferences::selected_appearance, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
-                    State::EditorPreferences::selected_general = false;
-                    State::EditorPreferences::selected_appearance = true;
+                    State::EditorPreferences::selected_general        = true;
                     State::EditorPreferences::selected_external_tools = false;
                 }
 
                 if (ImGui::Selectable("External Tools", State::EditorPreferences::selected_external_tools, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
-                    State::EditorPreferences::selected_general = false;
-                    State::EditorPreferences::selected_appearance = false;
+                    State::EditorPreferences::selected_general        = false;
                     State::EditorPreferences::selected_external_tools = true;
                 }
 
                 ImGui::NextColumn();
+
+                if (State::EditorPreferences::selected_general) {
+                    ImGui::Text("General");
+                    ImGui::Text("Theme");
+                    float combo_width = ImGui::GetContentRegionAvail().x - ImGui::CalcItemWidth();
+                    ImGui::SameLine(combo_width);
+                    if (ImGui::BeginCombo("##theme", themes[State::EditorPreferences::theme_index].name.c_str())) {
+                        for (int i = 0; i < themes.size(); i++) {
+                            if (ImGui::Selectable(themes[i].name.c_str(), State::EditorPreferences::theme_index == i)) {
+                                State::EditorPreferences::theme_index = i;
+                                Helpers::LoadColors(themes[i].name);
+                                Helpers::ApplyColors();
+                            }
+                        }
+                        ImGui::EndCombo();
+                    }
+                    ImGui::SetCursorPosX((ImGui::GetWindowWidth() * 0.4f) + combo_width);
+                    ImGui::Text(themes[State::EditorPreferences::theme_index].description.c_str());
+                } else if (State::EditorPreferences::selected_external_tools) {
+                    ImGui::Text("External Tools");
+                }
+
 
                 ImGui::Columns();
 
@@ -430,22 +479,22 @@ namespace SolidUI {
 
                 ImGui::EndPopup();
             }
-            ImGui::PopStyleColor();
+            ImGui::PopStyleColor(2);
         }
 
         inline static void Toolbar() {
             ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_MenuBar;
-            ImGui::PushStyleColor(ImGuiCol_Separator, colors["panel"]);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
             if (ImGui::BeginViewportSideBar("##toolbar", ImGui::GetMainViewport(), ImGuiDir_Up, ImGui::GetFrameHeight(), window_flags)) {
                 if (ImGui::BeginMenuBar()) {
                     if (SolidUIComponents::ToggleButton(
                         ICON_FA_ARROWS_UP_DOWN_LEFT_RIGHT,
                         ImVec2(36, 24),
                         transformation_states[0],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         transformation_states[0] = true;
                         transformation_states[1] = false;
@@ -456,10 +505,10 @@ namespace SolidUI {
                         ICON_FA_ROTATE,
                         ImVec2(36, 24),
                         transformation_states[1],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         transformation_states[0] = false;
                         transformation_states[1] = true;
@@ -470,10 +519,10 @@ namespace SolidUI {
                         ICON_FA_MAXIMIZE,
                         ImVec2(36, 24),
                         transformation_states[2],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         transformation_states[0] = false;
                         transformation_states[1] = false;
@@ -486,10 +535,10 @@ namespace SolidUI {
                         ICON_FA_MAGNET,
                         ImVec2(36, 24),
                         grid_states[0],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         grid_states[0] = !grid_states[0];
                     }
@@ -498,10 +547,10 @@ namespace SolidUI {
                         ICON_FA_BORDER_ALL,
                         ImVec2(36, 24),
                         grid_states[1],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         grid_states[1] = !grid_states[1];
                     }
@@ -512,10 +561,10 @@ namespace SolidUI {
                         ICON_FA_SQUARE,
                         ImVec2(36, 24),
                         render_states[0],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         render_states[0] = true;
                         render_states[1] = false;
@@ -528,10 +577,10 @@ namespace SolidUI {
                         ICON_FA_DICE_D6,
                         ImVec2(36, 24),
                         render_states[1],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         render_states[0] = false;
                         render_states[1] = true;
@@ -544,10 +593,10 @@ namespace SolidUI {
                         ICON_FA_CUBES,
                         ImVec2(36, 24),
                         render_states[2],
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         render_states[0] = false;
                         render_states[1] = false;
@@ -559,6 +608,8 @@ namespace SolidUI {
                     ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - 56);
                     ImGui::BeginGroup();
                         ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+                        ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 0.0f);
+                        ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 0.0f);
                         if (ImGui::Button(ICON_FA_PLAY, ImVec2(36, 24))) {
 
                         }
@@ -570,7 +621,7 @@ namespace SolidUI {
                         if (ImGui::Button(ICON_FA_FORWARD_FAST, ImVec2(36, 24))) {
 
                         }
-                        ImGui::PopStyleVar();
+                        ImGui::PopStyleVar(3);
                     ImGui::EndGroup();
 
                     ImGui::EndMenuBar();
@@ -578,7 +629,7 @@ namespace SolidUI {
 
                 ImGui::End();
             }
-            ImGui::PopStyleColor();
+            ImGui::PopStyleVar();
         }
 
         inline static void Console() {
@@ -602,10 +653,10 @@ namespace SolidUI {
                         "Pause",
                         ImVec2(42, 26),
                         State::Console::console_paused,
-                        colors["accent"],
-                        colors["accent"],
-                        colors["selected"],
-                        colors["selected"]
+                        colors["panel"],
+                        colors["panel"],
+                        colors["button"],
+                        colors["button_hover"]
                     )) {
                         if (SolidLogger::GetInstance()->IsLoggingPaused()) {
                             SolidLogger::GetInstance()->ResumeLogging();
@@ -853,7 +904,7 @@ namespace SolidUI {
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mPosition,
                             3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f,
-                            colors["error"], colors["success"], colors["info"]
+                            colors["xaxis"], colors["yaxis"], colors["zaxis"]
                         );
 
                         ImGui::Text("Rotation");
@@ -863,7 +914,7 @@ namespace SolidUI {
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mRotation,
                             3, 0.1f, -359.99f, 359.99f, "%.1f", 1.0f,
-                            colors["error"], colors["success"], colors["info"]
+                            colors["xaxis"], colors["yaxis"], colors["zaxis"]
                         );
 
                         ImGui::Text("Scale");
@@ -873,7 +924,7 @@ namespace SolidUI {
                             labelID.c_str(),
                             (float*)&currentScene->GetGameObjects()[game_object_selected_id - 1]->mTransform.mScale,
                             3, 0.1f, -100.0f, 100.0f, "%.1f", 1.0f,
-                            colors["error"], colors["success"], colors["info"]
+                            colors["xaxis"], colors["yaxis"], colors["zaxis"]
                         );
                     }
                     ImGui::Separator();
@@ -1096,11 +1147,19 @@ namespace SolidUI {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable;
         
-        Helpers::LoadColors("Default");
+        Helpers::ParseProjectAssets(project);
+        Helpers::ParseEditorThemes();
+
+        for (int i = 0; i < themes.size(); i++) {
+            if (themes[i].name == SolidEditor::GetInstance()->GetEditorConfig().GetEditorPreferences().generalPreferences.theme) {
+                State::EditorPreferences::theme_index = i;
+                break;
+            }
+        }
+
+        Helpers::LoadColors(themes[State::EditorPreferences::theme_index].name);
         Helpers::ApplyColors();
         Helpers::LoadFonts(io);
-
-        Helpers::ParseProjectAssets(project);
 
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 460");

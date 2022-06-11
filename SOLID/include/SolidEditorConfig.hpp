@@ -27,6 +27,7 @@ using JSON = nlohmann::json;
  * @author Jake Rieger
  */
 struct GeneralPreferences {
+    std::string theme;
     bool loadPreviousProjectOnStartup;
     bool showWelcomeScreenOnStartup;
 };
