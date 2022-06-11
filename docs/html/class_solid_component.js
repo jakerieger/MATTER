@@ -1,5 +1,6 @@
 var class_solid_component =
 [
+    [ "~SolidComponent", "class_solid_component.html#a287b71cdd5eb0cf297132b051cbb0061", null ],
     [ "Awake", "class_solid_component.html#a7f91f7fa06e9e07114949a29f4fb0646", null ],
     [ "Destroyed", "class_solid_component.html#a111f0dbbc0805cce3481416e10a5f667", null ],
     [ "FixedUpdate", "class_solid_component.html#ac574aeb6bc5bfeb37b15e19767bf0dda", null ],

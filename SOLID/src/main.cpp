@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <istream>
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
@@ -25,23 +27,15 @@
 #include "SolidUtils.hpp"
 #include "SolidProject.hpp"
 
+#include <Windows/SplashScreen.hpp>
+
 #include <nlohmann/json.hpp>
 using JSON = nlohmann::json;
 
-std::tuple<MonoDomain*, MonoAssembly*> LoadManagedLibs() {
-    MonoDomain* domain;
-    domain = mono_jit_init("MatterEngine");
-    MonoAssembly* assembly;
-    assembly = mono_domain_assembly_open(domain, "MatterEngine.dll");
-
-    return std::make_tuple(domain, assembly);
-}
-
-void CleanupManagedLibs(MonoDomain* domain) {
-    mono_jit_cleanup(domain);
-}
-
 int main(int argc, char *argv[]) {
+    // Show splash screen and wait for it to be closed
+    // CreateSplashScreen();
+
     // Get last opened project
 
     if (argv[1] != nullptr) {
@@ -63,17 +57,17 @@ int main(int argc, char *argv[]) {
         editorConfig.Load(config);
     }
 
+    SolidScene testScene;
+    testScene.CreateEmpty("TestScene");
+
     SolidProject testProject;
     testProject.SetProjectName("Test Project");
     testProject.SetProjectPath("Y:\\tmp\\TestProject");
-    SolidScene testScene;
-    testScene.CreateEmpty("TestScene");
     testProject.SetActiveScene(&testScene);
 
-    SolidEditor editor;
-    editor.SetEditorConfig(editorConfig);
-    editor.SetProject(testProject);
-    editor.Run();
+    SolidEditor::GetInstance()->SetEditorConfig(editorConfig);
+    SolidEditor::GetInstance()->SetProject(testProject);
+    SolidEditor::GetInstance()->Run();
 
     return 0;
 }

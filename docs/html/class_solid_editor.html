@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('class_solid_editor.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_solid_editor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SolidEditor Class Reference</div></div>
 </div><!--header-->
@@ -114,14 +115,53 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9fc8e72ed54e167f9e1ec5f3609a7406"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_project.html">SolidProject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_editor.html#a9fc8e72ed54e167f9e1ec5f3609a7406">GetProject</a> ()</td></tr>
 <tr class="memdesc:a9fc8e72ed54e167f9e1ec5f3609a7406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current project.  <a href="class_solid_editor.html#a9fc8e72ed54e167f9e1ec5f3609a7406">More...</a><br /></td></tr>
 <tr class="separator:a9fc8e72ed54e167f9e1ec5f3609a7406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d771970797d4fda5d8b8fc078bf95d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_scene_camera.html">SolidSceneCamera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_editor.html#a0d771970797d4fda5d8b8fc078bf95d0">GetSceneCamera</a> ()</td></tr>
+<tr class="separator:a0d771970797d4fda5d8b8fc078bf95d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062be9f4e4762188a769135e1b583f1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_editor.html#a062be9f4e4762188a769135e1b583f1b">SolidEditor</a> (<a class="el" href="class_solid_editor.html">SolidEditor</a> const &amp;)=delete</td></tr>
+<tr class="separator:a062be9f4e4762188a769135e1b583f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bb1372066f7026fcd109c060aa402c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_editor.html">SolidEditor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_editor.html#a6bb1372066f7026fcd109c060aa402c1">operator=</a> (<a class="el" href="class_solid_editor.html">SolidEditor</a> const &amp;)=delete</td></tr>
+<tr class="separator:a6bb1372066f7026fcd109c060aa402c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a15dd1c3dda1b9ee42e74746ef74389fe"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="class_solid_editor.html">SolidEditor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_editor.html#a15dd1c3dda1b9ee42e74746ef74389fe">GetInstance</a> ()</td></tr>
+<tr class="separator:a15dd1c3dda1b9ee42e74746ef74389fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="class_solid_editor.html" title="The SolidEditor class is the main class of the Solid Editor.">SolidEditor</a> class is the main class of the Solid Editor. </p>
 <p >It is responsible for initializing the editor and the OpenGL context. It also handles the main loop of the editor.</p>
+<dl class="section note"><dt>Note</dt><dd>Like the <a class="el" href="class_solid_logger.html" title="Handles logging functionality for the editor console.">SolidLogger</a> class, and for the same reasons, the <a class="el" href="class_solid_editor.html" title="The SolidEditor class is the main class of the Solid Editor.">SolidEditor</a> is a singleton.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Jake Rieger </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00036">36</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00039">39</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a062be9f4e4762188a769135e1b583f1b" name="a062be9f4e4762188a769135e1b583f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a062be9f4e4762188a769135e1b583f1b">&#9670;&nbsp;</a></span>SolidEditor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SolidEditor::SolidEditor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_editor.html">SolidEditor</a> const &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a454dabce88f0ae78927c38da697ba689" name="a454dabce88f0ae78927c38da697ba689"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a454dabce88f0ae78927c38da697ba689">&#9670;&nbsp;</a></span>GetEditorConfig()</h2>
 
@@ -148,7 +188,34 @@ Public Member Functions</h2></td></tr>
 <p>Gets the editor configuration. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_solid_editor_config.html" title="The Solid Editor configuration class.">SolidEditorConfig</a> The editor configuration struct. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00055">55</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00058">58</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a15dd1c3dda1b9ee42e74746ef74389fe" name="a15dd1c3dda1b9ee42e74746ef74389fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15dd1c3dda1b9ee42e74746ef74389fe">&#9670;&nbsp;</a></span>GetInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_solid_editor.html">SolidEditor</a> &gt; SolidEditor::GetInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00294">294</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -178,7 +245,50 @@ Public Member Functions</h2></td></tr>
 <p>Gets the current project. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_solid_project.html" title="Class for managing project loading, saving, and settings.">SolidProject</a> The project class. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00069">69</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00072">72</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0d771970797d4fda5d8b8fc078bf95d0" name="a0d771970797d4fda5d8b8fc078bf95d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d771970797d4fda5d8b8fc078bf95d0">&#9670;&nbsp;</a></span>GetSceneCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_scene_camera.html">SolidSceneCamera</a> SolidEditor::GetSceneCamera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6bb1372066f7026fcd109c060aa402c1" name="a6bb1372066f7026fcd109c060aa402c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bb1372066f7026fcd109c060aa402c1">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_solid_editor.html">SolidEditor</a> &amp; SolidEditor::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_solid_editor.html">SolidEditor</a> const &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -199,7 +309,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Initializes the editor and runs the main loop, terminating and cleaning up when the editor is closed. </p>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00290">290</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8cpp_source.html#l00288">288</a> of file <a class="el" href="_solid_editor_8cpp_source.html">SolidEditor.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +345,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00051">51</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +376,7 @@ Public Member Functions</h2></td></tr>
 <p>Sets the current project. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_solid_project.html" title="Class for managing project loading, saving, and settings.">SolidProject</a> The project class. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00062">62</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_editor_8hpp_source.html#l00065">65</a> of file <a class="el" href="_solid_editor_8hpp_source.html">SolidEditor.hpp</a>.</p>
 
 </div>
 </div>

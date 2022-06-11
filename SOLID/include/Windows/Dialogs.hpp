@@ -19,5 +19,12 @@
 #include <shobjidl.h>
 
 namespace WindowsDialogs {
+    enum FileType {
+        FileType_Any,
+        FileType_Project,
+        FileType_Scene,
+    };
+
     char* ShowOpenDialog(LPCWSTR title);
+    char* ShowSaveDialog(LPCWSTR title, LPCWSTR defaultExtension, FileType fileType);
 }

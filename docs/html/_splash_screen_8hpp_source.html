@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MATTER: SOLID/include/SolidIO.hpp File Reference</title>
+<title>MATTER: SOLID/include/Windows/SplashScreen.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_solid_i_o_8hpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_splash_screen_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,30 +85,26 @@ $(document).ready(function(){initNavTree('_solid_i_o_8hpp.html',''); initResizab
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">SolidIO.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">SplashScreen.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;msgpack.hpp&gt;</code><br />
-</div>
-<p><a href="_solid_i_o_8hpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespace_solid_i_o"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_i_o.html">SolidIO</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<a href="_splash_screen_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="_splash_screen_8hpp.html#a5093dca14c16bec680de4da914fd605f">    3</a></span><span class="preprocessor">#define SPLASH_WINDOW_WIDTH 900</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="_splash_screen_8hpp.html#a835753b1243fe5c2df05b8f9c09e4460">    4</a></span><span class="preprocessor">#define SPLASH_WINDOW_HEIGHT 500</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;Windows.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> <a class="code hl_function" href="_splash_screen_8hpp.html#abe4303fecb775fa8587684787419fbb5">CreateSplashScreen</a>();</div>
+<div class="ttc" id="a_splash_screen_8hpp_html_abe4303fecb775fa8587684787419fbb5"><div class="ttname"><a href="_splash_screen_8hpp.html#abe4303fecb775fa8587684787419fbb5">CreateSplashScreen</a></div><div class="ttdeci">void CreateSplashScreen()</div><div class="ttdef"><b>Definition:</b> <a href="_splash_screen_8cpp_source.html#l00009">SplashScreen.cpp:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_f57870f240e8b6b0735870a14928b79c.html">include</a></li><li class="navelem"><a class="el" href="_solid_i_o_8hpp.html">SolidIO.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_f57870f240e8b6b0735870a14928b79c.html">include</a></li><li class="navelem"><a class="el" href="dir_b73d34ee3dc33927cc219ac568c4ad8e.html">Windows</a></li><li class="navelem"><a class="el" href="_splash_screen_8hpp.html">SplashScreen.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>

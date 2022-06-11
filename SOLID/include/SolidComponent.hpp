@@ -38,6 +38,8 @@ public:
     const char* mName;
     SolidGameObject* mGameObject;
 
+    ~SolidComponent() { mGameObject = nullptr; }
+
     void SetType(SolidComponentType type) { mType = std::move(type); }
     SolidComponentType GetType() const { return mType; }
 

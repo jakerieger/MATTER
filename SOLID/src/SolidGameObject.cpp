@@ -22,6 +22,20 @@ SolidGameObject::SolidGameObject(const char* name, SolidGameObjectType type) {
     Awake();
 }
 
+SolidGameObject::~SolidGameObject() {
+    for (auto& component : mComponents) {
+        delete component;
+    }
+
+    mComponents.clear();
+
+    for (auto& child : mChildren) {
+        delete child;
+    }
+
+    mChildren.clear();
+}
+
 void SolidGameObject::Awake() {
     for (auto& component : mComponents) {
         component->Awake();

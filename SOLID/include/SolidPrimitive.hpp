@@ -16,11 +16,22 @@
 #pragma once
 
 #include <vector>
+#include <glm/glm.hpp>
 
 struct Primitive {
     std::vector<float> vertices;
-    std::vector<float> normals;
+    std::vector<unsigned int> indices;
     std::vector<float> texCoords;
+};
+
+struct PrimitiveVertex {
+    glm::vec3 position;
+    glm::vec3 normal;
+    glm::vec2 texCoord;
+};
+
+struct PrimitiveData {
+    std::vector<PrimitiveVertex> vertices;
     std::vector<unsigned int> indices;
 };
 
@@ -45,21 +56,28 @@ namespace SolidPrimitive {
             -0.5f,  0.5f, 0.0f   // top left
         },
         {
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f,
-            0.0f, 0.0f, 1.0f
+            0, 1, 3,
+            1, 2, 3
         },
         {
             0.0f, 0.0f,
             1.0f, 0.0f,
             1.0f, 1.0f,
             0.0f, 1.0f
+        }
+    };
+
+    inline static PrimitiveData Quad = {
+        {
+            { glm::vec3(0.5f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(1.0f, 1.0f) },
+            { glm::vec3(0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(1.0f, 0.0f) },
+            { glm::vec3(-0.5f, -0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f) },
+            { glm::vec3(-0.5f, 0.5f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec2(0.0f, 1.0f) }
         },
         {
             0, 1, 3,
             1, 2, 3
-        }
+        },
     };
 
     inline static Primitive Cube = {
@@ -74,36 +92,26 @@ namespace SolidPrimitive {
             0.5f, 0.5f, -0.5f,
         },
         {
-            0.0f, 0.0f, -1.0f,
-            0.0f, 0.0f, 1.0f,
-            0.0f, 1.0f, 1.0f,
-            0.0f, 1.0f, -1.0f,
-            -1.0f, 0.0f, 0.0f,
-            1.0f, 0.0f, 0.0f,
-            1.0f, 1.0f, 0.0f,
-            -1.0f, 1.0f, 0.0f,
-        },
-        {
-            0.0f, 0.0f,
-            1.0f, 0.0f,
-            1.0f, 1.0f,
-            0.0f, 1.0f,
-            0.0f, 0.0f,
-            1.0f, 0.0f,
-            1.0f, 1.0f,
-            0.0f, 1.0f,
-            0.0f, 0.0f,
-            1.0f, 0.0f,
-            1.0f, 1.0f,
-            0.0f, 1.0f,
-        },
-        {
             0, 1, 2,
             2, 3, 0,
             4, 5, 6,
             6, 7, 4,
             4, 5, 1,
             1, 0, 4
+        },
+        {
+            0.0f, 0.0f,
+            1.0f, 0.0f,
+            1.0f, 1.0f,
+            0.0f, 1.0f,
+            0.0f, 0.0f,
+            1.0f, 0.0f,
+            1.0f, 1.0f,
+            0.0f, 1.0f,
+            0.0f, 0.0f,
+            1.0f, 0.0f,
+            1.0f, 1.0f,
+            0.0f, 1.0f,
         }
     };
 }

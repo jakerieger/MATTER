@@ -19,6 +19,10 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <Windows.h>
+#include <Psapi.h>
+#include <tchar.h>
+#include <pdh.h>
 
 /**
  * @brief Profiling and engine internals for SOLID
@@ -33,5 +37,14 @@ namespace SolidProfiler {
         std::string GetVendor(); ///< Returns the GPU vendor, such as NVIDIA, AMD, etc.
         std::string GetRenderer(); ///< Returns the GPU renderer, such as GeForce GTX 1080, etc.
         std::tuple<float, float, float> GetMemoryUsage(); ///< Returns the GPU memory information in MB in the format (total, used, free)
+    }
+
+    namespace Process {
+        static ULARGE_INTEGER lastCPU, lastSysCPU, lastUserCPU;
+        static int numProcessors;
+        static HANDLE self;
+
+        std::tuple<size_t, size_t> GetProcessMemoryUsage();
+        double GetProcessCPUUsage();
     }
 }

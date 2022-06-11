@@ -18,6 +18,8 @@ var annotated_dup =
     [ "LogEntry", "struct_log_entry.html", "struct_log_entry" ],
     [ "PhongMaterial", "class_phong_material.html", "class_phong_material" ],
     [ "Primitive", "struct_primitive.html", "struct_primitive" ],
+    [ "PrimitiveData", "struct_primitive_data.html", "struct_primitive_data" ],
+    [ "PrimitiveVertex", "struct_primitive_vertex.html", "struct_primitive_vertex" ],
     [ "ProjectSettings", "struct_project_settings.html", "struct_project_settings" ],
     [ "SolidAreaLight", "class_solid_area_light.html", null ],
     [ "SolidAxisGizmo", "class_solid_axis_gizmo.html", "class_solid_axis_gizmo" ],

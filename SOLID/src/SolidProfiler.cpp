@@ -36,3 +36,43 @@ std::tuple<float, float, float> SolidProfiler::GPU::GetMemoryUsage() {
 
     return std::make_tuple(totalMemory, usedMemory, freeMemory);
 }
+
+std::tuple<size_t, size_t> SolidProfiler::Process::GetProcessMemoryUsage() {
+    PROCESS_MEMORY_COUNTERS_EX pmc;
+    GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
+    size_t virtualMemUsage = pmc.PrivateUsage;
+    size_t physMemUsage = pmc.WorkingSetSize;
+
+    return std::make_tuple(virtualMemUsage, physMemUsage);
+}
+
+double SolidProfiler::Process::GetProcessCPUUsage() {
+    SYSTEM_INFO sysInfo;
+    FILETIME ftime, fsys, fuser;
+
+    GetSystemInfo(&sysInfo);
+    SolidProfiler::Process::numProcessors = sysInfo.dwNumberOfProcessors;
+
+    GetSystemTimeAsFileTime(&ftime);
+    memcpy(&SolidProfiler::Process::lastCPU, &ftime, sizeof(FILETIME));
+
+    SolidProfiler::Process::self = GetCurrentProcess();
+    GetProcessTimes(SolidProfiler::Process::self, &ftime, &ftime, &fsys, &fuser);
+    memcpy(&SolidProfiler::Process::lastSysCPU, &fsys, sizeof(FILETIME));
+    memcpy(&SolidProfiler::Process::lastUserCPU, &fuser, sizeof(FILETIME));
+
+    ULARGE_INTEGER now, sys, user;
+    double percent;
+    memcpy(&now, &ftime, sizeof(FILETIME));
+
+    memcpy(&sys, &fsys, sizeof(FILETIME));
+    memcpy(&user, &fuser, sizeof(FILETIME));
+    percent = (sys.QuadPart - SolidProfiler::Process::lastSysCPU.QuadPart) + (user.QuadPart - SolidProfiler::Process::lastUserCPU.QuadPart);
+    percent /= (now.QuadPart - SolidProfiler::Process::lastCPU.QuadPart);
+    percent /= SolidProfiler::Process::numProcessors;
+    SolidProfiler::Process::lastCPU = now;
+    SolidProfiler::Process::lastUserCPU = user;
+    SolidProfiler::Process::lastSysCPU = sys;
+
+    return percent * 100;
+}

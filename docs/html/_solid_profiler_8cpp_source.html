@@ -112,10 +112,52 @@ $(document).ready(function(){initNavTree('_solid_profiler_8cpp_source.html','');
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">return</span> std::make_tuple(totalMemory, usedMemory, freeMemory);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespace_solid_profiler_1_1_process.html#a5092e4dd3d07dd36d84af28021585279">   40</a></span>std::tuple&lt;size_t, size_t&gt; <a class="code hl_function" href="namespace_solid_profiler_1_1_process.html#a5092e4dd3d07dd36d84af28021585279">SolidProfiler::Process::GetProcessMemoryUsage</a>() {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    PROCESS_MEMORY_COUNTERS_EX pmc;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&amp;pmc, <span class="keyword">sizeof</span>(pmc));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">size_t</span> virtualMemUsage = pmc.PrivateUsage;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">size_t</span> physMemUsage = pmc.WorkingSetSize;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> std::make_tuple(virtualMemUsage, physMemUsage);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespace_solid_profiler_1_1_process.html#ac16052130b46865e789bb8f1af59436d">   49</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="namespace_solid_profiler_1_1_process.html#ac16052130b46865e789bb8f1af59436d">SolidProfiler::Process::GetProcessCPUUsage</a>() {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SYSTEM_INFO sysInfo;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    FILETIME ftime, fsys, fuser;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    GetSystemInfo(&amp;sysInfo);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SolidProfiler::Process::numProcessors = sysInfo.dwNumberOfProcessors;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    GetSystemTimeAsFileTime(&amp;ftime);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    memcpy(&amp;SolidProfiler::Process::lastCPU, &amp;ftime, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    SolidProfiler::Process::self = GetCurrentProcess();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    GetProcessTimes(SolidProfiler::Process::self, &amp;ftime, &amp;ftime, &amp;fsys, &amp;fuser);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    memcpy(&amp;SolidProfiler::Process::lastSysCPU, &amp;fsys, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    memcpy(&amp;SolidProfiler::Process::lastUserCPU, &amp;fuser, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    ULARGE_INTEGER now, sys, user;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">double</span> percent;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    memcpy(&amp;now, &amp;ftime, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    memcpy(&amp;sys, &amp;fsys, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    memcpy(&amp;user, &amp;fuser, <span class="keyword">sizeof</span>(FILETIME));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    percent = (sys.QuadPart - SolidProfiler::Process::lastSysCPU.QuadPart) + (user.QuadPart - SolidProfiler::Process::lastUserCPU.QuadPart);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    percent /= (now.QuadPart - SolidProfiler::Process::lastCPU.QuadPart);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    percent /= SolidProfiler::Process::numProcessors;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    SolidProfiler::Process::lastCPU = now;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    SolidProfiler::Process::lastUserCPU = user;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    SolidProfiler::Process::lastSysCPU = sys;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">return</span> percent * 100;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
 <div class="ttc" id="a_solid_profiler_8hpp_html"><div class="ttname"><a href="_solid_profiler_8hpp.html">SolidProfiler.hpp</a></div></div>
 <div class="ttc" id="anamespace_solid_profiler_1_1_g_p_u_html_a2b1ed37477d046cbfd6621a5882678f6"><div class="ttname"><a href="namespace_solid_profiler_1_1_g_p_u.html#a2b1ed37477d046cbfd6621a5882678f6">SolidProfiler::GPU::GetMemoryUsage</a></div><div class="ttdeci">std::tuple&lt; float, float, float &gt; GetMemoryUsage()</div><div class="ttdoc">Returns the GPU memory information in MB in the format (total, used, free)</div><div class="ttdef"><b>Definition:</b> <a href="_solid_profiler_8cpp_source.html#l00028">SolidProfiler.cpp:28</a></div></div>
 <div class="ttc" id="anamespace_solid_profiler_1_1_g_p_u_html_a552c7306561ef9c0046765f993f79a4f"><div class="ttname"><a href="namespace_solid_profiler_1_1_g_p_u.html#a552c7306561ef9c0046765f993f79a4f">SolidProfiler::GPU::GetRenderer</a></div><div class="ttdeci">std::string GetRenderer()</div><div class="ttdoc">Returns the GPU renderer, such as GeForce GTX 1080, etc.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_profiler_8cpp_source.html#l00023">SolidProfiler.cpp:23</a></div></div>
 <div class="ttc" id="anamespace_solid_profiler_1_1_g_p_u_html_a7207275d1c17d7d7fc2700241dc97b40"><div class="ttname"><a href="namespace_solid_profiler_1_1_g_p_u.html#a7207275d1c17d7d7fc2700241dc97b40">SolidProfiler::GPU::GetVendor</a></div><div class="ttdeci">std::string GetVendor()</div><div class="ttdoc">Returns the GPU vendor, such as NVIDIA, AMD, etc.</div><div class="ttdef"><b>Definition:</b> <a href="_solid_profiler_8cpp_source.html#l00018">SolidProfiler.cpp:18</a></div></div>
+<div class="ttc" id="anamespace_solid_profiler_1_1_process_html_a5092e4dd3d07dd36d84af28021585279"><div class="ttname"><a href="namespace_solid_profiler_1_1_process.html#a5092e4dd3d07dd36d84af28021585279">SolidProfiler::Process::GetProcessMemoryUsage</a></div><div class="ttdeci">std::tuple&lt; size_t, size_t &gt; GetProcessMemoryUsage()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_profiler_8cpp_source.html#l00040">SolidProfiler.cpp:40</a></div></div>
+<div class="ttc" id="anamespace_solid_profiler_1_1_process_html_ac16052130b46865e789bb8f1af59436d"><div class="ttname"><a href="namespace_solid_profiler_1_1_process.html#ac16052130b46865e789bb8f1af59436d">SolidProfiler::Process::GetProcessCPUUsage</a></div><div class="ttdeci">double GetProcessCPUUsage()</div><div class="ttdef"><b>Definition:</b> <a href="_solid_profiler_8cpp_source.html#l00049">SolidProfiler.cpp:49</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

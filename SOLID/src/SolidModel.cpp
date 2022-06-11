@@ -104,7 +104,10 @@ SolidMeshRenderer SolidModel::ProcessMesh(aiMesh* mesh, const aiScene* scene) {
         textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
     }
 
-    return SolidMeshRenderer(vertices, indices, textures);
+    aiString name = mesh->mName;
+    std::string meshName = std::string(name.C_Str());
+
+    return SolidMeshRenderer(vertices, indices, textures, meshName);
 }
 
 std::vector<Texture> SolidModel::LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {

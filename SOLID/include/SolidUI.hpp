@@ -29,6 +29,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 #include <GLFW/glfw3.h>
 #include <pugixml.hpp>
+#include <Str.h>
 
 #include "SolidUtils.hpp"
 #include "SolidLogger.hpp"
@@ -40,6 +41,8 @@
 #include "SolidModel.hpp"
 #include "SolidMeshRenderer.hpp"
 #include "SolidMaterial.hpp"
+#include "SolidUIWindows.hpp"
+#include "Windows/Dialogs.hpp"
 // #include <WIN32/Dialogs.hpp>
 
 /**
@@ -74,10 +77,6 @@ namespace SolidUI {
 
     static char console_search_buffer[256];
 
-    // This is confusing variable naming, but it's just a way to keep track of the current state of the console UI
-    static bool console_item_selected = false;
-    static unsigned int console_selected_item = 0;
-
     // Toolbar button states
     //                                       move   rotate  scale
     static bool transformation_states[3] = { true, false, false };
@@ -104,6 +103,22 @@ namespace SolidUI {
     };
 
     static ProjectAssets project_assets;
+
+    namespace State {
+        namespace EditorPreferences {
+            static bool show_preferences = false;
+            static bool selected_general = true;
+            static bool selected_appearance = false;
+            static bool selected_external_tools = false;
+        }
+
+        namespace Console {
+            LogEntry *log_entry = nullptr;
+            static bool console_paused = false;
+        }
+        
+        static bool show_build_settings = false;
+    }
 
     namespace Helpers {
         inline static void LoadColors(std::string themeName) {
@@ -146,7 +161,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_PopupBg]                = colors["menu"];
             styleColors[ImGuiCol_Border]                 = colors["border"];
             styleColors[ImGuiCol_BorderShadow]           = ImVec4(0.f, 0.f, 0.f, 0.f);
-            styleColors[ImGuiCol_FrameBg]                = colors["menu"];
+            styleColors[ImGuiCol_FrameBg]                = colors["frame"];
             styleColors[ImGuiCol_FrameBgHovered]         = colors["frame"];
             styleColors[ImGuiCol_FrameBgActive]          = colors["frame"];
             styleColors[ImGuiCol_TitleBg]                = colors["panel"];
@@ -193,7 +208,7 @@ namespace SolidUI {
             styleColors[ImGuiCol_NavHighlight]           = ImVec4(30.f / 255.f, 30.f / 255.f, 30.f / 255.f, 1.00f);
             styleColors[ImGuiCol_NavWindowingHighlight]  = ImVec4(1.00f, 1.00f, 1.00f, 0.70f);
             styleColors[ImGuiCol_NavWindowingDimBg]      = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
-            styleColors[ImGuiCol_ModalWindowDimBg]       = ImVec4(0.00f, 0.00f, 0.00f, 0.6f);
+            styleColors[ImGuiCol_ModalWindowDimBg]       = ImVec4(0.00f, 0.00f, 0.00f, 0.0f);
         }
 
         inline static void LoadFonts(ImGuiIO& io) {
@@ -266,7 +281,7 @@ namespace SolidUI {
     }
 
     namespace ImGUIWindows {
-        inline static void MainMenuBar(GLFWwindow* window) {
+        inline static void MainMenuBar(GLFWwindow* window, SolidScene* scene) {
             ImGui::PushStyleColor(ImGuiCol_Separator, colors["panel"]);
             if (ImGui::BeginMainMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
@@ -291,10 +306,18 @@ namespace SolidUI {
                     ImGui::Separator();
 
                     if (ImGui::MenuItem("Save", "Ctrl+S")) {
-
+                        char* path = WindowsDialogs::ShowSaveDialog(L"Save Scene", L"Solid Scene (*.scene)", WindowsDialogs::FileType::FileType_Scene);
+                        if (path) {
+                            scene->Save();
+                            delete path;
+                        }
                     }
 
                     if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S")) {
+
+                    }
+
+                    if (ImGui::MenuItem("Save All", "Ctrl+Alt+S")) {
 
                     }
 
@@ -318,26 +341,8 @@ namespace SolidUI {
                 }
 
                 if (ImGui::BeginMenu("Edit")) {
-                    if (ImGui::MenuItem("Undo")) {
-
-                    }
-
-                    if (ImGui::MenuItem("Redo")) {
-
-                    }
-
-                    ImGui::Separator();
-
-                    if (ImGui::MenuItem("Cut")) {
-
-                    }
-
-                    if (ImGui::MenuItem("Copy")) {
-
-                    }
-
-                    if (ImGui::MenuItem("Paste")) {
-
+                    if (ImGui::MenuItem("Editor Preferences", "F2")) {
+                        State::EditorPreferences::show_preferences = true;
                     }
 
                     ImGui::EndMenu();
@@ -382,6 +387,48 @@ namespace SolidUI {
                 }
 
                 ImGui::EndMainMenuBar();
+            }
+            ImGui::PopStyleColor();
+
+            if (State::EditorPreferences::show_preferences) {
+                ImGui::OpenPopup(ICON_FA_WRENCH " Preferences");
+            }
+
+            ImGui::SetNextWindowContentSize(ImVec2(900, 500));
+            ImGui::PushStyleColor(ImGuiCol_PopupBg, colors["panel"]);
+            if (ImGui::BeginPopupModal(ICON_FA_WRENCH " Preferences", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+                ImGui::Columns(2, "prefs_columns");
+                ImGui::SetColumnWidth(0, ImGui::GetWindowWidth() * 0.4f);
+                ImGui::SetColumnWidth(1, ImGui::GetWindowWidth() * 0.6f);
+
+                if (ImGui::Selectable("General", State::EditorPreferences::selected_general, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
+                    State::EditorPreferences::selected_general = true;
+                    State::EditorPreferences::selected_appearance = false;
+                    State::EditorPreferences::selected_external_tools = false;
+                }
+
+                if (ImGui::Selectable("Appearance", State::EditorPreferences::selected_appearance, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
+                    State::EditorPreferences::selected_general = false;
+                    State::EditorPreferences::selected_appearance = true;
+                    State::EditorPreferences::selected_external_tools = false;
+                }
+
+                if (ImGui::Selectable("External Tools", State::EditorPreferences::selected_external_tools, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
+                    State::EditorPreferences::selected_general = false;
+                    State::EditorPreferences::selected_appearance = false;
+                    State::EditorPreferences::selected_external_tools = true;
+                }
+
+                ImGui::NextColumn();
+
+                ImGui::Columns();
+
+                if (ImGui::Button("Close")) {
+                    State::EditorPreferences::show_preferences = false;
+                    ImGui::CloseCurrentPopup();
+                }
+
+                ImGui::EndPopup();
             }
             ImGui::PopStyleColor();
         }
@@ -543,11 +590,29 @@ namespace SolidUI {
 
                     ImGui::SameLine();
 
-                    if (ImGui::Button("Pause")) {
+                    // if (ImGui::Button("Pause")) {
+                    //     if (SolidLogger::GetInstance()->IsLoggingPaused()) {
+                    //         SolidLogger::GetInstance()->ResumeLogging();
+                    //     } else {
+                    //         SolidLogger::GetInstance()->PauseLogging();
+                    //     }
+                    // }
+
+                    if (SolidUIComponents::ToggleButton(
+                        "Pause",
+                        ImVec2(42, 26),
+                        State::Console::console_paused,
+                        colors["accent"],
+                        colors["accent"],
+                        colors["selected"],
+                        colors["selected"]
+                    )) {
                         if (SolidLogger::GetInstance()->IsLoggingPaused()) {
                             SolidLogger::GetInstance()->ResumeLogging();
+                            State::Console::console_paused = false;
                         } else {
                             SolidLogger::GetInstance()->PauseLogging();
+                            State::Console::console_paused = true;
                         }
                     }
 
@@ -563,6 +628,7 @@ namespace SolidUI {
                     ImGui::TextColored(colors["error"], "%d " ICON_FA_XMARK, SolidLogger::GetInstance()->GetErrorCount() + SolidLogger::GetInstance()->GetFatalCount());
                 ImGui::EndGroup();
                 
+                ImGui::PushStyleColor(ImGuiCol_ChildBg, colors["panel"]);
                 ImGui::BeginChild("##console_log", ImVec2(0, -ImGui::GetFrameHeightWithSpacing()));
                     for (auto &log : SolidLogger::GetInstance()->GetLogs()) {
                         if (log.level == LogLevel::LogLevel_INFO) {
@@ -574,8 +640,11 @@ namespace SolidUI {
                                 ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
                                 ImGui::TextColored(colors["info"], "[%s] %s", log.timestamp.c_str(), log.message);
                                 ImGui::PopFont();
-                                ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
+                            ImGui::SameLine(ImGui::GetWindowContentRegionWidth() - 36.0f);
+                            if (ImGui::Button(ICON_FA_MESSAGE)) {
+                                State::Console::log_entry = &log;
+                            }
                         } else if (log.level == LogLevel::LogLevel_WARNING) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["warning"], ICON_FA_TRIANGLE_EXCLAMATION);
@@ -585,8 +654,12 @@ namespace SolidUI {
                                 ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
                                 ImGui::TextColored(colors["warning"], "[%s] %s", log.timestamp.c_str(), log.message);
                                 ImGui::PopFont();
-                                ImGui::Text("%s (%d)", log.file, log.line);
+                                // ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
+                            ImGui::SameLine(ImGui::GetWindowContentRegionWidth() - 36.0f);
+                            if (ImGui::Button(ICON_FA_MESSAGE)) {
+                                State::Console::log_entry = &log;
+                            }
                         } else if (log.level == LogLevel::LogLevel_ERROR) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["error"], ICON_FA_XMARK);
@@ -596,8 +669,12 @@ namespace SolidUI {
                                 ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
                                 ImGui::TextColored(colors["error"], "[%s] %s", log.timestamp.c_str(), log.message);
                                 ImGui::PopFont();
-                                ImGui::Text("%s (%d)", log.file, log.line);
+                                // ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
+                            ImGui::SameLine(ImGui::GetWindowContentRegionWidth() - 36.0f);
+                            if (ImGui::Button(ICON_FA_MESSAGE)) {
+                                State::Console::log_entry = &log;
+                            }
                         } else if (log.level == LogLevel::LogLevel_FATAL) {
                             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
                             ImGui::TextColored(colors["error"], ICON_FA_XMARK);
@@ -607,14 +684,24 @@ namespace SolidUI {
                                 ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
                                 ImGui::TextColored(colors["error"], "[%s] %s", log.timestamp.c_str(), log.message);
                                 ImGui::PopFont();
-                                ImGui::Text("%s (%d)", log.file, log.line);
+                                // ImGui::Text("%s (%d)", log.file, log.line);
                             ImGui::EndGroup();
+                            ImGui::SameLine(ImGui::GetWindowContentRegionWidth() - 36.0f);
+                            if (ImGui::Button(ICON_FA_MESSAGE)) {
+                                State::Console::log_entry = &log;
+                            }
                         }
                     }
                 ImGui::EndChild();
 
-                ImGui::PushStyleColor(ImGuiCol_ChildBg, colors["menu"]);
+                ImGui::Separator();
+
                 ImGui::BeginChild("##console_details");
+
+                    if (State::Console::log_entry != nullptr) {
+                        ImGui::Text("%s", State::Console::log_entry->message);
+                        ImGui::Text("%s (%d)", State::Console::log_entry->file, State::Console::log_entry->line);
+                    }
 
                 ImGui::EndChild();
                 ImGui::PopStyleColor();
@@ -752,6 +839,11 @@ namespace SolidUI {
                 ImGui::PushStyleColor(ImGuiCol_Header, colors["menu"]);
                 if (game_object_selected_id != 0) {
                     ImGui::Text(currentScene->GetGameObjects()[game_object_selected_id - 1]->mName);
+                    ImGui::SameLine();
+                    if (ImGui::Button(ICON_FA_TRASH " Delete")) {
+                        currentScene->RemoveGameObject(game_object_selected_id);
+                        game_object_selected_id = currentScene->GetGameObjects().size();
+                    }
                     ImGui::Separator();
                     if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
                         ImGui::Text("Position");
@@ -795,48 +887,62 @@ namespace SolidUI {
                     for (const auto &component : currentScene->GetGameObjects()[game_object_selected_id - 1]->mComponents) {
                         if (component->GetType() == SolidComponentType::COM_Model) {
                             if (ImGui::CollapsingHeader(component->mName, ImGuiTreeNodeFlags_DefaultOpen)) {
-                                for (auto &mesh : dynamic_cast<SolidModel*>(component)->mMeshes) {
-                                    if (ImGui::CollapsingHeader("Mesh")) {
-                                        MaterialType materialType = mesh.GetMaterial()->GetType();
-                                        std::string matTypes[] = { "Phong", "Unlit" };
-                                        if (ImGui::TreeNode(("Material (" + matTypes[materialType] + ")").c_str())) {
-                                            if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Phong) {
-                                                
-                                            } else if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Unlit) {
-                                                ImGui::Text("Color");
-                                                ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
-                                                ImGui::ColorEdit4(
-                                                    "Diffuse",
-                                                    (float*)&dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.color,
-                                                    ImGuiColorEditFlags_NoLabel
-                                                );
+                                char buf[128];
+                                snprintf(buf, sizeof(buf), "Meshes (%d)", (int)dynamic_cast<SolidModel*>(component)->mMeshes.size());
+                                if (ImGui::TreeNode(buf)) {
+                                    unsigned int meshID = 0;
+                                    for (auto &mesh : dynamic_cast<SolidModel*>(component)->mMeshes) {
+                                        std::string labelID = mesh.GetName();
+                                        if (ImGui::TreeNode(labelID.c_str())) {
+                                            MaterialType materialType = mesh.GetMaterial()->GetType();
+                                            std::string matTypes[] = { "Phong", "Unlit" };
+                                            if (ImGui::TreeNode(("Material (" + matTypes[materialType] + ")##" + std::to_string(meshID)).c_str())) {
+                                                if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Phong) {
+                                                    
+                                                } else if (mesh.GetMaterial()->GetType() == MaterialType::MAT_Unlit) {
+                                                    ImGui::Text("Color");
+                                                    ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
+                                                    ImGui::ColorEdit4(
+                                                        "Diffuse",
+                                                        (float*)&dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.color,
+                                                        ImGuiColorEditFlags_NoLabel
+                                                    );
 
-                                                ImGui::Text("Texture");
-                                                ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
-                                                if (SolidUIComponents::DragDropTarget(ProjectItemType::ProjectItemType_File_Texture, ImVec2(ImGui::GetContentRegionAvail().x, 24.f))) {
-                                                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
-                                                        int id = *(int*)payload->Data;
-                                                        std::filesystem::path texPath = project_assets.textures[id];
-                                                        printf("%s\n", texPath.string().c_str());
-                                                        unsigned int texID = SolidUtils::LoadTexture(texPath.string().c_str());
+                                                    ImGui::Text("Texture");
+                                                    ImGui::SameLine(ImGui::GetWindowWidth() - ImGui::CalcItemWidth());
+                                                    if (SolidUIComponents::DragDropTarget(ProjectItemType::ProjectItemType_File_Texture, ImVec2(ImGui::GetContentRegionAvail().x, 24.f))) {
+                                                        if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Texture")) {
+                                                            int id = *(int*)payload->Data;
+                                                            std::filesystem::path texPath = project_assets.textures[id];
 
-                                                        /**
-                                                         * @todo This works but is pretty wasteful. Need to gen tex ID once and then just update it.
-                                                         */
-                                                        dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &texID;
+                                                            unsigned int texID;
+                                                            unsigned int* texIdPtr = dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture;
+
+                                                            if (texIdPtr == nullptr) {
+                                                                texID = SolidUtils::LoadTexture(texPath.string().c_str());
+                                                                dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &texID;
+                                                            } else {
+                                                                texID = SolidUtils::UpdateTexture(texPath.string().c_str(), *texIdPtr);
+                                                                dynamic_cast<UnlitMaterial*>(mesh.GetMaterial())->mDiffuse.texture = &texID;
+                                                            }
+                                                        }
+
+                                                        ImGui::EndDragDropTarget();
                                                     }
 
-                                                    ImGui::EndDragDropTarget();
+                                                    if (ImGui::Button("Save")) {
+                                                        SolidMaterial::Serialize(std::string(project.GetProjectPath()), "Test", dynamic_cast<UnlitMaterial*>(mesh.GetMaterial()));
+                                                    }
                                                 }
 
-                                                if (ImGui::Button("Save")) {
-                                                    SolidMaterial::Serialize(std::string(project.GetProjectPath()), "Test", dynamic_cast<UnlitMaterial*>(mesh.GetMaterial()));
-                                                }
+                                                ImGui::TreePop();
                                             }
-
                                             ImGui::TreePop();
                                         }
+                                        meshID++;
                                     }
+
+                                    ImGui::TreePop();
                                 }
                             }
                         }
@@ -847,15 +953,43 @@ namespace SolidUI {
         }
 
         inline static void SceneHierarchy(SolidScene *currentScene) {
-            ImGui::Begin(ICON_FA_DIAGRAM_PROJECT " Hierarchy");
-                ImGui::PushStyleColor(ImGuiCol_HeaderActive, colors["accent"]);
-                for (auto& gameObject : currentScene->GetGameObjects()) {
-                    if (ImGui::Selectable(gameObject->mName, game_object_selected_id == gameObject->GetID())) {
-                        game_object_selected_id = gameObject->GetID();
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+            ImGui::Begin(ICON_FA_LIST " Hierarchy");
+            
+                ImGui::PushStyleColor(ImGuiCol_ChildBg, colors["panel"]);
+                ImGui::SetCursorPosX(4.0f); // 4px padding from border
+                ImGui::BeginChild("##Hierarchy", ImVec2(ImGui::GetWindowContentRegionWidth() - 8, ImGui::GetContentRegionAvail().y), false);
+                    ImGui::PushStyleColor(ImGuiCol_HeaderActive, colors["accent"]);
+                    for (auto& gameObject : currentScene->GetGameObjects()) {
+                        if (ImGui::Selectable(gameObject->mName, game_object_selected_id == gameObject->GetID())) {
+                            game_object_selected_id = gameObject->GetID();
+                        }
                     }
-                }
+                    ImGui::PopStyleColor();
+                ImGui::EndChild();
                 ImGui::PopStyleColor();
+
+                if (ImGui::BeginDragDropTarget()) {
+                    if (const ImGuiPayload *payload = ImGui::AcceptDragDropPayload("Model")) {
+                        int id = *(int*)payload->Data;
+                        std::filesystem::path modelPath = project_assets.meshes[id];
+                        std::string modelPathStr = modelPath.string();
+                        std::string name = modelPath.stem().string();
+
+                        // Need to copy because pointer to name is lost after the loop
+                        // https://www.techiedelight.com/convert-std-string-char-cpp/
+                        char* nameStr = strcpy(new char[name.length() + 1], name.c_str());
+
+                        SolidModel *model = new SolidModel((char*)modelPathStr.c_str());
+                        SolidGameObject *gameObject = new SolidGameObject(nameStr, SolidGameObjectType::GO_GameObject);
+                        gameObject->AddComponent<SolidModel>(model);
+                        currentScene->AddGameObject(gameObject);
+                    }
+
+                    ImGui::EndDragDropTarget();
+                }
             ImGui::End();
+            ImGui::PopStyleVar();
         }
 
         inline static void Analytics() {
@@ -866,15 +1000,25 @@ namespace SolidUI {
                 float used_memory = std::get<1>(SolidProfiler::GPU::GetMemoryUsage());
                 float total_memory = std::get<0>(SolidProfiler::GPU::GetMemoryUsage());
 
+                float usedVirtualMem = static_cast<int>(std::get<0>(SolidProfiler::Process::GetProcessMemoryUsage())) / 1000000.f;
+                float usedPhysMem = static_cast<int>(std::get<1>(SolidProfiler::Process::GetProcessMemoryUsage())) / 1000000.f;
+                float cpuUsage = static_cast<float>(SolidProfiler::Process::GetProcessCPUUsage());
+
                 char fps[10];
                 char ms[10];
                 char used_memory_str[100];
                 char total_memory_str[100];
+                char used_virtual_mem_str[100];
+                char used_phys_mem_str[100];
+                char cpu_usage_str[100];
 
                 snprintf(fps, sizeof(fps), "%.1f", framerate);
                 snprintf(ms, sizeof(ms), "%.1f", frametime);
                 snprintf(used_memory_str, sizeof(used_memory_str), "%.1f", used_memory);
                 snprintf(total_memory_str, sizeof(total_memory_str), "%.1f", total_memory);
+                snprintf(used_virtual_mem_str, sizeof(used_virtual_mem_str), "%.1f", usedVirtualMem);
+                snprintf(used_phys_mem_str, sizeof(used_phys_mem_str), "%.1f", usedPhysMem);
+                snprintf(cpu_usage_str, sizeof(cpu_usage_str), "%.1f", cpuUsage);
 
                 ImGui::Text("GPU:");
                 ImGui::SameLine(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize(gpu_renderer.c_str()).x - ImGui::CalcTextSize("  ").x));
@@ -926,6 +1070,22 @@ namespace SolidUI {
 
                 ImGui::Separator();
 
+                ImGui::Text("Virtual Memory (used):");
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize(used_virtual_mem_str).x + ImGui::CalcTextSize(" MB").x));
+                ImGui::Text("%.2f MB", usedVirtualMem);
+
+                ImGui::Separator();
+
+                ImGui::Text("RAM (used):");
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize(used_phys_mem_str).x + ImGui::CalcTextSize(" MB").x));
+                ImGui::Text("%.2f MB", usedPhysMem);
+
+                ImGui::Separator();
+
+                ImGui::Text("CPU Usage:");
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - (ImGui::CalcTextSize(cpu_usage_str).x + ImGui::CalcTextSize(" %").x));
+                ImGui::Text("%.2f%", cpuUsage);
+
             ImGui::End();
         }
     }
@@ -952,7 +1112,7 @@ namespace SolidUI {
         ImGui::NewFrame();
         ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
-        ImGUIWindows::MainMenuBar(window);
+        ImGUIWindows::MainMenuBar(window, project.GetActiveScene());
         ImGUIWindows::Toolbar();
         ImGUIWindows::Console();
         ImGUIWindows::Project(project);

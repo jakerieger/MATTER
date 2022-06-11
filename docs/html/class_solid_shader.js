@@ -1,7 +1,7 @@
 var class_solid_shader =
 [
     [ "SolidShader", "class_solid_shader.html#a52eddf12b27ee470700314f918354113", null ],
-    [ "~SolidShader", "class_solid_shader.html#af1b1c728df04a9a0e1bd54ab1160f4f3", null ],
+    [ "SolidShader", "class_solid_shader.html#a489de96428d2089845d2ee32815dc153", null ],
     [ "Destroy", "class_solid_shader.html#aae08ae83f9245d13ad0e5bbec4c4ae0f", null ],
     [ "setBool", "group___uniform.html#ga7b4fbac9bf2e2158e6443fd467912971", null ],
     [ "setFloat", "group___uniform.html#ga7611727a9766ec63f6d06313462b1c70", null ],

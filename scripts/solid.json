@@ -1,0 +1,12 @@
+{
+    "externalTools": {
+        "externalScriptEditor": "",
+        "externalScriptEditorArgs": "",
+        "imageEditor": "",
+        "imageEditorArgs": ""
+    },
+    "generalPreferences": {
+        "loadPreviousProjectOnStartup": true,
+        "showWelcomeScreenOnStartup": true
+    }
+}

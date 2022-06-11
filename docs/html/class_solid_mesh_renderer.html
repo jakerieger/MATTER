@@ -97,12 +97,16 @@ $(document).ready(function(){initNavTree('class_solid_mesh_renderer.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8cc86b90b8c59266d1f0ae34af53dd2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a8cc86b90b8c59266d1f0ae34af53dd2c">SolidMeshRenderer</a> (std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, std::vector&lt; unsigned int &gt; indices, std::vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt; textures)</td></tr>
-<tr class="separator:a8cc86b90b8c59266d1f0ae34af53dd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec97d8cac4e84cb9c0406b378763905"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a5ec97d8cac4e84cb9c0406b378763905">SolidMeshRenderer</a> (std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, std::vector&lt; unsigned int &gt; indices, std::vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt; textures, std::string name)</td></tr>
+<tr class="separator:a5ec97d8cac4e84cb9c0406b378763905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14b958e3afa1d7e4cd3a7d56543c1aa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a14b958e3afa1d7e4cd3a7d56543c1aa8">Draw</a> (glm::mat4 &amp;MVP)</td></tr>
 <tr class="separator:a14b958e3afa1d7e4cd3a7d56543c1aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04874ebe6bb2d15d81997cab98099e96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_solid_material.html">SolidMaterial</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a04874ebe6bb2d15d81997cab98099e96">GetMaterial</a> ()</td></tr>
 <tr class="separator:a04874ebe6bb2d15d81997cab98099e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4bacc91d0a4bc41e39f76ef9e8622f"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#a1e4bacc91d0a4bc41e39f76ef9e8622f">GetName</a> ()</td></tr>
+<tr class="separator:a1e4bacc91d0a4bc41e39f76ef9e8622f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87d0f570d1d3af4e21f15ab9852e07a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solid_mesh_renderer.html#aa87d0f570d1d3af4e21f15ab9852e07a">SetName</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:aa87d0f570d1d3af4e21f15ab9852e07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -115,10 +119,10 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00040">40</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00041">41</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8cc86b90b8c59266d1f0ae34af53dd2c" name="a8cc86b90b8c59266d1f0ae34af53dd2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cc86b90b8c59266d1f0ae34af53dd2c">&#9670;&nbsp;</a></span>SolidMeshRenderer()</h2>
+<a id="a5ec97d8cac4e84cb9c0406b378763905" name="a5ec97d8cac4e84cb9c0406b378763905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ec97d8cac4e84cb9c0406b378763905">&#9670;&nbsp;</a></span>SolidMeshRenderer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,7 +143,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::vector&lt; <a class="el" href="struct_texture.html">Texture</a> &gt;&#160;</td>
-          <td class="paramname"><em>textures</em>&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,9 +182,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Pass a material to this function and use it to set the shader uniforms. Practically, each material will have one texture map for each texture type. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Pass a material to this function and use it to set the shader uniforms. Practically, each material will have one texture map for each texture type. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00062">62</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8cpp_source.html#l00063">63</a> of file <a class="el" href="_solid_mesh_renderer_8cpp_source.html">SolidMeshRenderer.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,7 +211,62 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00048">48</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00049">49</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1e4bacc91d0a4bc41e39f76ef9e8622f" name="a1e4bacc91d0a4bc41e39f76ef9e8622f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e4bacc91d0a4bc41e39f76ef9e8622f">&#9670;&nbsp;</a></span>GetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string &amp; SolidMeshRenderer::GetName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00050">50</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa87d0f570d1d3af4e21f15ab9852e07a" name="aa87d0f570d1d3af4e21f15ab9852e07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87d0f570d1d3af4e21f15ab9852e07a">&#9670;&nbsp;</a></span>SetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolidMeshRenderer::SetName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00051">51</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +283,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -234,7 +299,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00044">44</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00045">45</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>
@@ -250,7 +315,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00042">42</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_solid_mesh_renderer_8hpp_source.html#l00043">43</a> of file <a class="el" href="_solid_mesh_renderer_8hpp_source.html">SolidMeshRenderer.hpp</a>.</p>
 
 </div>
 </div>

@@ -8,5 +8,6 @@ var class_solid_scene =
     [ "GetSceneName", "class_solid_scene.html#a82c44917629c8feced21503392f24596", null ],
     [ "GetScenePath", "class_solid_scene.html#a2e19b74580ecbd6dd772e6fd4fefdd1c", null ],
     [ "Load", "class_solid_scene.html#a682e99dfe61b7976add7a6966eb8114b", null ],
+    [ "RemoveGameObject", "class_solid_scene.html#aa8cbeeb8161bdabf445bb9a9fd9a35fc", null ],
     [ "Save", "class_solid_scene.html#ae552a8774603e293654c8f289e31f117", null ]
 ];

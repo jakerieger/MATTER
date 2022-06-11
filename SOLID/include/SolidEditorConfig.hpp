@@ -86,6 +86,9 @@ public:
     void SetEditorPreferences(EditorPreferences editorPreferences) { mEditorPreferences = editorPreferences; };
     EditorPreferences GetEditorPreferences() { return mEditorPreferences; };
 
+    bool* GetLoadPreviousProjectOnStartup() { return &mEditorPreferences.generalPreferences.loadPreviousProjectOnStartup; }
+    bool* GetShowWelcomeScreenOnStartup() { return &mEditorPreferences.generalPreferences.showWelcomeScreenOnStartup; }
+
 private:
     EditorPreferences mEditorPreferences;
 };

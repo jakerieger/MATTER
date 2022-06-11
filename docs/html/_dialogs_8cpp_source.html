@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MATTER: SOLID/src/WIN32/Dialogs.cpp Source File</title>
+<title>MATTER: SOLID/src/Windows/Dialogs.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('_dialogs_8cpp_source.html',''); initRe
   <div class="headertitle"><div class="title">Dialogs.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_dialogs_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_dialogs_8hpp.html">WIN32/Dialogs.hpp</a>&gt;</span></div>
+<a href="_dialogs_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_dialogs_8hpp.html">Windows/Dialogs.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="namespace_windows_dialogs.html#a56e4150695bc4602bfc0db7c3ff4d51c">    3</a></span><span class="keywordtype">char</span>* <a class="code hl_function" href="namespace_windows_dialogs.html#a56e4150695bc4602bfc0db7c3ff4d51c">WindowsDialogs::ShowOpenDialog</a>(LPCWSTR title) {</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    IFileOpenDialog* pFileOpen;</div>
@@ -133,14 +133,82 @@ $(document).ready(function(){initNavTree('_dialogs_8cpp_source.html',''); initRe
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespace_windows_dialogs.html#a5929ef0500efad7bb872999520a51331">   47</a></span><span class="keywordtype">char</span>* <a class="code hl_function" href="namespace_windows_dialogs.html#a5929ef0500efad7bb872999520a51331">WindowsDialogs::ShowSaveDialog</a>(LPCWSTR title, LPCWSTR defaultExtension, <a class="code hl_enumeration" href="namespace_windows_dialogs.html#af4943ca2a24c6209023407eb33b4a7a6">FileType</a> fileType) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    IFileSaveDialog* pFileSave;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    HRESULT hr = CoCreateInstance(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        CLSID_FileSaveDialog,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        NULL,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        CLSCTX_ALL,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        IID_IFileSaveDialog,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">void</span>**<span class="keyword">&gt;</span>(&amp;pFileSave)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    );</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> filterId = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">switch</span> (fileType) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_solid_utils.html#a5c03ab762393ee228c208e08792bb6afa09285312084dac8454aeda239c71e375">FileType_Project</a>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            filterId = 0;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_solid_utils.html#a5c03ab762393ee228c208e08792bb6afa1f1740945853627420f74686a631bd67">FileType_Scene</a>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            filterId = 1;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespace_windows_dialogs.html#af4943ca2a24c6209023407eb33b4a7a6a30e58c2a34170a0d480b09787db7bc06">FileType_Any</a>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            filterId = 4;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    COMDLG_FILTERSPEC rgSpec[] = {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        { L<span class="stringliteral">&quot;SOLID Project&quot;</span>, L<span class="stringliteral">&quot;*.solid&quot;</span> },</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        { L<span class="stringliteral">&quot;Scene&quot;</span>, L<span class="stringliteral">&quot;*.scene&quot;</span> },</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        { L<span class="stringliteral">&quot;Images&quot;</span>, L<span class="stringliteral">&quot;*.png;*.jpg;*.jpeg;*.bmp;*.tga&quot;</span> },</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        { L<span class="stringliteral">&quot;Models&quot;</span>, L<span class="stringliteral">&quot;*.fbx;*.obj;*.dae&quot;</span> },</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        { L<span class="stringliteral">&quot;All Files&quot;</span>, L<span class="stringliteral">&quot;*.*&quot;</span> }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    };</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (SUCCEEDED(hr)) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        hr = pFileSave-&gt;SetTitle(title);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        hr = pFileSave-&gt;SetDefaultExtension(defaultExtension);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        hr = pFileSave-&gt;SetFileTypes(1, &amp;rgSpec[filterId]);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// hr = pFileSave-&gt;SetDefaultSaveFolder(initialDirectory);</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        hr = pFileSave-&gt;Show(NULL);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">if</span> (SUCCEEDED(hr)) {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            IShellItem* pItem;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            hr = pFileSave-&gt;GetResult(&amp;pItem);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keywordflow">if</span> (SUCCEEDED(hr)) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                PWSTR pszFilePath;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                hr = pItem-&gt;GetDisplayName(SIGDN_FILESYSPATH, &amp;pszFilePath);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keywordflow">if</span> (SUCCEEDED(hr)) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                    <span class="keywordtype">wchar_t</span>* wszFilePath = pszFilePath;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                    <span class="keywordtype">char</span>* szFilePath = <span class="keyword">new</span> <span class="keywordtype">char</span>[wcslen(wszFilePath) + 1];</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    wcstombs(szFilePath, wszFilePath, wcslen(wszFilePath) +1);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                    <span class="keywordflow">return</span> szFilePath;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
 <div class="ttc" id="a_dialogs_8hpp_html"><div class="ttname"><a href="_dialogs_8hpp.html">Dialogs.hpp</a></div></div>
+<div class="ttc" id="anamespace_solid_utils_html_a5c03ab762393ee228c208e08792bb6afa09285312084dac8454aeda239c71e375"><div class="ttname"><a href="namespace_solid_utils.html#a5c03ab762393ee228c208e08792bb6afa09285312084dac8454aeda239c71e375">SolidUtils::FileType_Project</a></div><div class="ttdeci">@ FileType_Project</div><div class="ttdef"><b>Definition:</b> <a href="_solid_utils_8hpp_source.html#l00045">SolidUtils.hpp:45</a></div></div>
+<div class="ttc" id="anamespace_solid_utils_html_a5c03ab762393ee228c208e08792bb6afa1f1740945853627420f74686a631bd67"><div class="ttname"><a href="namespace_solid_utils.html#a5c03ab762393ee228c208e08792bb6afa1f1740945853627420f74686a631bd67">SolidUtils::FileType_Scene</a></div><div class="ttdeci">@ FileType_Scene</div><div class="ttdef"><b>Definition:</b> <a href="_solid_utils_8hpp_source.html#l00044">SolidUtils.hpp:44</a></div></div>
 <div class="ttc" id="anamespace_windows_dialogs_html_a56e4150695bc4602bfc0db7c3ff4d51c"><div class="ttname"><a href="namespace_windows_dialogs.html#a56e4150695bc4602bfc0db7c3ff4d51c">WindowsDialogs::ShowOpenDialog</a></div><div class="ttdeci">char * ShowOpenDialog(LPCWSTR title)</div><div class="ttdef"><b>Definition:</b> <a href="_dialogs_8cpp_source.html#l00003">Dialogs.cpp:3</a></div></div>
+<div class="ttc" id="anamespace_windows_dialogs_html_a5929ef0500efad7bb872999520a51331"><div class="ttname"><a href="namespace_windows_dialogs.html#a5929ef0500efad7bb872999520a51331">WindowsDialogs::ShowSaveDialog</a></div><div class="ttdeci">char * ShowSaveDialog(LPCWSTR title, LPCWSTR defaultExtension, FileType fileType)</div><div class="ttdef"><b>Definition:</b> <a href="_dialogs_8cpp_source.html#l00047">Dialogs.cpp:47</a></div></div>
+<div class="ttc" id="anamespace_windows_dialogs_html_af4943ca2a24c6209023407eb33b4a7a6"><div class="ttname"><a href="namespace_windows_dialogs.html#af4943ca2a24c6209023407eb33b4a7a6">WindowsDialogs::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition:</b> <a href="_dialogs_8hpp_source.html#l00022">Dialogs.hpp:22</a></div></div>
+<div class="ttc" id="anamespace_windows_dialogs_html_af4943ca2a24c6209023407eb33b4a7a6a30e58c2a34170a0d480b09787db7bc06"><div class="ttname"><a href="namespace_windows_dialogs.html#af4943ca2a24c6209023407eb33b4a7a6a30e58c2a34170a0d480b09787db7bc06">WindowsDialogs::FileType_Any</a></div><div class="ttdeci">@ FileType_Any</div><div class="ttdef"><b>Definition:</b> <a href="_dialogs_8hpp_source.html#l00023">Dialogs.hpp:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_45321a3bcb7b5ca74741802ae8a3febd.html">src</a></li><li class="navelem"><a class="el" href="dir_1bea031c46a5612842ab24e53ba8d4e0.html">WIN32</a></li><li class="navelem"><a class="el" href="_dialogs_8cpp.html">Dialogs.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_14c7fab7138829226fbe7d2a39c8ca19.html">SOLID</a></li><li class="navelem"><a class="el" href="dir_45321a3bcb7b5ca74741802ae8a3febd.html">src</a></li><li class="navelem"><a class="el" href="dir_2ee1f4972ba4b5403dec1807caf257a0.html">Windows</a></li><li class="navelem"><a class="el" href="_dialogs_8cpp.html">Dialogs.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>

@@ -11,6 +11,8 @@ var hierarchy =
     [ "InputManager", "struct_input_manager.html", null ],
     [ "LogEntry", "struct_log_entry.html", null ],
     [ "Primitive", "struct_primitive.html", null ],
+    [ "PrimitiveData", "struct_primitive_data.html", null ],
+    [ "PrimitiveVertex", "struct_primitive_vertex.html", null ],
     [ "SolidUI::ProjectAssets", "struct_solid_u_i_1_1_project_assets.html", null ],
     [ "ProjectSettings", "struct_project_settings.html", null ],
     [ "Matter.Solid", "class_matter_1_1_solid.html", null ],

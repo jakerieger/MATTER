@@ -57,3 +57,15 @@ void SolidScene::AddGameObject(SolidGameObject* gameObject) {
     gameObject->SetID(mGameObjects.size() + 1);
     mGameObjects.push_back(gameObject);
 }
+
+void SolidScene::RemoveGameObject(unsigned int ID) {
+    for (auto& gameObject : mGameObjects) {
+        if (gameObject->GetID() == ID) {
+            delete gameObject;
+            mGameObjects.erase(std::remove(mGameObjects.begin(), mGameObjects.end(), gameObject), mGameObjects.end());
+            break;
+        }
+    }
+
+    // mGameObjects.erase(mGameObjects.begin() + (ID - 1));
+}

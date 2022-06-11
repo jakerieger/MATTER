@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['window_5fheight_0',['WINDOW_HEIGHT',['../_solid_editor_8cpp.html#a5473cf64fa979b48335079c99532e243',1,'SolidEditor.cpp']]],
-  ['window_5ftitle_1',['WINDOW_TITLE',['../_solid_editor_8cpp.html#a3adf7b7b13572f2baf3379a8f2f4220a',1,'SolidEditor.cpp']]],
-  ['window_5fwidth_2',['WINDOW_WIDTH',['../_solid_editor_8cpp.html#a498d9f026138406895e9a34b504ac6a6',1,'SolidEditor.cpp']]]
+  ['splash_5fwindow_5fheight_0',['SPLASH_WINDOW_HEIGHT',['../_splash_screen_8hpp.html#a835753b1243fe5c2df05b8f9c09e4460',1,'SplashScreen.hpp']]],
+  ['splash_5fwindow_5fwidth_1',['SPLASH_WINDOW_WIDTH',['../_splash_screen_8hpp.html#a5093dca14c16bec680de4da914fd605f',1,'SplashScreen.hpp']]]
 ];

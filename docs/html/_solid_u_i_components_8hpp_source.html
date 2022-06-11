@@ -267,8 +267,8 @@ $(document).ready(function(){initNavTree('_solid_u_i_components_8hpp_source.html
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        ImVec4 y_axis,</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        ImVec4 z_axis</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    ) {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        ImGuiWindow* window = ImGui::GetCurrentWindow();</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">if</span> (window-&gt;SkipItems)</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        ImGuiWindow* <a class="code hl_variable" href="_splash_screen_8cpp.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a> = ImGui::GetCurrentWindow();</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="_splash_screen_8cpp.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>-&gt;SkipItems)</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        ImGuiContext&amp; g = *GImGui;</div>
@@ -297,7 +297,7 @@ $(document).ready(function(){initNavTree('_solid_u_i_components_8hpp_source.html
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> spacing = g.Style.FrameRounding;</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> halfSpacing = spacing / 2;</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            window-&gt;DrawList-&gt;AddLine({ min.x + spacing, max.y - halfSpacing }, { max.x - spacing, max.y - halfSpacing }, colors[i], 1);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <a class="code hl_variable" href="_splash_screen_8cpp.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a>-&gt;DrawList-&gt;AddLine({ min.x + spacing, max.y - halfSpacing }, { max.x - spacing, max.y - halfSpacing }, colors[i], 1);</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            ImGui::SameLine(0, g.Style.ItemInnerSpacing.x);</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            ImGui::PopID();</div>
@@ -323,6 +323,7 @@ $(document).ready(function(){initNavTree('_solid_u_i_components_8hpp_source.html
 <div class="ttc" id="a_solid_u_i_components_8hpp_html_a133db7c90a851b9010872f4f5b09e4fdadee0d30391481a2cfce31307a54c6baf"><div class="ttname"><a href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdadee0d30391481a2cfce31307a54c6baf">ProjectItemType_File_Sound</a></div><div class="ttdeci">@ ProjectItemType_File_Sound</div><div class="ttdef"><b>Definition:</b> <a href="_solid_u_i_components_8hpp_source.html#l00033">SolidUIComponents.hpp:33</a></div></div>
 <div class="ttc" id="a_solid_u_i_components_8hpp_html_a133db7c90a851b9010872f4f5b09e4fdaec321404e078ea40f8005e0669965ebd"><div class="ttname"><a href="_solid_u_i_components_8hpp.html#a133db7c90a851b9010872f4f5b09e4fdaec321404e078ea40f8005e0669965ebd">ProjectItemType_File_Font</a></div><div class="ttdeci">@ ProjectItemType_File_Font</div><div class="ttdef"><b>Definition:</b> <a href="_solid_u_i_components_8hpp_source.html#l00032">SolidUIComponents.hpp:32</a></div></div>
 <div class="ttc" id="a_solid_utils_8hpp_html"><div class="ttname"><a href="_solid_utils_8hpp.html">SolidUtils.hpp</a></div></div>
+<div class="ttc" id="a_splash_screen_8cpp_html_a80de27bd7dc4e2b2ad3d5895b97a70f0"><div class="ttname"><a href="_splash_screen_8cpp.html#a80de27bd7dc4e2b2ad3d5895b97a70f0">window</a></div><div class="ttdeci">GLFWwindow * window</div><div class="ttdef"><b>Definition:</b> <a href="_splash_screen_8cpp_source.html#l00007">SplashScreen.cpp:7</a></div></div>
 <div class="ttc" id="anamespace_solid_u_i_components_html"><div class="ttname"><a href="namespace_solid_u_i_components.html">SolidUIComponents</a></div><div class="ttdef"><b>Definition:</b> <a href="_solid_u_i_components_8hpp_source.html#l00037">SolidUIComponents.hpp:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

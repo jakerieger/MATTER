@@ -31,6 +31,9 @@
  * It is responsible for initializing the editor and the OpenGL context.
  * It also handles the main loop of the editor.
  * 
+ * @note Like the SolidLogger class, and for the same reasons,
+ * the SolidEditor is a singleton.
+ * 
  * @author Jake Rieger
  */
 class SolidEditor {
@@ -67,6 +70,12 @@ public:
      * @return SolidProject The project class.
      */
     SolidProject GetProject() { return mProject; };
+
+    SolidSceneCamera GetSceneCamera();
+
+    SolidEditor(SolidEditor const&) = delete;
+    SolidEditor& operator=(SolidEditor const&) = delete;
+    static std::shared_ptr<SolidEditor> GetInstance();
 
 private:
     /**
@@ -145,4 +154,6 @@ private:
     float mLastY = 0.0f;
 
     void UpdateWindowTitle();
+
+    SolidEditor() {}
 };

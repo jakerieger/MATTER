@@ -34,7 +34,7 @@ class SolidShader {
 public:
     unsigned int ID;
     SolidShader(const char* shaderPath);
-    ~SolidShader();
+    SolidShader(std::string shaderSource);
     static SolidShader* NewFromType(ShaderType type);
     void Use();
     void Destroy();

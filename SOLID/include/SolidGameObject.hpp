@@ -40,6 +40,8 @@ public:
     SolidTransform mTransform;
 
     SolidGameObject(const char* name, SolidGameObjectType type);
+    ~SolidGameObject();
+
     SolidGameObjectType GetType() const { return mType; }
 
     std::vector<SolidComponent*> mComponents;

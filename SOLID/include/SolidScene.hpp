@@ -17,6 +17,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "SolidGameObject.hpp"
 #include "SolidLight.hpp"
@@ -36,6 +37,7 @@ public:
     SolidCamera* GetActiveCamera();
 
     void AddGameObject(SolidGameObject* gameObject);
+    void RemoveGameObject(unsigned int ID);
 
 private:
     std::vector<SolidGameObject*> mGameObjects;

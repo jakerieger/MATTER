@@ -1,6 +1,7 @@
 var class_solid_game_object =
 [
     [ "SolidGameObject", "class_solid_game_object.html#a447590fdec82f30031b1fa5a7abcd2ef", null ],
+    [ "~SolidGameObject", "class_solid_game_object.html#aef1a1a649d4a93e36aadc224350507c5", null ],
     [ "AddComponent", "class_solid_game_object.html#aebf2f479f1bcf71c0b411e257b33f523", null ],
     [ "Awake", "class_solid_game_object.html#a55379222d6d720db3818fa3833eb5cb4", null ],
     [ "Destroyed", "class_solid_game_object.html#a57ef4f47566d6d54ad60dd81ab92b65b", null ],

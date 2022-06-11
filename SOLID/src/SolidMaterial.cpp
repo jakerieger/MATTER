@@ -97,7 +97,7 @@ void UnlitMaterial::Bind(glm::mat4 MVP) {
     SetColor("material.diffuse", mDiffuse.color);
 
     if (mDiffuse.texture != nullptr) {
-        SetTexture("material.texture", *mDiffuse.texture);
+        SetTexture("material.texture", 0);
         SetInteger("material.hasTexture", 1);
     } else {
         SetInteger("material.hasTexture", 0);

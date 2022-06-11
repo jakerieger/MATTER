@@ -94,6 +94,10 @@ $(document).ready(function(){initNavTree('_solid_profiler_8hpp.html',''); initRe
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;glad/glad.h&gt;</code><br />
 <code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &lt;Windows.h&gt;</code><br />
+<code>#include &lt;Psapi.h&gt;</code><br />
+<code>#include &lt;tchar.h&gt;</code><br />
+<code>#include &lt;pdh.h&gt;</code><br />
 </div>
 <p><a href="_solid_profiler_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -104,6 +108,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_solid_profiler_1_1_g_p_u"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_profiler_1_1_g_p_u.html">SolidProfiler::GPU</a></td></tr>
 <tr class="memdesc:namespace_solid_profiler_1_1_g_p_u"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions for getting information related to the <a class="el" href="namespace_solid_profiler_1_1_g_p_u.html" title="Functions for getting information related to the GPU.">GPU</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_solid_profiler_1_1_process"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_profiler_1_1_process.html">SolidProfiler::Process</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -117,6 +123,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a2b1ed37477d046cbfd6621a5882678f6"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; float, float, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_profiler_1_1_g_p_u.html#a2b1ed37477d046cbfd6621a5882678f6">SolidProfiler::GPU::GetMemoryUsage</a> ()</td></tr>
 <tr class="memdesc:a2b1ed37477d046cbfd6621a5882678f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="namespace_solid_profiler_1_1_g_p_u.html" title="Functions for getting information related to the GPU.">GPU</a> memory information in MB in the format (total, used, free)  <a href="namespace_solid_profiler_1_1_g_p_u.html#a2b1ed37477d046cbfd6621a5882678f6">More...</a><br /></td></tr>
 <tr class="separator:a2b1ed37477d046cbfd6621a5882678f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5092e4dd3d07dd36d84af28021585279"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; size_t, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_profiler_1_1_process.html#a5092e4dd3d07dd36d84af28021585279">SolidProfiler::Process::GetProcessMemoryUsage</a> ()</td></tr>
+<tr class="separator:a5092e4dd3d07dd36d84af28021585279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16052130b46865e789bb8f1af59436d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_solid_profiler_1_1_process.html#ac16052130b46865e789bb8f1af59436d">SolidProfiler::Process::GetProcessCPUUsage</a> ()</td></tr>
+<tr class="separator:ac16052130b46865e789bb8f1af59436d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

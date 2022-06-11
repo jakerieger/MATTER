@@ -170,6 +170,36 @@ namespace SolidUtils {
         return textureID;
     }
 
+    inline static unsigned int UpdateTexture(const char* path, unsigned int ID) {
+        int width, height, nrComponents;
+        unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
+        if (data) {
+            GLenum format;
+            if (nrComponents == 1)
+                format = GL_RED;
+            else if (nrComponents == 3)
+                format = GL_RGB;
+            else if (nrComponents == 4)
+                format = GL_RGBA;
+
+            glBindTexture(GL_TEXTURE_2D, ID);
+            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D);
+
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+            stbi_image_free(data);
+        } else {
+            printf("Failed to load texture");
+            stbi_image_free(data);
+        }
+
+        return ID;
+    }
+
     inline static unsigned int ColorVecToIMU32(ImVec4 color) {
         unsigned int r = (unsigned int)(color.x * 255);
         unsigned int g = (unsigned int)(color.y * 255);
@@ -179,4 +209,10 @@ namespace SolidUtils {
         unsigned int colorUint = (a << 24) | (b << 16) | (g << 8) | r;
         return colorUint;
     };
+
+    inline static std::string rtrim(std::string& s, unsigned int c = 0) {
+        const char* ws = " \t\n\r\f\v";
+        s.erase((s.find_last_not_of(ws) + 1) + c);
+        return s;
+    }
 }

@@ -1,0 +1,13 @@
+using MatterEngine;
+
+public class __NAME__ : SolidComponent {
+  // Use this for initialization
+  private void Start() {
+  
+  }
+  
+  // Called once per frame
+  private void Update() {
+  
+  }
+}

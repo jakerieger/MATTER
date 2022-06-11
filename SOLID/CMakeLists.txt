@@ -34,7 +34,8 @@ add_executable(
     src/SolidMaterial.cpp
     src/SolidColor.cpp
     src/SolidModel.cpp
-    src/SolidIO.cpp
+    src/Windows/SplashScreen.cpp
+    src/Windows/Dialogs.cpp
     include/SolidEditor.hpp
     include/SolidEditorConfig.hpp
     include/SolidProject.hpp
@@ -54,7 +55,8 @@ add_executable(
     include/SolidMaterial.hpp
     include/SolidColor.hpp
     include/SolidModel.hpp
-    include/SolidIO.hpp
+    include/Windows/SplashScreen.hpp
+    include/Windows/Dialogs.hpp
     ../EXTERNAL/src/glad.c
     ../EXTERNAL/src/stb_image.cpp
     ../EXTERNAL/src/imgui/imgui.cpp
@@ -64,6 +66,7 @@ add_executable(
     ../EXTERNAL/src/imgui/imgui_tables.cpp
     ../EXTERNAL/src/imgui/imgui_widgets.cpp
     ../EXTERNAL/src/pugixml.cpp
+    ../EXTERNAL/src/Str.cpp
     ${APP_ICON_RESOURCE_WINDOWS}
 )
 

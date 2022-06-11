@@ -24,6 +24,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "SolidMaterial.hpp"
+#include "SolidLogger.hpp"
 
 struct Vertex {
     glm::vec3 Position;
@@ -43,12 +44,15 @@ public:
     std::vector<unsigned int> mIndices;
     std::vector<Texture> mTextures;
 
-    SolidMeshRenderer(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+    SolidMeshRenderer(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures, std::string name);
     void Draw(glm::mat4& MVP);
     SolidMaterial* GetMaterial() { return mMaterial; }
+    std::string& GetName() { return mName; }
+    void SetName(const std::string& name) { mName = std::move(name); }
 
 private:
     unsigned int VAO, VBO, EBO;
     SolidMaterial* mMaterial;
+    std::string mName;
     void SetupMesh();
 };

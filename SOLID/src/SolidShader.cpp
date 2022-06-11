@@ -15,6 +15,7 @@
 
 #include "SolidShader.hpp"
 #include "SolidUtils.hpp"
+#include "SolidLogger.hpp"
 
 SolidShader::SolidShader(const char* shaderPath) {
     std::string shaderCode;
@@ -32,7 +33,7 @@ SolidShader::SolidShader(const char* shaderPath) {
 
         shaderCode = shaderStream.str();
     } catch (std::ifstream::failure e) {
-        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+        SolidLogger::GetInstance()->Log("Shader file not found", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
     }
 
     std::string vertexCode;
@@ -84,10 +85,6 @@ SolidShader* SolidShader::NewFromType(ShaderType type) {
         default:
             return nullptr;
     }
-}
-
-SolidShader::~SolidShader() {
-    glDeleteProgram(ID);
 }
 
 void SolidShader::Use() {
@@ -152,13 +149,13 @@ void SolidShader::checkCompileErrors(unsigned int shader, ECompileType type) {
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
         if (!success) {
             glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-            std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << typeStr[type] << "\n" << std::string(infoLog) << std::endl;
+            SolidLogger::GetInstance()->Log(("ERROR::SHADER_COMPILATION_ERROR of type: " + typeStr[type]).c_str(), "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
         }
     } else {
         glGetProgramiv(shader, GL_LINK_STATUS, &success);
         if (!success) {
             glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-            std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << typeStr[type] << "\n" << std::string(infoLog) << std::endl;
+            SolidLogger::GetInstance()->Log(("ERROR::PROGRAM_LINKING_ERROR of type: " + typeStr[type]).c_str(), "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
         }
     }
 }

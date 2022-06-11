@@ -45,6 +45,8 @@
 #define CLEAR_COLOR_R 36
 #define CLEAR_COLOR_G 40
 #define CLEAR_COLOR_B 58
+#define VSYNC_ENABLED 1
+#define VSYNC_DISABLED 0
 
 //========================================================================//
 //======================== GLOBAL CALLBACKS ==============================//
@@ -97,7 +99,7 @@ int SolidEditor::InitGLFW() {
     });
 
     // VSYNC
-    glfwSwapInterval(1);
+    glfwSwapInterval(VSYNC_DISABLED);
 
     SolidLogger::GetInstance()->Log("GLFW initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
@@ -119,8 +121,9 @@ int SolidEditor::InitOpenGL() {
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glDepthFunc(GL_LESS);
     glEnable(GL_DEPTH_TEST);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
     glEnable(GL_BLEND);
+    glEnable(GL_DEBUG_OUTPUT);
     glDebugMessageCallback(MessageCallback, 0);
 
     SolidLogger::GetInstance()->Log("OpenGL initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
@@ -221,14 +224,9 @@ void SolidEditor::Render() {
     unsigned int framebuffer = std::get<0>(renderBuffers);
     unsigned int sceneTexture = std::get<1>(renderBuffers);
 
-    mEditorGrid.Init();
+    //mEditorGrid.Init();
 
-    SolidGameObject testObject("TestObject", GO_GameObject);
-    SolidModel testModel("Y:\\tmp\\TestProject\\cube.obj");
-    testObject.AddComponent<SolidModel>(&testModel);
-    mProject.GetActiveScene()->AddGameObject(&testObject);
-
-    SolidDirectionalLight sceneLight("SceneLight");
+    SolidDirectionalLight sceneLight("Directional Light");
     sceneLight.mTransform.SetPositionAndRotation(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
     mProject.GetActiveScene()->AddGameObject(&sceneLight);
 
@@ -253,7 +251,7 @@ void SolidEditor::Render() {
         );
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // mEditorGrid.Draw(sceneCamera);
+        //mEditorGrid.Draw(sceneCamera);
 
         for (auto& gameObject : mProject.GetActiveScene()->GetGameObjects()) {
             gameObject->Update(sceneCamera);
@@ -281,7 +279,7 @@ void SolidEditor::SetWindowIcon() {
 }
 
 void SolidEditor::Shutdown() {
-    mEditorGrid.Destroy();
+    //mEditorGrid.Destroy();
     SolidUI::ShutdownUI();
     glfwDestroyWindow(mWindow);
     glfwTerminate();
@@ -293,8 +291,21 @@ void SolidEditor::Run() {
     Shutdown();
 }
 
+std::shared_ptr<SolidEditor> SolidEditor::GetInstance() {
+    static std::shared_ptr<SolidEditor> instance{new SolidEditor};
+    return instance;
+}
+
 void GLAPIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
     fprintf(stderr, "[GL CALLBACK]: %s type = 0x%x, severity = 0x%x, message = %s\n",
         (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
         type, severity, message);
+
+    if (type == GL_DEBUG_TYPE_ERROR) {
+        SolidLogger::GetInstance()->Log("GL_ERROR", message, __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
+    } else if (type == GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR) {
+        SolidLogger::GetInstance()->Log("GL_DEPRECATED_BEHAVIOR", message, __FILE__, (int*)__LINE__, LogLevel::LogLevel_WARNING);
+    } else {
+        SolidLogger::GetInstance()->Log("GL_CALLBACK", message, __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
+    }
 }
