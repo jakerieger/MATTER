@@ -9,9 +9,10 @@ var searchData=
   ['addgameobject_6',['AddGameObject',['../class_solid_scene.html#aa8a7fff2dfd41729bc341024d4108ccb',1,'SolidScene']]],
   ['assemblyinfo_2ecs_7',['AssemblyInfo.cs',['../_assembly_info_8cs.html',1,'']]],
   ['audio_8',['audio',['../struct_solid_u_i_1_1_project_assets.html#a7b10b0999c8daf434d7b56f7a8def8a1',1,'SolidUI::ProjectAssets']]],
-  ['awake_9',['Awake',['../class_solid_component.html#a7f91f7fa06e9e07114949a29f4fb0646',1,'SolidComponent::Awake()'],['../class_solid_game_object.html#a55379222d6d720db3818fa3833eb5cb4',1,'SolidGameObject::Awake()'],['../class_solid_model.html#aa9e4c57bdee4b0194e8069e679a4550f',1,'SolidModel::Awake()']]],
-  ['axisid_10',['axisId',['../struct_axis_mapping.html#a74e2730f13865a81965ce49ebadbd8bf',1,'AxisMapping']]],
-  ['axismapping_11',['AxisMapping',['../struct_axis_mapping.html',1,'']]],
-  ['axismappings_12',['axisMappings',['../struct_input_manager.html#a23cf0bee70076bac1642ca8ba6a34536',1,'InputManager']]],
-  ['axisname_13',['axisName',['../struct_axis_mapping.html#a5040e879e026193b6993ff86c915a99b',1,'AxisMapping']]]
+  ['author_9',['author',['../struct_solid_u_i_1_1_theme.html#a5648c37722f651bf6d8343590ca8de13',1,'SolidUI::Theme']]],
+  ['awake_10',['Awake',['../class_solid_component.html#a7f91f7fa06e9e07114949a29f4fb0646',1,'SolidComponent::Awake()'],['../class_solid_game_object.html#a55379222d6d720db3818fa3833eb5cb4',1,'SolidGameObject::Awake()'],['../class_solid_model.html#aa9e4c57bdee4b0194e8069e679a4550f',1,'SolidModel::Awake()']]],
+  ['axisid_11',['axisId',['../struct_axis_mapping.html#a74e2730f13865a81965ce49ebadbd8bf',1,'AxisMapping']]],
+  ['axismapping_12',['AxisMapping',['../struct_axis_mapping.html',1,'']]],
+  ['axismappings_13',['axisMappings',['../struct_input_manager.html#a23cf0bee70076bac1642ca8ba6a34536',1,'InputManager']]],
+  ['axisname_14',['axisName',['../struct_axis_mapping.html#a5040e879e026193b6993ff86c915a99b',1,'AxisMapping']]]
 ];

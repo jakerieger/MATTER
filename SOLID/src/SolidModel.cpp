@@ -15,6 +15,7 @@
 
 #include "SolidModel.hpp"
 #include "SolidGameObject.hpp"
+#include "SolidEditor.hpp"
 
 SolidModel::SolidModel(char* path) {
     LoadModel(path);
@@ -145,6 +146,8 @@ void SolidModel::Start() {
 }
 
 void SolidModel::Update(SolidSceneCamera& sceneCamera) {
+    unsigned int numOfLights = SolidEditor::GetInstance()->GetProject().GetActiveScene()->GetLights().size();
+
     glm::mat4 model = this->mGameObject->mTransform.GetModelMatrix();
     glm::mat4 view = sceneCamera.GetViewMatrix();
     glm::mat4 projection = sceneCamera.GetProjectionMatrix();

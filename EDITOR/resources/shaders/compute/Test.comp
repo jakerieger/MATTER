@@ -1,0 +1,10 @@
+#version 460 core
+
+layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
+layout(r32f, binding = 0) uniform image2D u_image;
+
+void main() {
+    ivec2 coord = ivec2(gl_GlobalInvocationID.xy);
+    float in_val = imageLoad(u_image, coord).r;
+    imageStore(u_image, coord, vec4(in_val));
+}

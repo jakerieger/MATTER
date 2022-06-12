@@ -4,7 +4,8 @@ var annotated_dup =
       [ "Solid", "class_matter_1_1_solid.html", null ]
     ] ],
     [ "SolidUI", "namespace_solid_u_i.html", [
-      [ "ProjectAssets", "struct_solid_u_i_1_1_project_assets.html", "struct_solid_u_i_1_1_project_assets" ]
+      [ "ProjectAssets", "struct_solid_u_i_1_1_project_assets.html", "struct_solid_u_i_1_1_project_assets" ],
+      [ "Theme", "struct_solid_u_i_1_1_theme.html", "struct_solid_u_i_1_1_theme" ]
     ] ],
     [ "ActionMapping", "struct_action_mapping.html", "struct_action_mapping" ],
     [ "AxisMapping", "struct_axis_mapping.html", "struct_axis_mapping" ],

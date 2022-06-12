@@ -48,5 +48,6 @@ var hierarchy =
     [ "SolidTransform", "class_solid_transform.html", null ],
     [ "Specular", "struct_specular.html", null ],
     [ "Texture", "struct_texture.html", null ],
+    [ "SolidUI::Theme", "struct_solid_u_i_1_1_theme.html", null ],
     [ "Vertex", "struct_vertex.html", null ]
 ];

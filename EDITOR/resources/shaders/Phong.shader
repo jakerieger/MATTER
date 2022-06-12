@@ -29,6 +29,8 @@ struct Material {
     sampler2D diffuse;
     sampler2D specular;
     float shininess;
+    int hasDiffuse;
+    int hasSpecular;
 };
 
 struct DirectionalLight {
@@ -102,7 +104,7 @@ vec3 CalcDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirectio
     vec3 diffuse;
     vec3 specular;
 
-    if (uMaterial.diffuse != 0) {
+    if (uMaterial.hasDiffuse == 1) {
         ambient  = light.ambient  *        texture(uMaterial.diffuse,  TexCoords).rgb;
         diffuse  = light.diffuse  * diff * texture(uMaterial.diffuse,  TexCoords).rgb;
     } else {
@@ -110,7 +112,7 @@ vec3 CalcDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirectio
         diffuse  = light.diffuse * diff;
     }
 
-    if (uMaterial.specular != 0) {
+    if (uMaterial.hasSpecular == 1) {
         specular = light.specular * spec * texture(uMaterial.specular, TexCoords).rgb;
     } else {
         specular = light.specular * spec;

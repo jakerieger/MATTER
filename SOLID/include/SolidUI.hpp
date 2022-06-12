@@ -115,6 +115,8 @@ namespace SolidUI {
             static bool selected_general = true;
             static bool selected_external_tools = false;
             static unsigned int theme_index = 0;
+            static bool show_splash_screen = true;
+            static bool load_previous_project = true;
         }
 
         namespace Console {
@@ -140,7 +142,7 @@ namespace SolidUI {
             pugi::xml_parse_result result = themeDoc.load_file(defaultTheme.c_str());
 
             if (!result)
-                std::cout << "Failed to load theme file: " << defaultTheme << std::endl;
+                SolidLogger::GetInstance()->Log(("Failed to load theme: " + themeName).c_str(), defaultTheme.c_str(), __FILE__, (int*)__LINE__, LogLevel::LogLevel_ERROR);
 
             for (pugi::xml_node color: themeDoc.child("theme").child("colors").children("color")) {
                 std::string name = color.attribute("name").value();
@@ -433,8 +435,8 @@ namespace SolidUI {
             ImGui::PushStyleColor(ImGuiCol_TitleBg, colors["menu"]);
             if (ImGui::BeginPopupModal(ICON_FA_WRENCH " Preferences", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
                 ImGui::Columns(2, "prefs_columns");
-                ImGui::SetColumnWidth(0, ImGui::GetWindowWidth() * 0.4f);
-                ImGui::SetColumnWidth(1, ImGui::GetWindowWidth() * 0.6f);
+                ImGui::SetColumnWidth(0, ImGui::GetWindowWidth() * 0.25f);
+                ImGui::SetColumnWidth(1, ImGui::GetWindowWidth() * 0.75f);
 
                 if (ImGui::Selectable("General", State::EditorPreferences::selected_general, ImGuiSelectableFlags_SelectOnClick | ImGuiSelectableFlags_SpanAvailWidth)) {
                     State::EditorPreferences::selected_general        = true;
@@ -463,8 +465,16 @@ namespace SolidUI {
                         }
                         ImGui::EndCombo();
                     }
-                    ImGui::SetCursorPosX((ImGui::GetWindowWidth() * 0.4f) + combo_width);
+                    ImGui::SetCursorPosX((ImGui::GetWindowWidth() * 0.25f) + combo_width);
                     ImGui::Text(themes[State::EditorPreferences::theme_index].description.c_str());
+
+                    ImGui::Text("Show splash screen");
+                    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 26.f);
+                    ImGui::Checkbox("##splash_screen", &State::EditorPreferences::show_splash_screen);
+
+                    ImGui::Text("Load previous project on startup");
+                    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 26.f);
+                    ImGui::Checkbox("##load_prev_proj", &State::EditorPreferences::load_previous_project);
                 } else if (State::EditorPreferences::selected_external_tools) {
                     ImGui::Text("External Tools");
                 }

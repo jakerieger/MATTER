@@ -99,7 +99,7 @@ int SolidEditor::InitGLFW() {
     });
 
     // VSYNC
-    glfwSwapInterval(VSYNC_DISABLED);
+    glfwSwapInterval(VSYNC_ENABLED);
 
     SolidLogger::GetInstance()->Log("GLFW initialized", "", __FILE__, (int*)__LINE__, LogLevel::LogLevel_INFO);
 
