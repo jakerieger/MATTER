@@ -4,5 +4,6 @@ project(MATTER VERSION 2022.01)
 
 # add_subdirectory(LIQUID)
 # add_subdirectory(PLASMA)
-# add_subdirectory(RUNTIME)
+add_subdirectory(HUB)
+add_subdirectory(RUNTIME)
 add_subdirectory(SOLID)
