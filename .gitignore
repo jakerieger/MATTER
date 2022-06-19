@@ -13,3 +13,5 @@ MANAGED/**/Debug
 MANAGED/**/Release
 
 scripts/*.exe
+
+EDITOR/resources/interface/fonts/fa-*

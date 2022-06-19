@@ -26,6 +26,10 @@ MATTER is split in to a couple different components. SOLID is the editor, LIQUID
 
 `EDITOR/` contains all the resources used by SOLID such as fonts, themes, icons, etc. The `EDITOR/resources` directory needs to be copied to the same location as the SOLID executable for the editor to run.
 
+## Fonts
+
+MATTER uses Font Awesome Pro. Since this is a licensed font I cannot provide it as part of this repo. You will need to either purchase FA Pro or implement your own icon font using either the headers created by [@juliettef](https://github.com/juliettef/IconFontCppHeaders) or generate your own defines.
+
 ## Build Status
 
 MATTER is targetting Windows **only** at the moment. Support for Unix/macOS may come in the future but is not being prioritized as OpenGL support is poor at best. Therefore, the following table is referring to the specificed compilers running on Windows 10.
