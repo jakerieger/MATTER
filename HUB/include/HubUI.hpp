@@ -5,9 +5,11 @@
 #include <string>
 #include <istream>
 #include <map>
+#include <ctime>
+#include <chrono>
 
 #include <glad/glad.h>
-#include <imgui/IconsFontAwesome6.h>
+#include <imgui/IconsFontAwesome6Pro.h>
 #include <imgui/imgui.h>
 #include <imgui/imgui_internal.h>
 #include <imgui/imgui_impl_glfw.h>
@@ -16,6 +18,7 @@
 #include <pugixml.hpp>
 #include <nlohmann/json.hpp>
 
+#include "Hub.hpp"
 #include <SolidUtils.hpp>
 
 using JSON = nlohmann::json;
@@ -51,7 +54,12 @@ namespace HubUI {
     }
 
     namespace State {
-        static unsigned int current_window = 0;
+        static unsigned int current_window = 1;
+
+        namespace NewProject {
+            static char project_name[256] = "";
+            static char project_path[256] = "";
+        }
     }
 
     namespace Helpers {
@@ -72,7 +80,7 @@ namespace HubUI {
             pugi::xml_parse_result result = themeDoc.load_file(defaultTheme.c_str());
 
             if (!result)
-                std::cout << "Error loading theme: " << result.description() << std::endl;
+                printf("Error parsing theme file: %s\n", result.description());
 
             for (pugi::xml_node color: themeDoc.child("theme").child("colors").children("color")) {
                 std::string name = color.attribute("name").value();
@@ -88,7 +96,7 @@ namespace HubUI {
             frame_rounding = window.attribute("frame_rounding").as_float();
             border_size = window.attribute("border_width").as_float();
 
-                        ImGuiStyle* style = &ImGui::GetStyle();
+            ImGuiStyle* style = &ImGui::GetStyle();
             ImVec4* styleColors = style->Colors;
 
             style->WindowRounding = window_rounding;
@@ -141,9 +149,9 @@ namespace HubUI {
             styleColors[ImGuiCol_PlotLinesHovered]       = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
             styleColors[ImGuiCol_PlotHistogram]          = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
             styleColors[ImGuiCol_PlotHistogramHovered]   = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
-            styleColors[ImGuiCol_TableHeaderBg]          = ImVec4(0.19f, 0.19f, 0.20f, 1.00f);
-            styleColors[ImGuiCol_TableBorderStrong]      = ImVec4(0.31f, 0.31f, 0.35f, 1.00f);   // Prefer using Alpha=1.0 here
-            styleColors[ImGuiCol_TableBorderLight]       = ImVec4(0.23f, 0.23f, 0.25f, 1.00f);   // Prefer using Alpha=1.0 here
+            styleColors[ImGuiCol_TableHeaderBg]          = colors["scene"];
+            styleColors[ImGuiCol_TableBorderStrong]      = colors["scene"];
+            styleColors[ImGuiCol_TableBorderLight]       = colors["scene"];
             styleColors[ImGuiCol_TableRowBg]             = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
             styleColors[ImGuiCol_TableRowBgAlt]          = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
             styleColors[ImGuiCol_TextSelectedBg]         = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
@@ -218,11 +226,32 @@ namespace HubUI {
 
             ImGui::Separator();
 
-            ImGui::BeginTable("Projects", 3, ImGuiTableFlags_Resizable);
-            ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthFixed, 100.f);
-            ImGui::TableSetupColumn("Type", ImGuiTableColumnFlags_WidthFixed, 100.f);
-            ImGui::TableSetupColumn("Status", ImGuiTableColumnFlags_WidthFixed, 100.f);
-            ImGui::EndTable();
+            if (ImGui::BeginTable("Projects", 4, ImGuiTableFlags_Sortable | ImGuiTableFlags_Resizable | ImGuiTableFlags_Reorderable)) {
+                ImGui::TableSetupColumn(ICON_FA_STAR);
+                ImGui::TableSetupColumn("Name");
+                ImGui::TableSetupColumn("Modified");
+                ImGui::TableSetupColumn("Editor Version");
+                ImGui::TableHeadersRow();
+                for (Project &p : Hub::GetInstance()->projects) {
+                    ImGui::TableNextRow();
+                    ImGui::TableNextColumn();
+                    ImGui::Text(p.favorite ? ICON_FA_STAR : ICON_FA_STAR);
+                    ImGui::TableNextColumn();
+                    ImGui::Text(p.name.c_str());
+                    ImGui::TextDisabled(p.path.c_str());
+                    ImGui::TableNextColumn();
+
+                    std::tm* t = std::gmtime(&p.last_modified);
+                    std::stringstream ss;
+                    ss << std::put_time(t, "%Y-%m-%d");
+
+                    ImGui::Text(ss.str().c_str());
+                    ImGui::TableNextColumn();
+                    ImGui::Text(p.editor_version.c_str());
+                }
+
+                ImGui::EndTable();
+            }
 
             ImGui::End();
         }
@@ -231,6 +260,36 @@ namespace HubUI {
             ImGui::Begin("newproject", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 
             ImGui::Text("New Project");
+            ImGui::Separator();
+
+            float width  = ImGui::GetContentRegionAvail().x;
+            float height = ImGui::GetContentRegionAvail().y;
+            float margin = width * 0.25f;
+            float contentWidth = width - margin * 2.f;
+
+            ImGui::SetCursorPosY((height * 0.5f) - 64);
+
+            ImGui::SetCursorPosX(margin);
+            ImGui::Text("Project Name*");
+            ImGui::SetCursorPosX(margin);
+            ImGui::SetNextItemWidth(contentWidth);
+            ImGui::InputText("##project_name", State::NewProject::project_name, IM_ARRAYSIZE(State::NewProject::project_name));
+
+            ImGui::SetCursorPosX(margin);
+            ImGui::Text("Project Path*");
+            ImGui::SetCursorPosX(margin);
+            ImGui::SetNextItemWidth(contentWidth);
+            ImGui::InputText("##project_path", State::NewProject::project_path, IM_ARRAYSIZE(State::NewProject::project_path));
+
+            ImGui::SetCursorPosX((margin + contentWidth) - 210.f);
+            if (ImGui::Button("Cancel", ImVec2(100, 36))) {
+                State::current_window = 0;
+            }
+
+            ImGui::SameLine((margin + contentWidth) - 100.f);
+            if (Components::ButtonPrimary("Create", ImVec2(100, 36))) {
+                State::current_window = 0;
+            }
 
             ImGui::End();
         }

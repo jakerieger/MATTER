@@ -27,9 +27,11 @@ Section
     SetOutPath "$INSTDIR\2022"
 
     File "..\LICENSE"
-    File /nonfatal /a /r "..\build\SOLID\Release\"
+    File /nonfatal /a /r "..\build\SOLID\Debug\"
+    File "..\build\HUB\Debug\MatterHub.exe"
 
     CreateShortCut "$DESKTOP\SOLID.lnk" "$INSTDIR\2022\SOLID.exe"
+    CreateShortCut "$DESKTOP\Matter Hub.lnk" "$INSTDIR\2022\MatterHub.exe"
 
     WriteUninstaller $INSTDIR\Uninstall.exe
 
