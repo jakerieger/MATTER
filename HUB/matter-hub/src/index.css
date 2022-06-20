@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;700;900&display=swap');
+
+:root {
+  --PRIMARY : #2689e2;
+  --SECONDARY : #292E41;
+  --SECONDARY_ALT : #24283A;
+  --BORDERS : #31364f;
+  --BACKGROUND : #1F2334;
+  --DARKEST : #08090d;
+  --TEXT : #9EB1D5;
+  --TEXT_LABEL : #9EB1D5;
+  --TEXT_SECONDARY : #7982A8;
+  --WARNING : #dfaf6c;
+  --DANGER : #f2423c;
+  --SUCCESS : #8bc351;
+  --INFO : #2689e2;
+  --LINK: #2689e2;
+  --MENU : #1A1C29;
+  --FONT: 'Titillium Web';
+
+  color: var(--TEXT);
+  font-family: var(--FONT);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--BACKGROUND);
+}
+
+.titlebar {
+  height: 30px;
+  background: var(--MENU);
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.titlebar-left {
+  flex: 1;
+  padding-left: 10px;
+  user-select: none;
+}
+
+.titlebar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titlebar-button {
+  width: 36px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  user-select: none;
+  color: var(--TEXT);
+}
+
+.titlebar-button#titlebar-close:hover {
+  background: var(--DANGER);
+}
+
+.titlebar-button#titlebar-close:hover > i {
+  color: white;
+}
+
+.titlebar-button#titlebar-minimize:hover,
+.titlebar-button#titlebar-maximize:hover {
+  background: var(--BORDERS);
+}
+
+.titlebar-button#titlebar-minimize:hover > i,
+.titlebar-button#titlebar-maximize:hover > i {
+  color: white;
+}
+
+main {
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--BORDERS);
+  padding-bottom: 10px;
+}
+
+.page-header h2 {
+  flex: 1;
+}
+
+.page-header button:not(:last-child) {
+  margin-right: 8px;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  height: 36px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 2px;
+  background: none;
+  color: white;
+  font-family: var(--FONT);
+  transition: 200ms;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button.primary {
+  background: var(--PRIMARY);
+}
+
+.button.secondary {
+  background: var(--BORDERS);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead {
+  background: var(--BORDERS);
+}
+
+table th, table td {
+  padding: 6px;
+  text-align: left;
+}
+
+table #path {
+  font-size: 10pt;
+  color: var(--TEXT_SECONDARY);
+}
+
+table button {
+  font-size: 20pt;
+  color: var(--TEXT) !important;
+}
+
+table tbody tr {
+  transition: 200ms;
+}
+
+table tbody tr:hover {
+  background: var(--MENU);
+  cursor: pointer;
+}
+
+#new-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 120px);
+}
+
+#new-project-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+#new-project-inputs > input {
+  margin-bottom: 10px;
+}
+
+#new-project-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+  margin-top: 10px;
+}
+
+#new-project-buttons button:first-child {
+  margin-right: 10px;
+}
+
+#project-path {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+#project-path input {
+  width: calc(100% - 20px) !important;
+}
+
+#project-path button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 20pt;
+  width: 20px;
+  height: 100%;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#project-path button:hover {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--BORDERS);
+  background: var(--SECONDARY);
+  color: var(--TEXT);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12pt;
+  margin-top: 6px;
+  width: calc(100% - 20px);
+  letter-spacing: 1px;
+  font-family: var(--FONT);
+}
