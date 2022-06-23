@@ -197,7 +197,7 @@ table tbody tr {
   width: 50%;
 }
 
-#new-project-inputs > input {
+#new-project-inputs > input[type="text"] {
   margin-bottom: 10px;
 }
 
@@ -205,8 +205,14 @@ table tbody tr {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   width: 50%;
   margin-top: 10px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 
 #new-project-buttons button:first-child {

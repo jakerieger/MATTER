@@ -20,7 +20,7 @@ serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.0.0", features = ["api-all"] }
 dirs = "4.0.0"
 fs_extra = "1.2.0"
-rust-ini = "0.18.0"
+tini = "1.3.0" 
 
 [features]
 # by default Tauri runs in production mode

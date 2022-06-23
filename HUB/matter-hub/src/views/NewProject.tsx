@@ -4,8 +4,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewProject() {
-    const [ projectName, setProjectName ]         = React.useState('');
-    const [ projectPath, setProjectPath ]         = React.useState('');
+    const [ projectName, setProjectName ] = React.useState('');
+    const [ projectPath, setProjectPath ] = React.useState('');
     const navigate = useNavigate();
 
     return (
