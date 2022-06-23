@@ -31,6 +31,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--BACKGROUND);
+  overflow-y: hidden;
 }
 
 .titlebar {
@@ -44,6 +45,8 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
+  border-bottom: 1px solid var(--BORDERS);
 }
 
 .titlebar-left {
@@ -87,7 +90,7 @@ body {
 
 main {
   margin-top: 40px;
-  margin-left: 10px;
+  margin-left: 290px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -102,10 +105,12 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   border-bottom: 1px solid var(--BORDERS);
   padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .page-header h2 {
   flex: 1;
+  font-size: 2em;
 }
 
 .page-header button:not(:last-child) {
@@ -127,6 +132,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   font-family: var(--FONT);
   transition: 200ms;
+  filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.2));
+  z-index: 1;
 }
 
 .button:hover {
@@ -169,10 +176,10 @@ table tbody tr {
   transition: 200ms;
 }
 
-table tbody tr:hover {
+/* table tbody tr:hover {
   background: var(--MENU);
   cursor: pointer;
-}
+} */
 
 #new-project {
   display: flex;
@@ -180,7 +187,7 @@ table tbody tr:hover {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 200px);
 }
 
 #new-project-inputs {
@@ -246,4 +253,190 @@ input {
   width: calc(100% - 20px);
   letter-spacing: 1px;
   font-family: var(--FONT);
+}
+
+input::placeholder {
+  color: var(--TEXT_SECONDARY);
+}
+
+#project-search {
+  width: 25%;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--SECONDARY_ALT);
+  z-index: 1;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid var(--BORDERS);
+}
+
+.sidebar #logo {
+  width: 140px;
+  height: 140px;
+  margin-top: 20px;
+}
+
+#sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 20px;
+}
+
+#sidebar-nav a {
+  text-decoration: none;
+  color: var(--TEXT_SECONDARY);
+  padding: 10px;
+  width: calc(100% - 20px);
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#sidebar-nav a:hover {
+  background: var(--BORDERS);
+  color: var(--TEXT);
+}
+
+#sidebar-nav a i {
+  font-size: 18pt;
+  margin-right: 10px;
+}
+
+#sidebar-nav a.active {
+  background: var(--BORDERS);
+  color: var(--TEXT);
+}
+
+.sidebar #sidebar-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  height: 40px;
+  background: var(--MENU);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--TEXT_SECONDARY);
+  border-top: 1px solid var(--BORDERS);
+}
+
+.sidebar #sidebar-footer div:first-child {
+  flex: 1;
+}
+
+.sidebar #sidebar-footer a {
+  text-decoration: underline;
+  color: var(--TEXT);
+  font-size: 14pt;
+}
+
+iframe {
+  border: none;
+}
+
+.context-menu {
+  position: absolute;
+  top: 30px;
+  background: var(--SECONDARY);
+  padding: 10px;
+  min-width: 200px;
+  filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.2));
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 10000;
+  border: 1px solid var(--BORDERS);
+}
+
+.context-menu-item {
+  font-size: 12pt;
+  padding: 6px;
+  flex: 1;
+  border-radius: 4px;
+  width: calc(100% - 10px);
+}
+
+.context-menu-item:hover {
+  background: var(--SECONDARY_ALT);
+  cursor: pointer;
+}
+
+.context-menu-seperator {
+  border-top: 1px solid var(--BORDERS);
+  width: 100%;
+  margin-top: 4px;
+  padding-bottom: 4px;
+}
+
+.messagebox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.messagebox-box {
+  background: var(--MENU);
+  padding: 20px;
+  border-radius: 4px;
+  filter: drop-shadow(10px 0px 10px rgba(0, 0, 0, 0.2));
+}
+
+.messagebox-actions {
+  width: 100%;
+}
+
+.messagebox-title {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.messagebox-title i {
+  font-size: 24pt;
+  margin-right: 10px;
+}
+
+.messagebox-body {
+  margin-bottom: 30px;
+}
+
+.messagebox-actions div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.messagebox-actions div button:not(:last-child) {
+  margin-right: 8px;
 }

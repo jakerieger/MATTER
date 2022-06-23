@@ -1,7 +1,7 @@
 !include "MUI2.nsh"
 
 Name "MATTER 2022"
-OutFile "MATTER2022-setup.exe"
+OutFile "MATTER_2022.6.15a_x64_en-US.exe"
 Unicode True
 
 InstallDir "$PROGRAMFILES64\MATTER"
@@ -28,7 +28,7 @@ Section
 
     File "..\LICENSE"
     File /nonfatal /a /r "..\build\SOLID\Debug\"
-    File "..\build\HUB\Debug\MatterHub.exe"
+    File "..\build\HUB\matter-hub\dist\MatterHub.exe"
 
     CreateShortCut "$DESKTOP\SOLID.lnk" "$INSTDIR\2022\SOLID.exe"
     CreateShortCut "$DESKTOP\Matter Hub.lnk" "$INSTDIR\2022\MatterHub.exe"

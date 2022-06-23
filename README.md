@@ -14,6 +14,7 @@
 
 Simply put, **no**. MATTER is a personal learning project being developed as a vessel for better understanding computer graphics and the physics involved in 3D game engines. I like making games, and I like programming. But more than those two things, I love challenges.
 
+![](docs/screenshot_hub.jpg)
 ![](docs/screenshot.jpg)
 
 ## Documentation

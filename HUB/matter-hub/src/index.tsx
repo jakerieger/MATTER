@@ -6,6 +6,7 @@ import Titlebar from './components/Titlebar';
 import * as Views from './views';
 import '@mdi/font/css/materialdesignicons.min.css'
 import './index.css';
+import Sidebar from './components/Sidebar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,11 +14,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Titlebar />
-   <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Views.Projects />} />
-        <Route path="/new" element={<Views.NewProject />} />
-      </Routes>
-   </BrowserRouter>
+    <BrowserRouter>
+        <Sidebar/>
+        <Routes>
+          <Route path="/" element={<Views.Projects />} />
+          <Route path="/new" element={<Views.NewProject />} />
+          <Route path="/installs" element={<Views.Installs />} />
+          <Route path="/docs" element={<Views.Documentation />} />
+          <Route path="/settings" element={<Views.Settings />} />
+        </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );

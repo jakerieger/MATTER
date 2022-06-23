@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 500,
+        "height": 720,
         "resizable": true,
         "title": "Matter Hub",
-        "width": 900,
+        "width": 1280,
         "decorations": false,
         "center": true,
         "minWidth": 900,
